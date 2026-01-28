@@ -287,9 +287,24 @@
       class="relative min-h-[100svh] min-h-screen flex items-center
              pt-24 pb-16 lg:pt-32
              overflow-hidden
-             bg-gradient-to-b from-white to-slate-50">
+             bg-gradient-to-b from-white to-slate-50
+             lg:bg-none">
     
-      <div class="container mx-auto px-6 md:px-8">
+      <!-- FONDO MOBILE -->
+      <div
+        class="absolute inset-0 lg:hidden
+               bg-[url('DanilaGreppi93.JPG')]
+               bg-cover bg-center">
+      </div>
+    
+      <!-- OVERLAY MOBILE -->
+      <div
+        class="absolute inset-0 lg:hidden
+               bg-gradient-to-b
+               from-white/85 via-white/80 to-white/95">
+      </div>
+    
+      <div class="container mx-auto px-6 md:px-8 relative z-10">
         <div class="flex flex-col lg:flex-row items-center gap-14 lg:gap-20">
     
           <!-- TEXTO -->
@@ -329,14 +344,14 @@
             <!-- DESCRIPCIÓN -->
             <p
               class="text-lg sm:text-xl md:text-2xl
-                     text-slate-500
+                     text-slate-600
                      font-medium italic
                      leading-relaxed
                      max-w-2xl mx-auto lg:mx-0
                      mb-12">
               Es entender el mercado, el proceso de venta y el momento correcto
               para tomar decisiones.
-              <span class="text-slate-700 font-bold">
+              <span class="text-slate-800 font-bold">
                 Eso es lo que trabajamos con cada propietario.
               </span>
             </p>
@@ -359,40 +374,35 @@
             </div>
           </div>
     
-          <!-- IMAGEN -->
-          <div class="w-full lg:w-2/5 flex justify-center relative">
-            <div class="relative w-full max-w-[340px] lg:max-w-none">
+          <!-- IMAGEN DESKTOP -->
+          <div class="hidden lg:flex w-full lg:w-2/5 justify-center relative">
+            <div class="relative w-full max-w-none">
     
               <img
                 src="DanilaGreppi93.JPG"
                 alt="Danila Greppi, estrategia inmobiliaria para vender propiedades en CABA"
-                class="photo-mask w-full
-                       h-[420px] sm:h-[480px] md:h-[560px] lg:h-[650px]
-                       object-cover">
+                class="photo-mask w-full h-[650px] object-cover">
     
               <!-- CARD FLOTANTE -->
               <div
-                class="absolute
-                       -bottom-5 left-1/2 -translate-x-1/2
-                       lg:left-0 lg:translate-x-0 lg:-bottom-6
+                class="absolute -bottom-6 -left-6
                        bg-white/95 backdrop-blur
-                       p-4 lg:p-6
-                       rounded-[1.6rem]
+                       p-6 rounded-[2rem]
                        shadow-xl
                        z-20
                        border border-slate-100
-                       hidden sm:block animate-float">
+                       animate-float">
     
                 <p
-                  class="text-[9px] lg:text-[10px]
+                  class="text-[10px]
                          font-black text-pink-600
-                         uppercase mb-1 tracking-widest">
+                         uppercase mb-2 tracking-widest">
                   Estrategia inmobiliaria
                 </p>
     
                 <p
                   class="font-black text-slate-900
-                         text-lg lg:text-2xl
+                         text-2xl
                          italic tracking-tighter leading-none">
                   Vendemos,<br>no solo publicamos
                 </p>
@@ -404,17 +414,6 @@
         </div>
       </div>
     </section>
-    
-    <style>
-    @media (prefers-reduced-motion: reduce) {
-      .animate-float {
-        animation: none;
-      }
-    }
-    </style>
-
-
-
 
     <section id="proceso" class="py-32 bg-[#fafafa] px-6 overflow-hidden relative">
         <div
