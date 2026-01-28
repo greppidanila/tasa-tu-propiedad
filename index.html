@@ -39,127 +39,137 @@
         rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- =========================
-       JSON-LD PRINCIPAL (FAQ + PERSONA + INMOBILIARIA)
-  ========================== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-
-      {
-        "@type": "FAQPage",
-        "inLanguage": "es-AR",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "¿Mi propiedad vale lo que creo que vale en el mercado?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "En la mayoría de los casos no coincide. El valor real surge de operaciones cerradas recientes, no de avisos publicados ni de expectativas personales."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Cómo se calcula el precio de una propiedad en CABA?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Se analizan ventas reales, competencia activa, tipología, estado, luz, orientación y momento del mercado. No es solo metros por valor promedio."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Cuánto tiempo tarda realmente en venderse una propiedad?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Una propiedad bien tasada y bien presentada suele venderse entre 3 y 4 meses."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Por qué mi propiedad no se vende si ya está publicada?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Generalmente por precio fuera de mercado, mala presentación, poca visibilidad o falta de estrategia."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Sirve publicar más caro y después bajar el precio?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No suele funcionar. El mayor impacto ocurre al inicio. Un precio alto hace perder las semanas más importantes."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Conviene vender ahora o esperar?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Siempre hay compradores. La decisión real es precio versus tiempo."
-            }
-          }
-        ]
-      },
-
-      {
-        "@type": "Person",
-        "name": "Danila Greppi",
-        "image": "https://greppidanila.github.io/tasa-tu-propiedad/DanilaGreppi93.JPG",
-        "jobTitle": "Estrategia y marketing inmobiliario",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Buenos Aires",
-          "addressRegion": "CABA",
-          "addressCountry": "AR"
-        },
-        "description": "Especialista en estrategia, tasaciones y análisis de mercado para la venta de propiedades en CABA."
-      },
-
-      {
-        "@type": "RealEstateAgent",
-        "name": "Marcela Genta",
-        "url": "https://marcelagenta.com.ar/",
-        "image": "https://www.marcelagenta.com.ar/images/logo.png",
-        "areaServed": {
-          "@type": "AdministrativeArea",
-          "name": "Ciudad Autónoma de Buenos Aires"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Buenos Aires",
-          "addressRegion": "CABA",
-          "addressCountry": "AR"
-        },
-        "description": "Inmobiliaria habilitada en la Ciudad Autónoma de Buenos Aires. Matrícula CUCICBA 3906."
-      }
-    ]
-  }
-  </script>
-
-  <!-- =========================
-       JSON-LD LLM / IA (WEBPAGE)
-  ========================== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": "https://greppidanila.github.io/tasa-tu-propiedad/",
-    "inLanguage": "es-AR",
-    "name": "Tasación y venta de propiedades en CABA",
-    "description": "Guía estratégica para propietarios que quieren vender una propiedad en la Ciudad de Buenos Aires.",
-    "about": {
-      "@type": "Thing",
-      "name": "Vender una propiedad en CABA"
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://danilarealestate.netlify.app/#webpage",
+      "url": "https://danilarealestate.netlify.app/",
+      "name": "Danila Greppi | Martillera Pública y Estrategia Inmobiliaria en CABA",
+      "description": "Tasación real y estrategia de venta para propiedades en Villa Urquiza, Saavedra y CABA. Especialista en marketing inmobiliario con el equipo de Marcela Genta.",
+      "inLanguage": "es-AR",
+      "about": { "@id": "https://danilarealestate.netlify.app/#person" }
     },
-    "audience": {
-      "@type": "Audience",
-      "audienceType": "Propietarios de inmuebles en CABA"
+    {
+      "@type": "Person",
+      "@id": "https://danilarealestate.netlify.app/#person",
+      "name": "Danila Greppi",
+      "jobTitle": "Martillera Pública y Corredora Inmobiliaria",
+      "description": "Especialista en tasaciones, sucesiones y marketing digital inmobiliario en CABA.",
+      "image": "https://danilarealestate.netlify.app/DanilaGreppi93.JPG",
+      "affiliation": { "@id": "https://danilarealestate.netlify.app/#organization" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Buenos Aires",
+        "addressRegion": "CABA",
+        "addressCountry": "AR"
+      }
+    },
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://danilarealestate.netlify.app/#organization",
+      "name": "Marcela Genta",
+      "url": "https://marcelagenta.com.ar/",
+      "image": "https://www.marcelagenta.com.ar/images/logo.png",
+      "description": "Inmobiliaria habilitada en CABA. Matrícula CUCICBA 3906.",
+      "areaServed": ["Villa Urquiza", "Saavedra", "Belgrano", "Palermo", "CABA", "Nuñez"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Buenos Aires",
+        "addressRegion": "CABA",
+        "addressCountry": "AR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Por qué mi propiedad vale menos de lo que veo en los portales?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los portales muestran precios de expectativa. El valor real surge de precios de cierre y operaciones reales de los últimos 90 días en CABA."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Sirve de algo publicar en redes sociales como TikTok?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El comprador hoy encuentra mientras scrollea. El video de alto impacto segmenta quién tiene el capital real para comprar tu casa frente a los portales saturados."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué papeles necesito para no trabar la venta en CABA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Título original, ABL, AySA, Reglamento de Copropiedad y el COTI (Código de Oferta de Transferencia de Inmuebles) son indispensables para negociar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Conviene probar un precio alto y después bajar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es un error. El pico de interés ocurre en los primeros 20 días. Si salís caro, la propiedad se quema y los compradores sospechan problemas cuando bajás el precio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo vender si la propiedad está en sucesión?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, mediante tracto abreviado con la declaratoria de herederos. Se puede comercializar mientras avanza el proceso judicial para ganar tiempo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué impuestos paga el vendedor en Argentina?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Se paga ITI (1,5% si compró antes de 2018) o Ganancias (cedular), más Sellos. Si es vivienda única, se puede pedir certificado de no retención de ITI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Por qué dar la propiedad en exclusiva?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La exclusividad garantiza inversión real en marketing y defensa del precio. Una propiedad en muchas inmobiliarias huele a desesperación y atrae ofertas bajas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿La inmobiliaria comparte con colegas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un profesional de verdad comparte siempre. Trabajamos con toda la red de CUCICBA y sistemas abiertos para que vendas, sin importar quién traiga al comprador."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Debo arreglar la casa antes de vender?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La despersonalización y pintura blanca pueden subir el valor percibido un 10%. El comprador necesita proyectarse en ambientes despejados y luminosos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo se garantiza la seguridad en las visitas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Filtramos interesados pidiendo datos completos y verificando interés real. Cada ingreso se registra con una ficha de visita para seguridad del propietario."
+          }
+        }
+      ]
     }
-  }
-  </script>
-
+  ]
+}
+</script>
   <!-- =========================
        ESTILOS BASE
   ========================== -->
@@ -318,73 +328,73 @@
         </div>
     </div>
 </section>
-
-<section id="cobertura" class="py-12 lg:py-24 bg-white relative overflow-hidden">
-    
-    <div class="absolute top-0 right-0 w-64 h-64 bg-pink-50 rounded-full blur-3xl opacity-50 -z-10"></div>
-
-    <div class="container mx-auto px-6 relative z-10">
+<section id="metodo" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
         
-        <div class="text-center mb-10 lg:mb-16">
-            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-pink-600 mb-3 italic">
-                Poder Digital • Equipo Marcela Genta
-            </p>
+        <div class="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8">
+            <div class="max-w-2xl">
+                <p class="text-pink-600 font-black uppercase text-[10px] tracking-[0.4em] mb-4 italic">Dominio Territorial • Equipo Marcela Genta</p>
+                <h2 class="text-5xl lg:text-8xl font-black text-slate-900 uppercase italic leading-[0.85] tracking-tighter">
+                    Estrategia <br> <span class="text-pink-600">Viral 2026.</span>
+                </h2>
+            </div>
+            <div class="bg-slate-50 p-6 rounded-[2rem] border border-slate-100 backdrop-blur-sm">
+                <p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-2">Especialista en:</p>
+                <p class="text-slate-900 font-black italic text-xl">Urquiza • Saavedra • Belgrano • Palermo</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <h2 class="text-[36px] md:text-8xl font-black text-slate-900 uppercase italic tracking-tighter mb-4 leading-[0.9]">
-                Estrategia <span class="text-pink-600">Viral</span> <br> para vender
-            </h2>
-
-            <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-xl border border-slate-100">
-                <span class="text-slate-900 text-[10px] md:text-lg font-black italic uppercase tracking-widest">
-                    Urquiza • Saavedra • Belgrano • Palermo
-                </span>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-            
-            <div class="group relative p-6 lg:p-10 bg-white border border-slate-100 rounded-[2.5rem] shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:shadow-2xl transition-all hover:-translate-y-2">
-                <div class="w-12 h-12 lg:w-20 lg:h-20 bg-black rounded-2xl flex items-center justify-center text-2xl lg:text-4xl mb-4 lg:mb-8 shadow-[0_10px_20px_rgba(0,0,0,0.3)]">
-                    <span class="animate-pulse">🎬</span>
+            <div class="group p-10 bg-slate-900 rounded-[3rem] text-white relative overflow-hidden transition-all hover:scale-[1.02]">
+                <div class="relative z-10">
+                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-3xl mb-8">🎬</div>
+                    <h3 class="text-3xl font-black uppercase italic mb-4 leading-none text-pink-500">Alcance <br>Infinito</h3>
+                    <p class="text-slate-400 italic text-lg leading-snug">
+                        Tu propiedad en la cuenta <b>N°1 de TikTok Inmobiliario</b>. No esperamos a que busquen; hacemos que tu casa aparezca en su pantalla.
+                    </p>
                 </div>
-                <h3 class="text-slate-900 font-black uppercase italic text-xs lg:text-2xl mb-1 lg:mb-3 leading-tight tracking-tighter">TikTok <br>Máximo</h3>
-                <p class="text-slate-500 text-[10px] lg:text-sm leading-tight italic hidden sm:block">Exponemos tu propiedad ante millones con la inmobiliaria N°1.</p>
-                <div class="absolute bottom-4 right-6 text-pink-500 opacity-0 group-hover:opacity-100 transition-opacity">→</div>
+                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-pink-600/20 rounded-full blur-3xl"></div>
             </div>
 
-            <div class="group relative p-6 lg:p-10 bg-white border border-slate-100 rounded-[2.5rem] shadow-[0_20px_40px_rgba(219,39,119,0.08)] hover:shadow-2xl transition-all hover:-translate-y-2">
-                <div class="w-12 h-12 lg:w-20 lg:h-20 bg-gradient-to-br from-pink-500 to-rose-400 rounded-2xl flex items-center justify-center text-2xl lg:text-4xl mb-4 lg:mb-8 shadow-[0_10px_20px_rgba(219,39,119,0.3)] text-white">
-                    📈
-                </div>
-                <h3 class="text-slate-900 font-black uppercase italic text-xs lg:text-2xl mb-1 lg:mb-3 leading-tight tracking-tighter">Inversión <br>Ads Pro</h3>
-                <p class="text-slate-500 text-[10px] lg:text-sm leading-tight italic hidden sm:block">Pagamos publicidad para que tu casa le aparezca al comprador hoy.</p>
+            <div class="group p-10 bg-slate-50 rounded-[3rem] border border-slate-100 transition-all hover:bg-white hover:shadow-2xl">
+                <div class="w-14 h-14 bg-pink-600 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-lg shadow-pink-200 text-white">📈</div>
+                <h3 class="text-3xl font-black uppercase italic mb-4 leading-none text-slate-900">Inversión <br>Proactiva</h3>
+                <p class="text-slate-500 italic text-lg leading-snug">
+                    Hago lo que otros no: <b>reparto flyers físicos</b>, pago anuncios en Meta y Google, y comparto con toda la red de colegas. Me muevo por vos.
+                </p>
             </div>
 
-            <div class="group relative p-6 lg:p-10 bg-white border border-slate-100 rounded-[2.5rem] shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:shadow-2xl transition-all hover:-translate-y-2">
-                <div class="w-12 h-12 lg:w-20 lg:h-20 bg-slate-900 rounded-2xl flex items-center justify-center text-2xl lg:text-4xl mb-4 lg:mb-8 shadow-lg text-white">
-                    📊
+            <div class="group p-10 bg-pink-50 rounded-[3rem] border border-pink-100 transition-all hover:shadow-2xl">
+                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-sm">☕</div>
+                <h3 class="text-3xl font-black uppercase italic mb-4 leading-none text-pink-600">Servicio <br>de Oro</h3>
+                <div class="space-y-4">
+                    <p class="text-slate-700 italic text-md leading-tight">
+                        • Café, chocolates y agua en cada visita.<br>
+                        • <b>Fichas de Feedback</b>: datos reales de cada interesado.<br>
+                        • Reportes semanales de performance.
+                    </p>
                 </div>
-                <h3 class="text-slate-900 font-black uppercase italic text-xs lg:text-2xl mb-1 lg:mb-3 leading-tight tracking-tighter">Reportes <br>Reales</h3>
-                <p class="text-slate-500 text-[10px] lg:text-sm leading-tight italic hidden sm:block">Datos precisos sobre quién mira y quién consulta por tu propiedad.</p>
-            </div>
-
-            <div class="group relative p-6 lg:p-10 bg-white border border-slate-100 rounded-[2.5rem] shadow-[0_20px_40px_rgba(219,39,119,0.08)] hover:shadow-2xl transition-all hover:-translate-y-2">
-                <div class="w-12 h-12 lg:w-20 lg:h-20 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center text-2xl lg:text-4xl mb-4 lg:mb-8 shadow-[0_10px_20px_rgba(245,158,11,0.3)] text-white">
-                    ☕
-                </div>
-                <h3 class="text-slate-900 font-black uppercase italic text-xs lg:text-2xl mb-1 lg:mb-3 leading-tight tracking-tighter">Venta <br>de Oro</h3>
-                <p class="text-slate-500 text-[10px] lg:text-sm leading-tight italic hidden sm:block">Cerramos la operación con una experiencia de hospitalidad única.</p>
             </div>
 
         </div>
 
-        <div class="mt-12 text-center">
-            <p class="text-slate-400 text-[9px] font-black uppercase tracking-[0.4em]">
-                Martillera <span class="text-slate-900 underline decoration-pink-500">Danila Greppi</span> • CUCICBA 3906
-            </p>
+        <div class="mt-12 p-8 bg-white border-2 border-slate-900 rounded-[2.5rem] flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-6">
+                <div class="text-4xl">🤝</div>
+                <p class="text-xl lg:text-2xl font-black text-slate-900 uppercase italic tracking-tighter">
+                    Empatía real, resultados de <span class="text-pink-600 italic">Martillera Pública</span>
+                </p>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Danila Greppi</p>
+                <p class="text-sm font-bold italic text-slate-900">Venta en menos de 4 meses.</p>
+            </div>
         </div>
+
     </div>
 </section>
+  
     <section id="proceso" class="scroll-mt-28 py-12 md:py-24 lg:py-32 px-6 bg-[#fafafa] px-6 overflow-hidden relative">
         <div
             class="absolute top-0 -left-20 w-[500px] h-[500px] bg-pink-100/40 rounded-full blur-[120px] pointer-events-none">
@@ -1041,199 +1051,135 @@
         </div>
     </section>
 
+<section id="faqs" class="scroll-mt-28 py-20 bg-white border-t border-slate-100">
+    <div class="container mx-auto max-w-4xl px-6">
 
-    <!-- =======================
-                FAQS – Guía real para vender en CABA
-            ======================= -->
-    <section id="faqs" class="scroll-mt-28 py-12 md:py-24 lg:py-32 px-6 bg-white border-t border-slate-100">
-        <div class="container mx-auto max-w-4xl">
-
-            <!-- Intro -->
-            <div class="text-center mb-16">
-                <span class="text-pink-600 font-black text-[10px] uppercase tracking-[0.4em] italic">
-                    Guía para propietarios
-                </span>
-
-                <h2 class="text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-black mt-4 uppercase tracking-tighter text-slate-900 leading-tight">
-                    Las preguntas reales
-                    <span class="block text-gradient leading-tight">antes de vender una propiedad</span>
-                </h2>
-
-                <p class="text-slate-500 font-bold italic mt-6 max-w-2xl mx-auto leading-relaxed">
-                    Esto es lo que la mayoría de los dueños quiere entender antes de poner su propiedad en venta.
-                    Sin vueltas, sin frases vacías.
-                </p>
-            </div>
-
-            <div class="space-y-6">
-
-                <details class="group p-6 rounded-3xl border border-slate-200 bg-slate-50">
-                    <summary
-                        class="cursor-pointer font-black italic text-slate-900 text-lg flex justify-between items-center">
-                        ¿Mi propiedad vale lo que creo que vale?
-                        <span class="group-open:rotate-45 transition-transform">＋</span>
-                    </summary>
-                    <p class="mt-4 text-slate-500 font-medium italic leading-relaxed">
-                        En la mayoría de los casos, no coincide.
-                        El valor real surge de operaciones cerradas recientes,
-                        no de avisos publicados ni de expectativas personales.
-                        Si el precio no es defendible, el mercado simplemente no responde.
-                    </p>
-                </details>
-
-                <details class="group p-6 rounded-3xl border border-slate-200 bg-slate-50">
-                    <summary
-                        class="cursor-pointer font-black italic text-slate-900 text-lg flex justify-between items-center">
-                        ¿Cómo se calcula el precio de una propiedad en CABA?
-                        <span class="group-open:rotate-45 transition-transform">＋</span>
-                    </summary>
-                    <p class="mt-4 text-slate-500 font-medium italic leading-relaxed">
-                        No es solo metros por valor promedio.
-                        Se analizan ventas reales en la zona, competencia activa,
-                        tipología, estado, luz, orientación y momento del mercado.
-                        Un precio mal calculado al inicio suele arruinar la venta.
-                    </p>
-                </details>
-
-                <details class="group p-6 rounded-3xl border border-slate-200 bg-slate-50">
-                    <summary
-                        class="cursor-pointer font-black italic text-slate-900 text-lg flex justify-between items-center">
-                        ¿Cuánto tiempo tarda realmente en venderse una propiedad?
-                        <span class="group-open:rotate-45 transition-transform">＋</span>
-                    </summary>
-                    <p class="mt-4 text-slate-500 font-medium italic leading-relaxed">
-                        Una propiedad bien publicada y bien tasada suele venderse
-                        entre 3 y 4 meses.
-                        Las primeras semanas son clave: ahí el mercado muestra
-                        si el precio y la estrategia funcionan.
-                    </p>
-                </details>
-
-                <details class="group p-6 rounded-3xl border border-slate-200 bg-slate-50">
-                    <summary
-                        class="cursor-pointer font-black italic text-slate-900 text-lg flex justify-between items-center">
-                        ¿Por qué mi propiedad no se vende si ya está publicada?
-                        <span class="group-open:rotate-45 transition-transform">＋</span>
-                    </summary>
-                    <p class="mt-4 text-slate-500 font-medium italic leading-relaxed">
-                        Generalmente por precio fuera de mercado,
-                        mala presentación, poca visibilidad o falta de estrategia.
-                        Cuando un aviso se enfría, cuesta recuperar interés
-                        sin cambios reales.
-                    </p>
-                </details>
-
-                <details class="group p-6 rounded-3xl border border-slate-200 bg-slate-50">
-                    <summary
-                        class="cursor-pointer font-black italic text-slate-900 text-lg flex justify-between items-center">
-                        ¿Sirve publicar más caro y después bajar el precio?
-                        <span class="group-open:rotate-45 transition-transform">＋</span>
-                    </summary>
-                    <p class="mt-4 text-slate-500 font-medium italic leading-relaxed">
-                        No suele funcionar.
-                        El mayor impacto de una publicación ocurre al inicio.
-                        Si el precio es alto, se pierden esas semanas
-                        y luego el aviso queda marcado como problemático.
-                    </p>
-                </details>
-
-                <details class="group p-6 rounded-3xl border border-slate-200 bg-slate-50">
-                    <summary
-                        class="cursor-pointer font-black italic text-slate-900 text-lg flex justify-between items-center">
-                        ¿Conviene vender ahora o esperar?
-                        <span class="group-open:rotate-45 transition-transform">＋</span>
-                    </summary>
-                    <p class="mt-4 text-slate-500 font-medium italic leading-relaxed">
-                        Siempre hay compradores.
-                        La decisión real es cuánto tiempo estás dispuesto a esperar
-                        y a qué precio.
-                        Con información clara se puede decidir sin improvisar.
-                    </p>
-                </details>
-
-                <details class="group p-6 rounded-3xl border border-slate-200 bg-slate-50">
-                    <summary
-                        class="cursor-pointer font-black italic text-slate-900 text-lg flex justify-between items-center">
-                        ¿Cuánto dinero me queda limpio después de vender?
-                        <span class="group-open:rotate-45 transition-transform">＋</span>
-                    </summary>
-                    <p class="mt-4 text-slate-500 font-medium italic leading-relaxed">
-                        Depende de impuestos, honorarios y gastos de escritura.
-                        Conocer el neto real antes de aceptar una oferta
-                        evita sorpresas y malas decisiones.
-                    </p>
-                </details>
-
-                <details class="group p-6 rounded-3xl border border-slate-200 bg-slate-50">
-                    <summary
-                        class="cursor-pointer font-black italic text-slate-900 text-lg flex justify-between items-center">
-                        ¿Por qué se caen tantas operaciones inmobiliarias?
-                        <span class="group-open:rotate-45 transition-transform">＋</span>
-                    </summary>
-                    <p class="mt-4 text-slate-500 font-medium italic leading-relaxed">
-                        Por falta de documentación, condiciones poco claras
-                        o expectativas distintas entre las partes.
-                        Muchas ventas no se caen por el precio,
-                        sino por no entender el proceso completo.
-                    </p>
-                </details>
-
-                <details class="group p-6 rounded-3xl border border-slate-200 bg-slate-50">
-                    <summary
-                        class="cursor-pointer font-black italic text-slate-900 text-lg flex justify-between items-center">
-                        ¿Cómo sé si estoy tomando buenas decisiones al vender?
-                        <span class="group-open:rotate-45 transition-transform">＋</span>
-                    </summary>
-                    <p class="mt-4 text-slate-500 font-medium italic leading-relaxed">
-                        Cuando entendés el valor real, los tiempos posibles,
-                        los costos y cómo responde el mercado.
-                        Vender bien no es apurarse ni especular,
-                        es decidir con información.
-                    </p>
-                </details>
-
-                <details class="group p-6 rounded-3xl border border-slate-200 bg-slate-50">
-                    <summary
-                        class="cursor-pointer font-black italic text-slate-900 text-lg flex justify-between items-center">
-                        ¿Qué hace distinta a una inmobiliaria de otra?
-                        <span class="group-open:rotate-45 transition-transform">＋</span>
-                    </summary>
-                    <p class="mt-4 text-slate-500 font-medium italic leading-relaxed">
-                        No es solo publicar en portales.
-                        La diferencia está en cómo se define el precio,
-                        qué estrategia de visibilidad se usa,
-                        cómo se lee la respuesta del mercado
-                        y qué decisiones se toman cuando algo no funciona.
-                        Publicar puede hacerlo cualquiera.
-                        Vender bien, no.
-                    </p>
-                </details>
-
-            </div>
+        <div class="text-center mb-16">
+            <span class="text-pink-600 font-black text-[10px] uppercase tracking-[0.4em] italic">
+                Lo que nadie te dice
+            </span>
+            <h2 class="text-[34px] md:text-7xl font-black mt-4 uppercase tracking-tighter text-slate-900 leading-[0.85]">
+                Dudas de <br>
+                <span class="text-pink-600 italic">dueño a dueño</span>
+            </h2>
+            <p class="text-slate-500 font-bold italic mt-6 max-w-xl mx-auto leading-relaxed">
+                Vender una propiedad es un proceso complejo. Antes de colgar un cartel, tenés que entender cómo se mueve el mercado hoy para no perder tiempo ni plata.
+            </p>
         </div>
-    </section>
 
-  <section class="py-20 bg-black text-white rounded-[3rem] mx-4 my-10 overflow-hidden">
-  <div class="container mx-auto px-10 flex flex-col md:flex-row items-center gap-12">
-    <div class="md:w-1/2">
-      <h2 class="text-4xl md:text-5xl font-black uppercase italic mb-8">Te cuido <span class="text-pink-500">como oro</span></h2>
-      <div class="space-y-6 italic">
-        <p class="text-lg leading-snug">
-          Recibo a cada interesado con <b class="font-bold text-pink-500">café, chocolates y agua fresca</b>. La venta empieza por la calidez.
-        </p>
-        <p class="text-lg leading-snug">
-          Uso <b class="font-bold text-pink-500">fichas de visita personalizadas</b>: cada cliente completa qué le gustó y qué no, dándonos datos reales para cerrar el negocio.
-        </p>
-      </div>
+        <div class="space-y-4">
+
+            <details class="group p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl transition-all">
+                <summary class="cursor-pointer font-black italic text-slate-900 text-lg md:text-2xl flex justify-between items-center list-none uppercase tracking-tighter">
+                    ¿Por qué mi propiedad vale menos de lo que veo en los portales?
+                    <span class="text-pink-500 group-open:rotate-45 transition-transform text-3xl">＋</span>
+                </summary>
+                <p class="mt-4 text-slate-600 font-medium italic leading-relaxed border-t border-slate-200 pt-6 text-lg">
+                    Es la trampa n.° 1. Lo que ves en los portales son precios de <b>expectativa</b> (lo que la gente pide), no precios de <b>cierre</b> (lo que la gente paga). Hoy, un aviso "caro" solo sirve para que el vecino venda su casa más rápido. La clave es tasar con datos reales de operaciones cerradas en los últimos 90 días.
+                </p>
+            </details>
+
+            <details class="group p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl transition-all">
+                <summary class="cursor-pointer font-black italic text-slate-900 text-lg md:text-2xl flex justify-between items-center list-none uppercase tracking-tighter">
+                    ¿Sirve de algo publicar en redes sociales o es solo "show"?
+                    <span class="text-pink-500 group-open:rotate-45 transition-transform text-3xl">＋</span>
+                </summary>
+                <p class="mt-4 text-slate-600 font-medium italic leading-relaxed border-t border-slate-200 pt-6 text-lg">
+                    Hoy el comprador no busca, <b>encuentra</b> mientras scrollea. Si tu propiedad no tiene un video de alto impacto que "frene el dedo" en TikTok o Reels, estás perdiendo al 70% del público. Los portales están saturados; el algoritmo de redes es el que hoy segmenta quién tiene el capital para comprar tu casa.
+                </p>
+            </details>
+
+            <details class="group p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl transition-all">
+                <summary class="cursor-pointer font-black italic text-slate-900 text-lg md:text-2xl flex justify-between items-center list-none uppercase tracking-tighter">
+                    ¿Qué papeles necesito tener sí o sí para no trabar la venta?
+                    <span class="text-pink-500 group-open:rotate-45 transition-transform text-3xl">＋</span>
+                </summary>
+                <p class="mt-4 text-slate-600 font-medium italic leading-relaxed border-t border-slate-200 pt-6 text-lg">
+                    Título original, boletas de ABL, AySA y el reglamento si es PH o departamento. Un detalle clave: el <b>COTI</b> (Código de Oferta de Transferencia de Inmuebles). Sin eso no podés ni empezar a negociar legalmente. Tener todo listo de entrada evita que una oferta se caiga por pura burocracia.
+                </p>
+            </details>
+
+            <details class="group p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl transition-all">
+                <summary class="cursor-pointer font-black italic text-slate-900 text-lg md:text-2xl flex justify-between items-center list-none uppercase tracking-tighter">
+                    ¿Conviene "probar" un precio alto un par de meses y después bajar?
+                    <span class="text-pink-500 group-open:rotate-45 transition-transform text-3xl">＋</span>
+                </summary>
+                <p class="mt-4 text-slate-600 font-medium italic leading-relaxed border-t border-slate-200 pt-6 text-lg">
+                    Es el peor error. Una propiedad tiene su "pico de interés" en los primeros 20 días. Si salís caro, los compradores la marcan como "clavo". Cuando bajás el precio tres meses después, la gente sospecha que la casa tiene algún problema. Hay que salir a <b>precio de mercado</b> desde el día uno.
+                </p>
+            </details>
+
+            <details class="group p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl transition-all">
+                <summary class="cursor-pointer font-black italic text-slate-900 text-lg md:text-2xl flex justify-between items-center list-none uppercase tracking-tighter">
+                    ¿Puedo vender si la propiedad está en sucesión?
+                    <span class="text-pink-500 group-open:rotate-45 transition-transform text-3xl">＋</span>
+                </summary>
+                <p class="mt-4 text-slate-600 font-medium italic leading-relaxed border-t border-slate-200 pt-6 text-lg">
+                    Sí, se puede vender mediante un <b>tracto abreviado</b>, siempre y cuando ya tengas la declaratoria de herederos. Podés empezar a comercializarla ahora para ganar tiempo mientras los abogados terminan el proceso. Lo importante es que el comprador sepa desde el inicio que los tiempos de escritura dependen de la justicia.
+                </p>
+            </details>
+
+            <details class="group p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl transition-all">
+                <summary class="cursor-pointer font-black italic text-slate-900 text-lg md:text-2xl flex justify-between items-center list-none uppercase tracking-tighter">
+                    ¿Qué gastos tengo como vendedor? ¿Me matan los impuestos?
+                    <span class="text-pink-600 group-open:rotate-45 transition-transform text-3xl">＋</span>
+                </summary>
+                <p class="mt-4 text-slate-600 font-medium italic leading-relaxed border-t border-slate-200 pt-6 text-lg">
+                    Pagás el <b>ITI</b> (1,5% si compraste antes de 2018) o <b>Ganancias</b> (si compraste después), más Sellos y honorarios. Dato clave: si es tu "vivienda única", podés tramitar el certificado de no retención y ahorrarte el ITI. Es mucha plata que podés rescatar si hacés el trámite a tiempo.
+                </p>
+            </details>
+
+            <details class="group p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl transition-all">
+                <summary class="cursor-pointer font-black italic text-slate-900 text-lg md:text-2xl flex justify-between items-center list-none uppercase tracking-tighter">
+                    ¿Por qué dárselo a una sola inmobiliaria y no a cinco?
+                    <span class="text-pink-600 group-open:rotate-45 transition-transform text-3xl">＋</span>
+                </summary>
+                <p class="mt-4 text-slate-600 font-medium italic leading-relaxed border-t border-slate-200 pt-6 text-lg">
+                    Cuando está en cinco lugares, la propiedad parece "quemada" y los compradores te tiran ofertas ridículas porque huelen desesperación. Si elegís una inmobiliaria que trabaje con <b>sistemas de red</b> (colegueo), tu casa va a estar en todos lados igual, pero con una estrategia seria y un solo precio defendido a muerte.
+                </p>
+            </details>
+
+            <details class="group p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl transition-all">
+                <summary class="cursor-pointer font-black italic text-slate-900 text-lg md:text-2xl flex justify-between items-center list-none uppercase tracking-tighter">
+                    ¿Qué pasa si otra inmobiliaria tiene un comprador para mi casa?
+                    <span class="text-pink-500 group-open:rotate-45 transition-transform text-3xl">＋</span>
+                </summary>
+                <p class="mt-4 text-slate-600 font-medium italic leading-relaxed border-t border-slate-200 pt-6 text-lg">
+                    Un profesional de verdad <b>comparte siempre</b>. El que no comparte la comisión con un colega te está haciendo perder la venta a vos. Nosotros trabajamos con toda la red de CUCICBA y sistemas abiertos: el objetivo es que vendas, sin importar quién traiga al comprador.
+                </p>
+            </details>
+
+            <details class="group p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl transition-all">
+                <summary class="cursor-pointer font-black italic text-slate-900 text-lg md:text-2xl flex justify-between items-center list-none uppercase tracking-tighter">
+                    ¿Tengo que pintar o arreglar la casa antes de vender?
+                    <span class="text-pink-600 group-open:rotate-45 transition-transform text-3xl">＋</span>
+                </summary>
+                <p class="mt-4 text-slate-600 font-medium italic leading-relaxed border-t border-slate-200 pt-6 text-lg">
+                    No necesitás una obra nueva, pero la <b>despersonalización</b> es clave. Despejar ambientes y una mano de pintura blanca pueden subir el valor percibido un 10%. La gente compra metros, pero también sensaciones. Si la casa está oscura o llena de cosas, el comprador no se puede proyectar ahí.
+                </p>
+            </details>
+
+            <details class="group p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl transition-all">
+                <summary class="cursor-pointer font-black italic text-slate-900 text-lg md:text-2xl flex justify-between items-center list-none uppercase tracking-tighter">
+                    ¿Cómo sé que la gente que entra a mi casa es segura?
+                    <span class="text-pink-600 group-open:rotate-45 transition-transform text-3xl">＋</span>
+                </summary>
+                <p class="mt-4 text-slate-600 font-medium italic leading-relaxed border-t border-slate-200 pt-6 text-lg">
+                    Es nuestro filtro principal. Antes de coordinar, pedimos datos completos y verificamos el interés real del interesado. Además, registramos cada visita con una ficha de identidad. Vender de dueño directo hoy en CABA es un riesgo; la inmobiliaria es tu escudo de seguridad.
+                </p>
+            </details>
+
+        </div>
+
+        <div class="mt-16 p-10 bg-slate-900 rounded-[3rem] text-center border border-white/10 shadow-2xl">
+            <h3 class="text-2xl md:text-3xl font-black text-white italic mb-4 uppercase">¿Tu caso es más complejo?</h3>
+            <p class="text-slate-400 italic mb-8 max-w-lg mx-auto">Sucesiones, departamentos con deuda o simplemente querés una opinión honesta sobre tu barrio. Dejá de adivinar.</p>
+            <a href="#contacto" class="inline-block bg-pink-600 text-white px-10 py-5 rounded-2xl font-black uppercase italic hover:bg-pink-500 hover:scale-105 transition-all">
+                Consultame por WhatsApp
+            </a>
+        </div>
+
     </div>
-    <div class="md:w-1/2 flex justify-center">
-       <div class="text-center p-10 border-2 border-dashed border-pink-500 rounded-full">
-         <p class="text-sm font-black uppercase">Simpatía &</p>
-         <p class="text-6xl font-black italic">CRACK</p>
-         <p class="text-sm font-black uppercase">Profesional</p>
-       </div>
-    </div>
-  </div>
 </section>
   
 
