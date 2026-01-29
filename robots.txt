@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://greppidanila.github.io/tasa-tu-propiedad/sitemap.xml
+Sitemap: https://danilarealestate.netlify.app/sitemap.xml
