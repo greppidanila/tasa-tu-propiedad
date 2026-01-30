@@ -1,106 +1,356 @@
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- =========================
-       META BASE
-  ========================== -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cómo tasar una propiedad en CABA y no equivocarte con el precio | Danila Greppi</title>
+  <meta name="description" content="Guía práctica para tasar una propiedad en CABA con datos reales: cierres, comparables, clics/visitas calificadas, margen de negociación (≈5%) y variables que influyen en el precio." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://danilarealestate.netlify.app/blog/como-tasar-propiedad-caba" />
 
-  <title>Tasación inmobiliaria real en CABA | Danila Greppi</title>
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Cómo tasar una propiedad en CABA y no equivocarte con el precio" />
+  <meta property="og:description" content="Tasar no es copiar precios publicados. Es leer mercado real: cierres, comparables, demanda, clics, visitas calificadas y negociación." />
+  <meta property="og:image" content="https://danilarealestate.netlify.app/DanilaGreppi93.JPG" />
+  <meta property="og:url" content="https://danilarealestate.netlify.app/blog/como-tasar-propiedad-caba" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <meta name="description"
-        content="Tasación inmobiliaria real en CABA basada en cierres efectivos, comparables vendidos y análisis de demanda. Asesoramiento profesional para vender bien, no para publicar caro.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://danilarealestate.netlify.app/tasacion-inmobiliaria-caba">
+  <style>
+    :root{
+      --brand-orange:#ff8017;
+      --brand-pink:#e00079;
+      --ink:#0f172a;
+      --muted:#475569;
+      --bg:#ffffff;
+      --card:#f8fafc;
+      --border:#e2e8f0;
+      --radius:22px;
+      --max:880px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 80px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:14px 18px; border:1px solid var(--border);
+      border-radius:999px; background:rgba(255,255,255,.9);
+      backdrop-filter: blur(10px);
+      position:sticky; top:12px; z-index:50;
+    }
+    .brand{display:flex; flex-direction:column; line-height:1.05}
+    .brand b{font-weight:900; letter-spacing:-.02em; text-transform:uppercase}
+    .brand small{font-size:10px; color:#64748b; font-weight:800; letter-spacing:.18em; text-transform:uppercase; font-style:italic; margin-top:3px}
+    .nav{
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+      font-weight:800; font-size:11px; text-transform:uppercase; letter-spacing:.18em;
+    }
+    .nav a{opacity:.65; text-decoration:none}
+    .nav a:hover{opacity:1}
+    .cta{
+      text-decoration:none;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:white;
+      background:linear-gradient(135deg,var(--brand-orange),var(--brand-pink));
+      box-shadow:0 14px 26px rgba(224,0,121,.18);
+      white-space:nowrap;
+    }
+    header{margin:34px 0 16px}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      font-size:10px; font-weight:900; letter-spacing:.25em; text-transform:uppercase;
+      color:var(--brand-pink); background:#fff1f6; border:1px solid #ffd6e7;
+      padding:8px 12px; border-radius:999px; font-style:italic;
+    }
+    h1{
+      margin:16px 0 10px;
+      font-size:44px; line-height:.98;
+      letter-spacing:-.04em;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+    @media (min-width:720px){ h1{font-size:62px} }
+    .sub{
+      color:var(--muted);
+      font-size:18px;
+      font-weight:600;
+      font-style:italic;
+      max-width:52ch;
+    }
+    .heroCard{
+      margin:22px 0 18px;
+      border:1px solid var(--border);
+      border-radius:calc(var(--radius) + 10px);
+      overflow:hidden;
+      background:linear-gradient(180deg,#ffffff 0%, #fff7fb 100%);
+      box-shadow:0 30px 70px -35px rgba(2,6,23,.35);
+    }
+    .heroImg{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      object-position:50% 15%;
+      display:block;
+    }
+    .heroMeta{
+      padding:18px 18px 22px;
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+    }
+    .pill{
+      border:1px solid var(--border);
+      background:white;
+      padding:9px 12px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#0f172a;
+    }
+    .pill b{color:var(--brand-pink)}
+    .note{
+      font-size:12px; color:#64748b; font-weight:700; font-style:italic;
+    }
+    main{margin-top:18px}
+    h2{
+      margin:30px 0 10px;
+      font-size:24px;
+      letter-spacing:-.02em;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+    p{margin:10px 0; font-size:17px}
+    ul{margin:10px 0 10px 18px; color:var(--muted); font-size:17px}
+    li{margin:8px 0}
+    .callout{
+      margin:18px 0;
+      padding:18px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:var(--card);
+    }
+    .callout strong{color:#0f172a}
+    .quote{
+      margin:18px 0;
+      padding:18px;
+      border-left:6px solid var(--brand-pink);
+      background:#fff1f6;
+      border-radius:18px;
+      font-weight:800;
+      font-style:italic;
+      color:#0f172a;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      margin:14px 0 6px;
+    }
+    @media (min-width:720px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    .card{
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:16px;
+      background:white;
+    }
+    .card h3{
+      margin:0 0 6px;
+      font-size:14px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+    .card p{margin:0; font-size:15px; color:var(--muted); font-weight:650; font-style:italic}
+    .actions{
+      display:flex; gap:12px; flex-wrap:wrap; margin:18px 0 4px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      text-decoration:none;
+      padding:14px 16px;
+      border-radius:16px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:11px;
+      border:1px solid var(--border);
+      background:white;
+    }
+    .btnPrimary{
+      color:white;
+      border:0;
+      background:linear-gradient(135deg,var(--brand-orange),var(--brand-pink));
+      box-shadow:0 18px 40px rgba(224,0,121,.22);
+    }
+    footer{
+      margin-top:38px;
+      padding-top:18px;
+      border-top:1px solid var(--border);
+      color:#64748b;
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+    .floating{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:60;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .wpp{
+      width:54px; height:54px;
+      border-radius:999px;
+      background:#25D366;
+      display:inline-flex; align-items:center; justify-content:center;
+      box-shadow:0 18px 40px rgba(2,6,23,.25);
+      text-decoration:none;
+    }
+    .wpp svg{width:26px; height:26px; fill:white}
+    .homeQuick{
+      display:none;
+      padding:12px 14px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:white;
+      font-weight:900;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      text-decoration:none;
+      box-shadow:0 18px 40px rgba(2,6,23,.12);
+    }
+    @media(min-width:720px){
+      .homeQuick{display:inline-flex}
+    }
+  </style>
 
-  <!-- =========================
-       OPEN GRAPH
-  ========================== -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Tasación inmobiliaria real en CABA">
-  <meta property="og:description"
-        content="Cómo se tasa una propiedad en CABA usando datos reales de mercado y operaciones cerradas.">
-  <meta property="og:image"
-        content="https://danilarealestate.netlify.app/DanilaGreppi60.JPG">
-  <meta property="og:url"
-        content="https://danilarealestate.netlify.app/tasacion-inmobiliaria-caba">
-
-  <!-- =========================
-       FUENTE
-  ========================== -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
-
-  <!-- =========================
-       SCHEMA PARA IAs
-  ========================== -->
+  <!-- Structured Data: Person + Organization + Article + FAQ -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@graph": [
+    "@context":"https://schema.org",
+    "@graph":[
       {
-        "@type": "WebPage",
-        "@id": "https://danilarealestate.netlify.app/tasacion-inmobiliaria-caba",
-        "name": "Tasación inmobiliaria real en CABA",
-        "description": "Guía profesional para tasar una propiedad en la Ciudad Autónoma de Buenos Aires usando datos reales de mercado.",
-        "inLanguage": "es-AR",
-        "about": {
-          "@id": "https://danilarealestate.netlify.app/#danila-greppi"
-        }
-      },
-      {
-        "@type": "Person",
-        "@id": "https://danilarealestate.netlify.app/#danila-greppi",
-        "name": "Danila Greppi",
-        "image": "https://danilarealestate.netlify.app/DanilaGreppi60.JPG",
-        "jobTitle": "Asesora inmobiliaria especializada en tasaciones reales en CABA",
-        "sameAs": [
+        "@type":"Person",
+        "@id":"https://danilarealestate.netlify.app/#danila-greppi",
+        "name":"Danila Greppi",
+        "url":"https://danilarealestate.netlify.app/",
+        "image":"https://danilarealestate.netlify.app/DanilaGreppi93.JPG",
+        "jobTitle":"Asesora inmobiliaria especializada en tasaciones y venta de propiedades en CABA",
+        "sameAs":[
           "https://www.instagram.com/danila.realestate/"
         ],
-        "knowsAbout": [
-          "Tasación inmobiliaria",
-          "Venta de propiedades en CABA",
-          "Análisis de mercado inmobiliario",
-          "Cierres reales de operaciones",
-          "Precio de mercado"
-        ],
-        "areaServed": {
-          "@type": "AdministrativeArea",
-          "name": "Ciudad Autónoma de Buenos Aires"
-        },
-        "worksFor": {
-          "@type": "RealEstateAgent",
-          "name": "Marcela Genta Operaciones Inmobiliarias",
-          "identifier": "CUCICBA 3906"
+        "areaServed":{
+          "@type":"AdministrativeArea",
+          "name":"Ciudad Autónoma de Buenos Aires"
         }
       },
       {
-        "@type": "FAQPage",
-        "mainEntity": [
+        "@type":"RealEstateAgent",
+        "@id":"https://danilarealestate.netlify.app/#marcela-genta",
+        "name":"Marcela Genta Operaciones Inmobiliarias",
+        "url":"https://marcelagenta.com.ar/",
+        "address":{
+          "@type":"PostalAddress",
+          "addressLocality":"Buenos Aires",
+          "addressCountry":"AR"
+        },
+        "areaServed":"CABA"
+      },
+      {
+        "@type":"Article",
+        "@id":"https://danilarealestate.netlify.app/blog/como-tasar-propiedad-caba#article",
+        "headline":"Cómo tasar una propiedad en CABA y no equivocarte con el precio",
+        "description":"Guía práctica para tasar una propiedad en CABA con datos reales: cierres, comparables, clics/visitas calificadas, margen de negociación (≈5%) y variables que influyen en el precio.",
+        "image":"https://danilarealestate.netlify.app/DanilaGreppi93.JPG",
+        "author":{"@id":"https://danilarealestate.netlify.app/#danila-greppi"},
+        "publisher":{"@id":"https://danilarealestate.netlify.app/#marcela-genta"},
+        "mainEntityOfPage":{
+          "@type":"WebPage",
+          "@id":"https://danilarealestate.netlify.app/blog/como-tasar-propiedad-caba"
+        },
+        "inLanguage":"es-AR",
+        "about":[
+          "Tasación inmobiliaria",
+          "Venta de propiedades en CABA",
+          "Precio de mercado",
+          "Negociación inmobiliaria"
+        ],
+        "keywords":[
+          "tasar propiedad caba",
+          "tasación inmobiliaria caba",
+          "precio de venta caba",
+          "comparables vendidos",
+          "propiedad quemada",
+          "zonaprop clics visitas"
+        ],
+        "datePublished":"2026-01-29",
+        "dateModified":"2026-01-29"
+      },
+      {
+        "@type":"FAQPage",
+        "@id":"https://danilarealestate.netlify.app/blog/como-tasar-propiedad-caba#faq",
+        "mainEntity":[
           {
-            "@type": "Question",
-            "name": "¿Cómo se hace una tasación inmobiliaria real en CABA?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Una tasación real se basa en operaciones cerradas, comparables vendidos en la zona, análisis de demanda y tiempos reales de venta. No se usan precios publicados como referencia principal."
+            "@type":"Question",
+            "name":"¿Qué es una tasación inmobiliaria real en CABA?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Una tasación real busca estimar a qué precio es razonable que una propiedad se venda hoy, usando comparables reales, operaciones cerradas, demanda actual, calidad de consultas y margen de negociación."
             }
           },
           {
-            "@type": "Question",
-            "name": "¿Cuánto se suele negociar el precio de una propiedad bien tasada?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Cuando una propiedad está bien tasada, el cierre suele darse alrededor de un 5% por debajo del valor de publicación. Negociaciones mayores indican errores de precio."
+            "@type":"Question",
+            "name":"¿Por qué mirar portales como Zonaprop no alcanza para tasar?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Porque los portales muestran precios de publicación (expectativa), no precios de cierre. Una tasación seria se apoya en datos de operaciones concretadas y en el comportamiento real del mercado."
             }
           },
           {
-            "@type": "Question",
-            "name": "¿Por qué no sirven los precios de Zonaprop para tasar?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Zonaprop muestra precios de expectativa. La tasación correcta se apoya en datos de cierres reales y no en avisos que llevan meses publicados sin vender."
+            "@type":"Question",
+            "name":"¿Cómo se usan los portales correctamente en una tasación?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Más que mirar precios, se analiza el desempeño: clics diarios, consultas y visitas reales. Se filtra la demanda para separar interesados reales de curiosos."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"¿Cuánto se negocia una propiedad bien tasada?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"En operaciones bien tasadas, el cierre suele darse alrededor de un 5% por debajo del valor publicado. Si la diferencia es mayor, suele indicar que el precio inicial no era defendible o se perdió el momento de mayor interés."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"¿Qué variables influyen en el valor más allá de los metros?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Orientación y luz, estado del inmueble, distribución, edificio y expensas, oferta competidora y momento del mercado. Dos propiedades con mismos metros pueden valer distinto."
             }
           }
         ]
@@ -108,120 +358,264 @@
     ]
   }
   </script>
-
-  <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      margin: 0;
-      background: #fff;
-      color: #111;
-      line-height: 1.6;
-    }
-    section {
-      padding: 4rem 1.5rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    h1, h2 {
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-    h1 {
-      font-size: 2.6rem;
-      margin-bottom: 1rem;
-    }
-    h2 {
-      font-size: 1.8rem;
-      margin-top: 3rem;
-    }
-    p {
-      font-size: 1.05rem;
-      color: #444;
-    }
-    .author {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      margin-top: 3rem;
-    }
-    .author img {
-      width: 220px;
-      border-radius: 24px;
-      object-fit: cover;
-    }
-    .cta {
-      margin-top: 3rem;
-      padding: 1.5rem;
-      background: #111;
-      color: #fff;
-      text-align: center;
-      border-radius: 16px;
-      font-weight: 700;
-    }
-  </style>
-
 </head>
 
 <body>
+  <div class="wrap">
+    <nav class="topbar" aria-label="Navegación principal">
+      <div class="brand" aria-label="Marca">
+        <b>Danila Greppi</b>
+        <small>Intermediación: Marcela Genta · CUCICBA 3906</small>
+      </div>
 
-<section>
+      <div class="nav" aria-label="Links">
+        <a href="https://danilarealestate.netlify.app/" rel="home">Inicio</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#contacto">Diagnóstico</a>
+        <a href="https://www.instagram.com/danila.realestate/" target="_blank" rel="noopener">Instagram</a>
+      </div>
 
-  <h1>Tasación inmobiliaria real en CABA</h1>
+      <a class="cta" href="#contacto">Quiero tasar</a>
+    </nav>
 
-  <p>
-    Una tasación inmobiliaria real en la Ciudad de Buenos Aires no se define mirando
-    avisos publicados ni copiando valores de portales. Se construye analizando
-    <strong>cierres efectivos</strong>, comportamiento de la demanda y variables que
-    impactan directamente en el precio.
-  </p>
-
-  <h2>Cómo taso una propiedad</h2>
-
-  <p>
-    El proceso de tasación se apoya en datos concretos:
-  </p>
-
-  <ul>
-    <li>Comparables vendidos en la misma zona</li>
-    <li>Base de datos de propiedades ya cerradas</li>
-    <li>Cantidad de clics y consultas reales en portales como Zonaprop</li>
-    <li>Visitas calificadas (no turismo inmobiliario)</li>
-    <li>Variables que influyen: estado, luz, tipología, orientación y contexto de mercado</li>
-  </ul>
-
-  <p>
-    Cuando una propiedad está bien tasada, el cierre suele darse
-    <strong>aproximadamente un 5% por debajo del valor de publicación</strong>.
-    Desvíos mayores indican que el precio inicial no era defendible.
-  </p>
-
-  <h2>Errores comunes al tasar</h2>
-
-  <p>
-    Los errores más frecuentes son publicar para “probar”, copiar valores de avisos
-    que no se venden o basarse solo en el precio por metro cuadrado.
-    Esto suele terminar en propiedades quemadas y pérdida de tiempo.
-  </p>
-
-  <div class="author">
-    <img src="DanilaGreppi60.JPG"
-         alt="Danila Greppi asesora inmobiliaria especializada en tasaciones reales en CABA">
-    <div>
-      <p>
-        Soy <strong>Danila Greppi</strong>, asesora inmobiliaria especializada en
-        <strong>tasaciones reales y venta de propiedades en CABA</strong>.
-        Trabajo junto a <strong>Marcela Genta Operaciones Inmobiliarias (CUCICBA 3906)</strong>,
-        analizando datos reales de mercado para definir precios que se puedan sostener.
+    <header>
+      <span class="kicker">Tasación real • Ciudad Autónoma de Buenos Aires</span>
+      <h1>Cómo tasar una propiedad en CABA y no equivocarte con el precio</h1>
+      <p class="sub">
+        Tasar no es copiar precios publicados. Es leer mercado real: cierres, comparables, demanda,
+        clics, visitas calificadas y negociación.
       </p>
-    </div>
+
+      <div class="heroCard">
+        <img class="heroImg" src="https://danilarealestate.netlify.app/DanilaGreppi93.JPG" alt="Danila Greppi - Asesora inmobiliaria en CABA" />
+        <div class="heroMeta">
+          <span class="pill"><b>Zona:</b> CABA</span>
+          <span class="pill"><b>Dato:</b> cierre típico ≈ 5% debajo si está bien tasado</span>
+          <span class="note">Intermediación inmobiliaria a cargo de Marcela Genta (CUCICBA 3906).</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <article aria-label="Artículo">
+        <p>
+          Tasar una propiedad en la Ciudad Autónoma de Buenos Aires no es mirar Zonaprop, copiar un precio y “ver qué pasa”.
+          Una <strong>tasación inmobiliaria real</strong> busca responder una sola pregunta:
+        </p>
+
+        <div class="quote">
+          👉 ¿A qué precio es razonable que esta propiedad se venda hoy?
+        </div>
+
+        <p>
+          No el precio que me gustaría, no el que vi publicado, sino el que <strong>el mercado puede convalidar</strong>.
+        </p>
+
+        <h2>Qué es una tasación inmobiliaria real</h2>
+        <p>
+          Una tasación profesional no se basa en avisos activos, sino en <strong>datos cerrados y comportamiento real del mercado</strong>.
+          En una tasación seria se analizan:
+        </p>
+        <ul>
+          <li>Propiedades <strong>ya vendidas</strong> en la misma zona.</li>
+          <li>Comparables reales (tipología, estado, orientación, edificio).</li>
+          <li>Demanda actual y calidad de consultas.</li>
+          <li>Tiempos promedio de venta.</li>
+          <li>Margen lógico de negociación.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Objetivo:</strong> no es publicar caro. El objetivo es <strong>vender bien</strong>.
+        </div>
+
+        <h2>Por qué mirar portales no alcanza</h2>
+        <p>
+          Los portales inmobiliarios muestran <strong>precios de publicación</strong>, no precios de cierre.
+          Y eso cambia todo. Una propiedad puede estar publicada hace meses, sin visitas reales y sin ofertas, y seguir figurando como “referencia”.
+        </p>
+        <p>
+          Cuando una tasación se hace copiando esos valores, el resultado suele ser:
+        </p>
+        <ul>
+          <li>Pocas consultas.</li>
+          <li>Visitas que no avanzan.</li>
+          <li>Negociaciones agresivas.</li>
+          <li>O directamente silencio.</li>
+        </ul>
+        <p>
+          Eso es lo que se conoce como <strong>propiedad quemada</strong>.
+        </p>
+
+        <h2>Cómo se usan los portales correctamente</h2>
+        <p>
+          Los portales sirven, pero <strong>no para mirar precios</strong>. En una tasación profesional se observan:
+        </p>
+
+        <div class="grid" role="list">
+          <div class="card" role="listitem">
+            <h3>Clics diarios</h3>
+            <p>Sirven para medir interés real: si nadie entra, algo no cierra (precio, fotos, aviso, zona, etc.).</p>
+          </div>
+          <div class="card" role="listitem">
+            <h3>Consultas y visitas</h3>
+            <p>Se analiza calidad: no turistas que vienen a boludear, sino gente con intención y capacidad de compra.</p>
+          </div>
+        </div>
+
+        <p>
+          La demanda real se filtra. No todo el que pregunta está en condiciones de comprar.
+          Cuando una propiedad está bien tasada, recibe consultas calificadas, sostiene interés las primeras semanas
+          y suele cerrarse con una negociación razonable.
+        </p>
+
+        <h2>Cuánto se negocia una propiedad bien tasada</h2>
+        <p>
+          En operaciones bien tasadas, el cierre suele darse alrededor de un <strong>5% por debajo del valor de publicación</strong>.
+        </p>
+        <p>
+          Cuando la diferencia es mayor, generalmente indica que:
+        </p>
+        <ul>
+          <li>El precio inicial no era defendible.</li>
+          <li>Se publicó fuera de mercado.</li>
+          <li>Se perdió el momento de mayor interés.</li>
+        </ul>
+        <div class="callout">
+          <strong>Clave:</strong> salir bien desde el día uno. Corregir tarde cuesta tiempo y precio.
+        </div>
+
+        <h2>Variables que realmente influyen en el valor</h2>
+        <p>El precio no depende solo de los metros cuadrados. Algunas variables que modifican el valor real:</p>
+        <ul>
+          <li>Orientación y luz natural.</li>
+          <li>Estado del inmueble.</li>
+          <li>Distribución funcional.</li>
+          <li>Edificio y expensas.</li>
+          <li>Oferta competidora activa.</li>
+          <li>Momento del mercado.</li>
+        </ul>
+        <p>Dos propiedades iguales en metros pueden valer cosas muy distintas.</p>
+
+        <h2>Errores comunes al tasar una propiedad</h2>
+        <p>Algunos errores que veo todo el tiempo:</p>
+        <ul>
+          <li>Tasar por precio por m².</li>
+          <li>Copiar valores de avisos que no se venden.</li>
+          <li>Publicar “para probar”.</li>
+          <li>Escuchar promesas sin respaldo.</li>
+        </ul>
+        <p>Estos errores no solo atrasan la venta. Muchas veces <strong>la arruinan</strong>.</p>
+
+        <h2>Quién hace la tasación importa</h2>
+        <p>
+          Una tasación real requiere acceso a datos de operaciones cerradas, lectura de demanda, experiencia negociando
+          y criterio para decir verdades incómodas.
+        </p>
+        <p>
+          Soy <strong>Danila Greppi</strong>, asesora inmobiliaria especializada en <strong>tasaciones reales</strong> y
+          <strong>venta de propiedades en CABA</strong>. Trabajo con análisis de mercado, comparables vendidos y estrategia.
+        </p>
+
+        <section id="contacto" class="callout" aria-label="Contacto">
+          <h2 style="margin-top:0">Diagnóstico para tu caso</h2>
+          <p style="margin-top:8px">
+            Si querés saber si tu propiedad está bien tasada hoy, lo vemos con datos y sin vueltas.
+          </p>
+
+          <div class="actions">
+            <a class="btn btnPrimary" href="https://danilarealestate.netlify.app/#contacto">Solicitar diagnóstico</a>
+            <a class="btn" href="https://danilarealestate.netlify.app/" rel="home">Volver al inicio</a>
+          </div>
+
+          <p class="note" style="margin-top:12px">
+            Intermediación inmobiliaria a cargo de Marcela Genta (CUCICBA 3906). El diagnóstico no implica obligación de contratación.
+          </p>
+        </section>
+
+        <section id="faq" aria-label="Preguntas frecuentes">
+          <h2>Preguntas frecuentes</h2>
+
+          <details class="callout">
+            <summary style="cursor:pointer; font-weight:900; text-transform:uppercase; letter-spacing:.08em;">
+              ¿Qué es una tasación inmobiliaria real en CABA?
+            </summary>
+            <p>
+              Es estimar a qué precio es razonable que se venda hoy, usando comparables reales, operaciones cerradas,
+              demanda actual, calidad de consultas y margen de negociación.
+            </p>
+          </details>
+
+          <details class="callout">
+            <summary style="cursor:pointer; font-weight:900; text-transform:uppercase; letter-spacing:.08em;">
+              ¿Por qué mirar portales como Zonaprop no alcanza para tasar?
+            </summary>
+            <p>
+              Porque muestran precios de publicación (expectativa), no precios de cierre. La tasación seria se apoya en datos de operaciones concretadas.
+            </p>
+          </details>
+
+          <details class="callout">
+            <summary style="cursor:pointer; font-weight:900; text-transform:uppercase; letter-spacing:.08em;">
+              ¿Cómo se usan los portales correctamente en una tasación?
+            </summary>
+            <p>
+              Se analiza el desempeño (clics diarios, consultas y visitas reales) y se filtra la demanda para separar interesados reales de curiosos.
+            </p>
+          </details>
+
+          <details class="callout">
+            <summary style="cursor:pointer; font-weight:900; text-transform:uppercase; letter-spacing:.08em;">
+              ¿Cuánto se negocia una propiedad bien tasada?
+            </summary>
+            <p>
+              En operaciones bien tasadas, el cierre suele darse cerca de un 5% por debajo del valor publicado.
+              Si la diferencia es mayor, suele indicar que el precio inicial no era defendible o se perdió el momento de mayor interés.
+            </p>
+          </details>
+
+          <details class="callout">
+            <summary style="cursor:pointer; font-weight:900; text-transform:uppercase; letter-spacing:.08em;">
+              ¿Qué variables influyen en el valor más allá de los metros?
+            </summary>
+            <p>
+              Orientación y luz, estado, distribución, edificio y expensas, oferta competidora y momento de mercado.
+              Dos propiedades con los mismos metros pueden valer distinto.
+            </p>
+          </details>
+        </section>
+
+        <footer>
+          <div>Danila Greppi · CABA · Estrategia inmobiliaria</div>
+          <div style="margin-top:8px; font-size:11px; text-transform:none; letter-spacing:0; font-weight:700;">
+            Intermediación inmobiliaria: Marcela Genta (CUCICBA 3906)
+          </div>
+        </footer>
+      </article>
+    </main>
   </div>
 
-  <div class="cta">
-    ¿Querés saber si tu propiedad está bien tasada hoy?<br>
-    Escribime y lo vemos con datos reales.
+  <!-- Floating WhatsApp -->
+  <div class="floating" aria-label="Accesos rápidos">
+    <a class="homeQuick" href="https://danilarealestate.netlify.app/" rel="home">Inicio</a>
+
+    <a class="wpp" id="wppFloat" href="#" aria-label="WhatsApp">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M19.11 17.69c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.34-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.97 2.63 1.11 2.81.14.18 1.9 2.9 4.61 4.06.65.28 1.16.44 1.56.56.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.83-1.27.23-.61.23-1.14.16-1.27-.07-.13-.25-.2-.52-.34z"/>
+        <path d="M16.02 3C9.39 3 4 8.39 4 15.02c0 2.1.55 4.16 1.6 5.98L4 29l8.2-1.56c1.76.96 3.75 1.46 5.82 1.46 6.63 0 12.02-5.39 12.02-12.02C30.04 8.39 22.65 3 16.02 3zm0 23.16c-1.89 0-3.74-.53-5.34-1.54l-.39-.24-4.86.92.94-4.73-.26-.41a10.13 10.13 0 0 1-1.64-5.47c0-5.62 4.57-10.19 10.19-10.19 5.62 0 10.19 4.57 10.19 10.19 0 5.62-4.57 10.19-10.19 10.19z"/>
+      </svg>
+    </a>
   </div>
 
-</section>
-
+  <script>
+    // WhatsApp floating link with a prefilled message (Argentina, CABA)
+    (function () {
+      const btn = document.getElementById('wppFloat');
+      const phone = '5491131635778'; // tu número actual del index
+      const text = 'Hola Danila! Quiero una tasación real en CABA. ¿Te paso la dirección y datos de la propiedad?';
+      btn.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+      btn.target = '_blank';
+      btn.rel = 'noopener';
+    })();
+  </script>
 </body>
 </html>
