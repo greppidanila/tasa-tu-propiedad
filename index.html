@@ -1288,7 +1288,7 @@
                 const situacion = situacionSelect.value;
                 const tiempo = tiempoInput.value.trim();
 
-                if (!nombre || !barrio || !tipo || !situacion) return;
+                if (!nombre || !barrio || !tipo) return;
 
                 if (typeof gtag === 'function') {
                     gtag('event', 'conversion', {
