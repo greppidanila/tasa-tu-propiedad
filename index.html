@@ -964,10 +964,10 @@
                 <!-- FORM -->
                 <form id="propietarioForm" class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
 
-                    <input id="nombre" type="text" placeholder="Nombre y apellido *" required
+                    <input id="nombre" type="text" placeholder="Nombre *" required
                         class="w-full p-4 sm:p-5 bg-slate-50 rounded-2xl outline-none ring-1 ring-slate-100 font-bold italic focus:ring-pink-500 transition-all text-slate-900">
 
-                    <input id="direccion" type="text" placeholder="Dirección de la propiedad en CABA *" required
+                    <input id="barrio" type="text" placeholder="Barrio en CABA *" required
                         class="w-full p-4 sm:p-5 bg-slate-50 rounded-2xl outline-none ring-1 ring-slate-100 font-bold italic focus:ring-pink-500 transition-all text-slate-900">
 
                     <div class="relative">
@@ -987,9 +987,9 @@
                     </div>
 
                     <div class="relative">
-                        <select id="situacion" required
+                        <select id="situacion" 
                             class="w-full p-4 sm:p-5 bg-slate-50 rounded-2xl ring-1 ring-slate-100 font-bold italic appearance-none text-slate-900 cursor-pointer">
-                            <option value="" disabled selected>Situación actual *</option>
+                            <option value="" disabled selected>Situación actual </option>
                             <option value="primera-vez">Aún no la publiqué</option>
                             <option value="ya-publicado">Está publicada y no se vende</option>
                         </select>
@@ -1283,12 +1283,12 @@
                 e.preventDefault();
 
                 const nombre = document.getElementById('nombre').value.trim();
-                const direccion = document.getElementById('direccion').value.trim();
+                const barrio = document.getElementById('barrio').value.trim();
                 const tipo = tipoSelect.value;
                 const situacion = situacionSelect.value;
                 const tiempo = tiempoInput.value.trim();
 
-                if (!nombre || !direccion || !tipo || !situacion) return;
+                if (!nombre || !barrio || !tipo || !situacion) return;
 
                 if (typeof gtag === 'function') {
                     gtag('event', 'conversion', {
@@ -1299,11 +1299,11 @@
                 let mensajeFinal = '';
 
                 if (tipo === 'Lote / Terreno') {
-                    mensajeFinal = `Hola Danila! Soy ${nombre}. Tengo un TERRENO en ${direccion} y quiero conocer el potencial de venta y m² vendibles. Info extra: ${tiempo}`;
+                    mensajeFinal = `Hola Danila! Soy ${nombre}. Tengo un TERRENO en ${barrio} y quiero conocer el potencial de venta y m² vendibles. Info extra: ${tiempo}`;
                 } else if (situacion === 'ya-publicado') {
-                    mensajeFinal = `Hola Danila! Soy ${nombre}. Tengo un ${tipo} en ${direccion} que ya está publicado pero no se vende. Contexto: ${tiempo}.`;
+                    mensajeFinal = `Hola Danila! Soy ${nombre}. Tengo un ${tipo} en ${barrio} que ya está publicado pero no se vende. Contexto: ${tiempo}.`;
                 } else {
-                    mensajeFinal = `Hola Danila! Soy ${nombre}. Quiero vender mi ${tipo} en ${direccion}. Es la primera vez que publico y quiero arrancar con tu estrategia.`;
+                    mensajeFinal = `Hola Danila! Soy ${nombre}. Quiero vender mi ${tipo} en ${barrio}. Es la primera vez que publico y quiero arrancar con tu estrategia.`;
                 }
 
                 setTimeout(() => {
