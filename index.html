@@ -1294,16 +1294,19 @@
                     });
                 }
 
-                let mensajeFinal = '';
+ // Construcción del mensaje de WhatsApp personalizado (Versión Mejorada)
+let mensajeFinal = `Hola Danila! Soy ${nombre}. `;
 
-                if (tipo === 'Lote / Terreno') {
-                    mensajeFinal = `Hola Danila! Soy ${nombre}. Tengo un TERRENO en ${barrio} y quiero conocer el potencial de venta y m² vendibles. Info extra: ${tiempo}`;
-                } else if (situacion === 'ya-publicado') {
-                    mensajeFinal = `Hola Danila! Soy ${nombre}. Tengo un ${tipo} en ${barrio} que ya está publicado pero no se vende. Contexto: ${tiempo}.`;
-                } else {
-                    mensajeFinal = `Hola Danila! Soy ${nombre}. Quiero vender mi ${tipo} en ${barrio}. Es la primera vez que publico y quiero arrancar con tu estrategia.`;
-                }
-
+if (tipo === 'Lote / Terreno') {
+    mensajeFinal += `Tengo un TERRENO en ${barrio} y quiero conocer el potencial de venta. Info extra: ${tiempo}`;
+} else if (situacion === 'ya-publicado') {
+    mensajeFinal += `Tengo un ${tipo} en ${barrio} que ya está publicado pero no se vende. Contexto: ${tiempo}.`;
+} else if (situacion === 'primera-vez') {
+    mensajeFinal += `Quiero vender mi ${tipo} en ${barrio}. Es la primera vez que publico y quiero arrancar con tu estrategia.`;
+} else {
+    // Si no eligió situación, mandamos un mensaje genérico igual de profesional
+    mensajeFinal += `Quiero consultar por la venta de mi ${tipo} en ${barrio}.`;
+}
                 setTimeout(() => {
                     const url = `https://wa.me/5491131635778?text=${encodeURIComponent(
                         mensajeFinal
