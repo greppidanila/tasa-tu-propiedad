@@ -1204,8 +1204,57 @@
             Dejá de esperar, vendé hoy
         </a>
     </div>
+<!-- Botón ayuda desktop -->
+<div class="fixed bottom-10 right-10 z-50 hidden lg:block group">
+  <a
+    href="#contacto"
+    class="relative flex items-center gap-3 bg-white text-slate-900 px-6 py-4 rounded-full font-black uppercase italic shadow-2xl border border-slate-100 transition-all cursor-pointer
+           hover:scale-105 hover:bg-slate-900 hover:text-white"
+  >
+    <!-- Ping -->
+    <span class="flex h-3 w-3 relative">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-600"></span>
+    </span>
+
+    ¿Necesitás ayuda?
+
+    <!-- Icono -->
+    <div class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white -mr-2">
+      <!-- ícono tipo HelpCircle -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+        <path d="M12 17h.01"></path>
+      </svg>
+    </div>
+  </a>
+</div>
 
     <script>
+      <script>
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", function (e) {
+      const targetId = this.getAttribute("href");
+      const target = document.querySelector(targetId);
+
+      if (!target) return;
+
+      e.preventDefault();
+
+      const offset = 100;
+      const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
+      });
+    });
+  });
+</script>
+
 /* =========================
    CTA flotante mobile (correcto)
   ========================= */
