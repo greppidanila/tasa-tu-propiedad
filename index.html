@@ -791,9 +791,9 @@
                         class="w-full p-4 sm:p-5 bg-slate-50 rounded-2xl outline-none ring-1 ring-slate-100 font-bold italic focus:ring-pink-500 transition-all text-slate-900">
 
                     <div class="relative">
-                        <select id="tipo" required
+                        <select id="tipo"
                             class="w-full p-4 sm:p-5 bg-slate-50 rounded-2xl ring-1 ring-slate-100 font-bold italic appearance-none text-slate-900 cursor-pointer">
-                            <option value="" disabled selected>Tipo de propiedad *</option>
+                            <option value="" selected>Tipo de propiedad</option>
                             <option value="Casa / PH">Casa / PH</option>
                             <option value="Departamento">Departamento</option>
                             <option value="Lote / Terreno">Lote / Terreno</option>
@@ -1302,7 +1302,6 @@
 
             if (mostrarCampoExtra) {
                 wrapperTiempo.classList.remove('hidden');
-                tiempoInput.required = true;
 
                 if (tipoSelect.value === 'Lote / Terreno') {
                     tiempoInput.placeholder =
@@ -1313,7 +1312,6 @@
                 }
             } else {
                 wrapperTiempo.classList.add('hidden');
-                tiempoInput.required = false;
                 tiempoInput.value = '';
             }
         }
@@ -1352,7 +1350,7 @@ if (tipo === 'Lote / Terreno') {
     mensajeFinal += `Quiero vender mi ${tipo} en ${barrio}. Es la primera vez que publico y quiero arrancar con tu estrategia.`;
 } else {
     // Si no eligió situación, mandamos un mensaje genérico igual de profesional
-    mensajeFinal += `Quiero consultar por la venta de mi ${tipo} en ${barrio}.`;
+    mensajeFinal += `Quiero consultar por la venta de mi inmueble en ${barrio}.`;
 }
                 setTimeout(() => {
                     const url = `https://wa.me/5491131635778?text=${encodeURIComponent(
