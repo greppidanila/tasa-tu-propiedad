@@ -877,85 +877,89 @@ function enviarWA() {
     </div>
 </section>
 
-    <section id="contacto" class="scroll-mt-28 py-12 md:py-24 lg:py-32 px-6 bg-slate-900">
-        <div class="container mx-auto max-w-4xl">
-            <div class="bg-white rounded-[2.5rem] p-6 sm:p-8 md:p-16 shadow-2xl border-b-8 border-pink-500">
-
-                <!-- ENCABEZADO -->
-                <div class="text-center mb-12">
-                    <h2
-                        class="text-[27px] sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 uppercase tracking-tighter text-slate-900 leading-[1.2]">
-                        <span class="inline text-gradient leading-tight">Diagnóstico para vender tu propiedad</span>
-                    </h2>
-
-                    <p class="text-slate-400 font-bold uppercase tracking-widest text-[9px] italic mt-4">
-                        Evaluamos precio, publicación y estrategia de venta en CABA.
-                    </p>
-                </div>
-
-                <!-- FORM -->
-                <form id="propietarioForm" class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-
-                    <input id="nombre" type="text" placeholder="Nombre *" required
-                        class="w-full p-4 sm:p-5 bg-slate-50 rounded-2xl outline-none ring-1 ring-slate-100 font-bold italic focus:ring-pink-500 transition-all text-slate-900">
-
-                    <input id="barrio" type="text" placeholder="Barrio en CABA *" required
-                        class="w-full p-4 sm:p-5 bg-slate-50 rounded-2xl outline-none ring-1 ring-slate-100 font-bold italic focus:ring-pink-500 transition-all text-slate-900">
-
-                    <div class="relative">
-                        <select id="tipo"
-                            class="w-full p-4 sm:p-5 bg-slate-50 rounded-2xl ring-1 ring-slate-100 font-bold italic appearance-none text-slate-900 cursor-pointer">
-                            <option value="" selected>Tipo de propiedad</option>
-                            <option value="Casa / PH">Casa / PH</option>
-                            <option value="Departamento">Departamento</option>
-                            <option value="Lote / Terreno">Lote / Terreno</option>
-                        </select>
-                        <div class="absolute inset-y-0 right-5 flex items-center pointer-events-none text-pink-500">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="relative">
-                        <select id="situacion" 
-                            class="w-full p-4 sm:p-5 bg-slate-50 rounded-2xl ring-1 ring-slate-100 font-bold italic appearance-none text-slate-900 cursor-pointer">
-                            <option value="" disabled selected>Situación actual </option>
-                            <option value="primera-vez">Aún no la publiqué</option>
-                            <option value="ya-publicado">Está publicada y no se vende</option>
-                        </select>
-                        <div class="absolute inset-y-0 right-5 flex items-center pointer-events-none text-pink-500">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div id="wrapper-tiempo" class="hidden md:col-span-2">
-                        <textarea id="tiempo"
-                            placeholder="Contanos hace cuánto está publicada, en qué portales y qué respuestas estás recibiendo *"
-                            class="w-full p-5 bg-pink-50/30 rounded-2xl ring-1 ring-pink-200 font-bold italic focus:ring-pink-500 transition-all text-slate-900 min-h-[110px]"></textarea>
-                    </div>
-
-                    <!-- CTA -->
-                    <button type="submit"
-                        class="md:col-span-2 py-5 sm:py-6 text-lg sm:text-xl bg-gradient-action text-white rounded-2xl font-black text-xl shadow-xl uppercase tracking-tighter italic transition-transform hover:scale-[1.02]">
-                        Solicitar diagnóstico inmobiliario
-                    </button>
-
-                </form>
-
-                <!-- ACLARACION -->
-                <p class="text-[9px] text-slate-400 italic text-center mt-8">
-                    Intermediación inmobiliaria a cargo de Marcela Genta (CUCICBA 3906).
-                    El diagnóstico no implica obligación de contratación.
-                </p>
-
+ <section id="tasacion" style="padding: 80px 20px; background-color: #ffffff;">
+    <div style="max-width: 650px; margin: 0 auto; font-family: 'Plus Jakarta Sans', sans-serif;">
+        
+        <div style="text-align: center; margin-bottom: 35px;">
+            <div style="display: inline-block; padding: 6px 15px; border-radius: 50px; background: #fff5f0; color: #ff8017; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; border: 1px solid #ffede5;">
+                Servicio Exclusivo CABA
             </div>
+            <h2 style="font-weight: 800; font-size: 34px; color: #111827; margin-bottom: 12px; line-height: 1.1; tracking: -0.02em;">
+                Diagnóstico Estratégico para <br><span style="background: linear-gradient(135deg, #ff8017 0%, #e00079 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Vender tu Propiedad</span>
+            </h2>
+            <p style="color: #64748b; font-size: 16px;">Analizo tu caso y te envío una propuesta de venta real.</p>
         </div>
-    </section>
+
+        <div style="background: #ffffff; padding: 35px; border-radius: 28px; border: 1px solid #f1f5f9; box-shadow: 0 25px 50px -12px rgba(224, 0, 121, 0.12);">
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Tu Nombre</label>
+                <input type="text" id="diagNombre" placeholder="¿Cómo te llamas?" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#ff8017'">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                <div>
+                    <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">¿Qué vendés?</label>
+                    <select id="diagTipo" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
+                        <option value="Departamento">Departamento</option>
+                        <option value="PH">PH</option>
+                        <option value="Casa">Casa</option>
+                        <option value="Lote">Lote / Terreno</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Barrio</label>
+                    <select id="diagBarrio" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
+                        <option value="Palermo">Palermo</option>
+                        <option value="Recoleta">Recoleta / Retiro</option>
+                        <option value="Belgrano">Belgrano / Nuñez</option>
+                        <option value="Caballito">Caballito / Almagro</option>
+                        <option value="Villa Urquiza">Villa Urquiza</option>
+                        <option value="Otros">Otros Barrios CABA</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Estado de la venta</label>
+                <select id="diagSituacion" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
+                    <option value="Recién empiezo a pensar en vender">Recién empiezo a pensar en vender</option>
+                    <option value="Ya está publicada y no se vende">Está publicada pero no tengo consultas</option>
+                    <option value="Necesito vender urgente">Necesito vender rápido (re-ubicación/inversión)</option>
+                </select>
+            </div>
+
+            <button onclick="enviarDiagnosticoWA()" id="btnDiag" style="width: 100%; background: linear-gradient(135deg, #ff8017 0%, #e00079 100%); color: white; border: none; padding: 20px; border-radius: 16px; font-weight: 800; font-size: 15px; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(224, 0, 121, 0.2); text-transform: uppercase; letter-spacing: 1px;">
+                Solicitar mi Diagnóstico Gratuito
+            </button>
+            
+            <p style="text-align: center; color: #94a3b8; font-size: 11px; margin-top: 15px; font-weight: 500;">
+                Recibís una respuesta de Danila Greppi en menos de 24hs.
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+function enviarDiagnosticoWA() {
+    const nombre = document.getElementById('diagNombre').value;
+    const tipo = document.getElementById('diagTipo').value;
+    const barrio = document.getElementById('diagBarrio').value;
+    const situacion = document.getElementById('diagSituacion').value;
+
+    if(!nombre) { alert("Por favor, ingresá tu nombre para personalizar el diagnóstico."); return; }
+    
+    // Mensaje ultra profesional
+    const msg = `Hola Danila! Soy ${nombre}. Quiero solicitar un diagnostico estrategico para mi propiedad.\n\nInmueble: ${tipo}\nUbicacion: ${barrio}\nSituacion actual: ${situacion}\n\nEspero tu respuesta para avanzar.`;
+    
+    window.open(`https://wa.me/5491131635778?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// Efecto simple de escala al botón
+const b = document.getElementById('btnDiag');
+b.onmouseover = () => b.style.transform = 'scale(1.02)';
+b.onmouseout = () => b.style.transform = 'scale(1)';
+</script>
   <section id="descargables" class="scroll-mt-28 py-12 md:py-24 lg:py-32 px-6 bg-slate-50 border-t border-slate-100">
         <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-16">
