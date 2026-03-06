@@ -322,113 +322,79 @@
         </div>
     </div>
 </section>
-  <section id="tasacion" style="padding: 60px 20px; background-color: #f9fafb;">
-  <div id="sim-wrap">
-    <div class="sim-body">
-      <div class="sim-header">
-        <h2>Simulador de Tasación</h2>
-        <p style="color:var(--mut); font-size:14px;">Obtené un valor estimado para tu propiedad</p>
-      </div>
 
-      <div class="s-group">
-        <label class="s-label">Barrio en CABA</label>
-        <select id="sBarrio" class="s-control">
-          <option value="">Seleccionar barrio...</option>
-          <option value="recoleta">Recoleta / Retiro</option>
-          <option value="palermo">Palermo</option>
-          <option value="belgrano">Belgrano / Nuñez</option>
-          <option value="caballito">Caballito / Almagro</option>
-          <option value="villa-urquiza">Villa Urquiza / Devoto</option>
-          <option value="otros">Otros Barrios</option>
-        </select>
-        <div id="eBarrio" class="error-msg">Por favor seleccioná un barrio</div>
-      </div>
-
-      <div class="s-group">
-        <label class="s-label">Tipo de Propiedad</label>
-        <div class="s-grid">
-          <label class="schip"><input type="radio" name="tipo" value="depto"><span class="schip-l">Departamento</span></label>
-          <label class="schip"><input type="radio" name="tipo" value="ph"><span class="schip-l">PH</span></label>
-          <label class="schip"><input type="radio" name="tipo" value="casa"><span class="schip-l">Casa</span></label>
-        </div>
-        <div id="eTipo" class="error-msg">Seleccioná tipo de propiedad</div>
-      </div>
-
-      <div class="s-group">
-        <label class="s-label">Superficie Total (m²)</label>
-        <input type="number" id="sMetros" class="s-control" placeholder="Ej: 50">
-        <div id="eMetros" class="error-msg">Ingresá metros válidos</div>
-      </div>
-
-      <div class="s-group">
-        <label class="s-label">Estado de la propiedad</label>
-        <div class="s-grid">
-          <label class="schip"><input type="radio" name="est" value="excelente"><span class="schip-l">A Estrenar / Reciclado</span></label>
-          <label class="schip"><input type="radio" name="est" value="bueno"><span class="schip-l">Bueno / Habitable</span></label>
-          <label class="schip"><input type="radio" name="est" value="regular"><span class="schip-l">A Refaccionar</span></label>
-        </div>
-        <div id="eEst" class="error-msg">Seleccioná el estado</div>
-      </div>
-
-      <button class="s-btn" onclick="calcular()">CALCULAR ESTIMADO</button>
-
-      <div id="sRes">
-        <p style="font-size:14px; font-weight:600; color:var(--mut);">VALOR ESTIMADO DE MERCADO:</p>
-        <span class="res-val" id="sPrecio">USD 0 – 0</span>
-        <p style="font-size:12px; color:var(--mut); margin-bottom:20px;">*Este valor es orientativo basado en promedios de la zona.</p>
+  <section id="contacto" style="padding: 100px 20px 60px; background-color: #ffffff;">
+    <div style="max-width: 650px; margin: 0 auto; font-family: 'Plus Jakarta Sans', sans-serif;">
         
-        <button class="s-btn" style="background:#25d366; box-shadow: none;" onclick="enviarWA()">
-          SOLICITAR TASACIÓN PROFESIONAL
-        </button>
-      </div>
+        <div style="text-align: center; margin-bottom: 35px;">
+            <div style="display: inline-block; padding: 6px 15px; border-radius: 50px; background: #fff5f0; color: #ff8017; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; border: 1px solid #ffede5;">
+                Tasación Express CABA
+            </div>
+            <h2 style="font-weight: 800; font-size: 34px; color: #111827; margin-bottom: 12px; line-height: 1.1;">
+                Simulador de <span style="background: linear-gradient(135deg, #ff8017 0%, #e00079 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Valor de Mercado</span>
+            </h2>
+            <p style="color: #64748b; font-size: 16px;">Obtené un diagnóstico de venta real para tu propiedad.</p>
+        </div>
+
+        <div style="background: #ffffff; padding: 35px; border-radius: 28px; border: 1px solid #f1f5f9; box-shadow: 0 25px 50px -12px rgba(224, 0, 121, 0.12);">
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Tu Nombre</label>
+                <input type="text" id="diagNombre" placeholder="¿Cómo te llamas?" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
+                <div>
+                    <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Inmueble</label>
+                    <select id="diagTipo" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
+                        <option value="">Seleccionar...</option>
+                        <option value="Departamento">Departamento</option>
+                        <option value="PH">PH</option>
+                        <option value="Casa">Casa</option>
+                        <option value="Lote">Lote / Terreno</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Barrio</label>
+                    <select id="diagBarrio" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
+                        <option value="">Seleccionar...</option>
+                        <option value="Palermo">Palermo</option>
+                        <option value="Recoleta">Recoleta</option>
+                        <option value="Belgrano">Belgrano</option>
+                        <option value="Caballito">Caballito</option>
+                        <option value="Villa Urquiza">Villa Urquiza</option>
+                        <option value="Nuñez">Nuñez</option>
+                        <option value="Almagro">Almagro</option>
+                        <option value="Villa Crespo">Villa Crespo</option>
+                        <option value="Otro">Otro Barrio CABA</option>
+                    </select>
+                </div>
+            </div>
+
+            <button onclick="enviarSimuladorWA()" style="width: 100%; background: linear-gradient(135deg, #ff8017 0%, #e00079 100%); color: white; border: none; padding: 20px; border-radius: 16px; font-weight: 800; font-size: 15px; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(224, 0, 121, 0.2); text-transform: uppercase;">
+                Simular Valor en WhatsApp
+            </button>
+            
+            <p style="text-align: center; color: #94a3b8; font-size: 11px; margin-top: 15px; font-weight: 500;">
+                Recibí un rango de precio y estrategia de venta en el acto.
+            </p>
+        </div>
     </div>
-  </div>
 </section>
 
 <script>
-const VM2 = { "recoleta": 2900, "palermo": 2800, "belgrano": 2650, "caballito": 2100, "villa-urquiza": 2200, "otros": 1800 };
-const FACT = { "excelente": 1.1, "bueno": 0.95, "regular": 0.8 };
-const RANGO = 0.07;
-const WA_NUMBER = "5491131635778";
-
-function fmt(n) { return 'USD ' + Math.round(n).toLocaleString('de-DE'); }
-
-function calcular() {
-    let b = document.getElementById('sBarrio').value;
-    let m = parseFloat(document.getElementById('sMetros').value);
-    let t = document.querySelector('input[name="tipo"]:checked');
-    let e = document.querySelector('input[name="est"]:checked');
-    let ok = true;
-
-    document.querySelectorAll('.error-msg').forEach(el => el.style.display='none');
-
-    if(!b) { document.getElementById('eBarrio').style.display='block'; ok=false; }
-    if(!t) { document.getElementById('eTipo').style.display='block'; ok=false; }
-    if(!m || m < 10) { document.getElementById('eMetros').style.display='block'; ok=false; }
-    if(!e) { document.getElementById('eEst').style.display='block'; ok=false; }
-
-    if(!ok) return;
-
-    let base = m * (VM2[b] || 2000) * (FACT[e.value] || 1);
-    let mn = base * (1 - RANGO);
-    let mx = base * (1 + RANGO);
-
-    document.getElementById('sPrecio').textContent = fmt(mn) + ' – ' + fmt(mx);
-    document.getElementById('sRes').style.display = 'block';
-    document.getElementById('sRes').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-function enviarWA() {
-    const bLbl = document.getElementById('sBarrio').options[document.getElementById('sBarrio').selectedIndex].text;
-    const m = document.getElementById('sMetros').value;
-    const tLbl = document.querySelector('input[name="tipo"]:checked').parentElement.textContent.trim();
-    const eLbl = document.querySelector('input[name="est"]:checked').parentElement.textContent.trim();
-    const precio = document.getElementById('sPrecio').textContent;
-
-    // Mensaje limpio sin emojis para evitar errores de codificación
-    const texto = `Hola Dani, quiero solicitar una tasacion profesional.\n\nUse el simulador y estos son mis datos:\nBarrio: ${bLbl}\nTipo: ${tLbl}\nMetros: ${m}m2\nEstado: ${eLbl}\nEstimado: ${precio}`;
+function enviarSimuladorWA() {
+    const nom = document.getElementById('diagNombre').value || "Hola";
+    const tipo = document.getElementById('diagTipo').value || "propiedad";
+    const bar = document.getElementById('diagBarrio').value || "CABA";
     
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}`, '_blank');
+    // Si eligió algo, lo ponemos lindo en el mensaje
+    let desc = (tipo === "propiedad") ? "mi propiedad" : `mi ${tipo}`;
+    let loc = (bar === "CABA") ? "" : ` en ${bar}`;
+
+    const msg = `Hola Danila! Soy ${nom}. Usé el simulador de tu web para ${desc}${loc} y quiero conocer el valor de mercado hoy para vender.`;
+    
+    window.open(`https://wa.me/5491131635778?text=${encodeURIComponent(msg)}`, '_blank');
 }
 </script>
 <section id="sobre-danila" class="py-20 bg-white">
@@ -877,89 +843,6 @@ function enviarWA() {
     </div>
 </section>
 
- <section id="tasacion" style="padding: 80px 20px; background-color: #ffffff;">
-    <div style="max-width: 650px; margin: 0 auto; font-family: 'Plus Jakarta Sans', sans-serif;">
-        
-        <div style="text-align: center; margin-bottom: 35px;">
-            <div style="display: inline-block; padding: 6px 15px; border-radius: 50px; background: #fff5f0; color: #ff8017; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; border: 1px solid #ffede5;">
-                Servicio Exclusivo CABA
-            </div>
-            <h2 style="font-weight: 800; font-size: 34px; color: #111827; margin-bottom: 12px; line-height: 1.1; tracking: -0.02em;">
-                Diagnóstico Estratégico para <br><span style="background: linear-gradient(135deg, #ff8017 0%, #e00079 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Vender tu Propiedad</span>
-            </h2>
-            <p style="color: #64748b; font-size: 16px;">Analizo tu caso y te envío una propuesta de venta real.</p>
-        </div>
-
-        <div style="background: #ffffff; padding: 35px; border-radius: 28px; border: 1px solid #f1f5f9; box-shadow: 0 25px 50px -12px rgba(224, 0, 121, 0.12);">
-            
-            <div style="margin-bottom: 20px;">
-                <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Tu Nombre</label>
-                <input type="text" id="diagNombre" placeholder="¿Cómo te llamas?" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#ff8017'">
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-                <div>
-                    <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">¿Qué vendés?</label>
-                    <select id="diagTipo" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
-                        <option value="Departamento">Departamento</option>
-                        <option value="PH">PH</option>
-                        <option value="Casa">Casa</option>
-                        <option value="Lote">Lote / Terreno</option>
-                    </select>
-                </div>
-                <div>
-                    <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Barrio</label>
-                    <select id="diagBarrio" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
-                        <option value="Palermo">Palermo</option>
-                        <option value="Recoleta">Recoleta / Retiro</option>
-                        <option value="Belgrano">Belgrano / Nuñez</option>
-                        <option value="Caballito">Caballito / Almagro</option>
-                        <option value="Villa Urquiza">Villa Urquiza</option>
-                        <option value="Otros">Otros Barrios CABA</option>
-                    </select>
-                </div>
-            </div>
-
-            <div style="margin-bottom: 25px;">
-                <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Estado de la venta</label>
-                <select id="diagSituacion" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
-                    <option value="Recién empiezo a pensar en vender">Recién empiezo a pensar en vender</option>
-                    <option value="Ya está publicada y no se vende">Está publicada pero no tengo consultas</option>
-                    <option value="Necesito vender urgente">Necesito vender rápido (re-ubicación/inversión)</option>
-                </select>
-            </div>
-
-            <button onclick="enviarDiagnosticoWA()" id="btnDiag" style="width: 100%; background: linear-gradient(135deg, #ff8017 0%, #e00079 100%); color: white; border: none; padding: 20px; border-radius: 16px; font-weight: 800; font-size: 15px; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(224, 0, 121, 0.2); text-transform: uppercase; letter-spacing: 1px;">
-                Solicitar mi Diagnóstico Gratuito
-            </button>
-            
-            <p style="text-align: center; color: #94a3b8; font-size: 11px; margin-top: 15px; font-weight: 500;">
-                Recibís una respuesta de Danila Greppi en menos de 24hs.
-            </p>
-        </div>
-    </div>
-</section>
-
-<script>
-function enviarDiagnosticoWA() {
-    const nombre = document.getElementById('diagNombre').value;
-    const tipo = document.getElementById('diagTipo').value;
-    const barrio = document.getElementById('diagBarrio').value;
-    const situacion = document.getElementById('diagSituacion').value;
-
-    if(!nombre) { alert("Por favor, ingresá tu nombre para personalizar el diagnóstico."); return; }
-    
-    // Mensaje ultra profesional
-    const msg = `Hola Danila! Soy ${nombre}. Quiero solicitar un diagnostico estrategico para mi propiedad.\n\nInmueble: ${tipo}\nUbicacion: ${barrio}\nSituacion actual: ${situacion}\n\nEspero tu respuesta para avanzar.`;
-    
-    window.open(`https://wa.me/5491131635778?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-// Efecto simple de escala al botón
-const b = document.getElementById('btnDiag');
-b.onmouseover = () => b.style.transform = 'scale(1.02)';
-b.onmouseout = () => b.style.transform = 'scale(1)';
-</script>
   <section id="descargables" class="scroll-mt-28 py-12 md:py-24 lg:py-32 px-6 bg-slate-50 border-t border-slate-100">
         <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-16">
