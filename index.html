@@ -243,6 +243,9 @@
                         CABA</span>
                 </div>
                 <div class="flex items-center gap-8">
+                  <a href="#tasacion" style="background: linear-gradient(135deg, #ff8017 0%, #e00079 100%); color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; margin-left: 15px; font-size: 14px;">
+  Simular Tasación
+</a>
                     <a href="#proceso" class="group flex flex-col items-center">
                         <span
                             class="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 group-hover:text-pink-600 transition-colors">Cómo vendemos</span>
@@ -319,6 +322,115 @@
         </div>
     </div>
 </section>
+  <section id="tasacion" style="padding: 60px 20px; background-color: #f9fafb;">
+  <div id="sim-wrap">
+    <div class="sim-body">
+      <div class="sim-header">
+        <h2>Simulador de Tasación</h2>
+        <p style="color:var(--mut); font-size:14px;">Obtené un valor estimado para tu propiedad</p>
+      </div>
+
+      <div class="s-group">
+        <label class="s-label">Barrio en CABA</label>
+        <select id="sBarrio" class="s-control">
+          <option value="">Seleccionar barrio...</option>
+          <option value="recoleta">Recoleta / Retiro</option>
+          <option value="palermo">Palermo</option>
+          <option value="belgrano">Belgrano / Nuñez</option>
+          <option value="caballito">Caballito / Almagro</option>
+          <option value="villa-urquiza">Villa Urquiza / Devoto</option>
+          <option value="otros">Otros Barrios</option>
+        </select>
+        <div id="eBarrio" class="error-msg">Por favor seleccioná un barrio</div>
+      </div>
+
+      <div class="s-group">
+        <label class="s-label">Tipo de Propiedad</label>
+        <div class="s-grid">
+          <label class="schip"><input type="radio" name="tipo" value="depto"><span class="schip-l">Departamento</span></label>
+          <label class="schip"><input type="radio" name="tipo" value="ph"><span class="schip-l">PH</span></label>
+          <label class="schip"><input type="radio" name="tipo" value="casa"><span class="schip-l">Casa</span></label>
+        </div>
+        <div id="eTipo" class="error-msg">Seleccioná tipo de propiedad</div>
+      </div>
+
+      <div class="s-group">
+        <label class="s-label">Superficie Total (m²)</label>
+        <input type="number" id="sMetros" class="s-control" placeholder="Ej: 50">
+        <div id="eMetros" class="error-msg">Ingresá metros válidos</div>
+      </div>
+
+      <div class="s-group">
+        <label class="s-label">Estado de la propiedad</label>
+        <div class="s-grid">
+          <label class="schip"><input type="radio" name="est" value="excelente"><span class="schip-l">A Estrenar / Reciclado</span></label>
+          <label class="schip"><input type="radio" name="est" value="bueno"><span class="schip-l">Bueno / Habitable</span></label>
+          <label class="schip"><input type="radio" name="est" value="regular"><span class="schip-l">A Refaccionar</span></label>
+        </div>
+        <div id="eEst" class="error-msg">Seleccioná el estado</div>
+      </div>
+
+      <button class="s-btn" onclick="calcular()">CALCULAR ESTIMADO</button>
+
+      <div id="sRes">
+        <p style="font-size:14px; font-weight:600; color:var(--mut);">VALOR ESTIMADO DE MERCADO:</p>
+        <span class="res-val" id="sPrecio">USD 0 – 0</span>
+        <p style="font-size:12px; color:var(--mut); margin-bottom:20px;">*Este valor es orientativo basado en promedios de la zona.</p>
+        
+        <button class="s-btn" style="background:#25d366; box-shadow: none;" onclick="enviarWA()">
+          SOLICITAR TASACIÓN PROFESIONAL
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const VM2 = { "recoleta": 2900, "palermo": 2800, "belgrano": 2650, "caballito": 2100, "villa-urquiza": 2200, "otros": 1800 };
+const FACT = { "excelente": 1.1, "bueno": 0.95, "regular": 0.8 };
+const RANGO = 0.07;
+const WA_NUMBER = "5491131635778";
+
+function fmt(n) { return 'USD ' + Math.round(n).toLocaleString('de-DE'); }
+
+function calcular() {
+    let b = document.getElementById('sBarrio').value;
+    let m = parseFloat(document.getElementById('sMetros').value);
+    let t = document.querySelector('input[name="tipo"]:checked');
+    let e = document.querySelector('input[name="est"]:checked');
+    let ok = true;
+
+    document.querySelectorAll('.error-msg').forEach(el => el.style.display='none');
+
+    if(!b) { document.getElementById('eBarrio').style.display='block'; ok=false; }
+    if(!t) { document.getElementById('eTipo').style.display='block'; ok=false; }
+    if(!m || m < 10) { document.getElementById('eMetros').style.display='block'; ok=false; }
+    if(!e) { document.getElementById('eEst').style.display='block'; ok=false; }
+
+    if(!ok) return;
+
+    let base = m * (VM2[b] || 2000) * (FACT[e.value] || 1);
+    let mn = base * (1 - RANGO);
+    let mx = base * (1 + RANGO);
+
+    document.getElementById('sPrecio').textContent = fmt(mn) + ' – ' + fmt(mx);
+    document.getElementById('sRes').style.display = 'block';
+    document.getElementById('sRes').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function enviarWA() {
+    const bLbl = document.getElementById('sBarrio').options[document.getElementById('sBarrio').selectedIndex].text;
+    const m = document.getElementById('sMetros').value;
+    const tLbl = document.querySelector('input[name="tipo"]:checked').parentElement.textContent.trim();
+    const eLbl = document.querySelector('input[name="est"]:checked').parentElement.textContent.trim();
+    const precio = document.getElementById('sPrecio').textContent;
+
+    // Mensaje limpio sin emojis para evitar errores de codificación
+    const texto = `Hola Dani, quiero solicitar una tasacion profesional.\n\nUse el simulador y estos son mis datos:\nBarrio: ${bLbl}\nTipo: ${tLbl}\nMetros: ${m}m2\nEstado: ${eLbl}\nEstimado: ${precio}`;
+    
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}`, '_blank');
+}
+</script>
 <section id="sobre-danila" class="py-20 bg-white">
     <div class="container mx-auto px-6">
         
@@ -1328,115 +1440,7 @@
 .error-msg { color: #ef4444; font-size: 12px; margin-top: 5px; display: none; }
 </style>
 
-<section id="tasacion" style="padding: 60px 20px; background-color: #f9fafb;">
-  <div id="sim-wrap">
-    <div class="sim-body">
-      <div class="sim-header">
-        <h2>Simulador de Tasación</h2>
-        <p style="color:var(--mut); font-size:14px;">Obtené un valor estimado para tu propiedad</p>
-      </div>
 
-      <div class="s-group">
-        <label class="s-label">Barrio en CABA</label>
-        <select id="sBarrio" class="s-control">
-          <option value="">Seleccionar barrio...</option>
-          <option value="recoleta">Recoleta / Retiro</option>
-          <option value="palermo">Palermo</option>
-          <option value="belgrano">Belgrano / Nuñez</option>
-          <option value="caballito">Caballito / Almagro</option>
-          <option value="villa-urquiza">Villa Urquiza / Devoto</option>
-          <option value="otros">Otros Barrios</option>
-        </select>
-        <div id="eBarrio" class="error-msg">Por favor seleccioná un barrio</div>
-      </div>
-
-      <div class="s-group">
-        <label class="s-label">Tipo de Propiedad</label>
-        <div class="s-grid">
-          <label class="schip"><input type="radio" name="tipo" value="depto"><span class="schip-l">Departamento</span></label>
-          <label class="schip"><input type="radio" name="tipo" value="ph"><span class="schip-l">PH</span></label>
-          <label class="schip"><input type="radio" name="tipo" value="casa"><span class="schip-l">Casa</span></label>
-        </div>
-        <div id="eTipo" class="error-msg">Seleccioná tipo de propiedad</div>
-      </div>
-
-      <div class="s-group">
-        <label class="s-label">Superficie Total (m²)</label>
-        <input type="number" id="sMetros" class="s-control" placeholder="Ej: 50">
-        <div id="eMetros" class="error-msg">Ingresá metros válidos</div>
-      </div>
-
-      <div class="s-group">
-        <label class="s-label">Estado de la propiedad</label>
-        <div class="s-grid">
-          <label class="schip"><input type="radio" name="est" value="excelente"><span class="schip-l">A Estrenar / Reciclado</span></label>
-          <label class="schip"><input type="radio" name="est" value="bueno"><span class="schip-l">Bueno / Habitable</span></label>
-          <label class="schip"><input type="radio" name="est" value="regular"><span class="schip-l">A Refaccionar</span></label>
-        </div>
-        <div id="eEst" class="error-msg">Seleccioná el estado</div>
-      </div>
-
-      <button class="s-btn" onclick="calcular()">CALCULAR ESTIMADO</button>
-
-      <div id="sRes">
-        <p style="font-size:14px; font-weight:600; color:var(--mut);">VALOR ESTIMADO DE MERCADO:</p>
-        <span class="res-val" id="sPrecio">USD 0 – 0</span>
-        <p style="font-size:12px; color:var(--mut); margin-bottom:20px;">*Este valor es orientativo basado en promedios de la zona.</p>
-        
-        <button class="s-btn" style="background:#25d366; box-shadow: none;" onclick="enviarWA()">
-          SOLICITAR TASACIÓN PROFESIONAL
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-const VM2 = { "recoleta": 2900, "palermo": 2800, "belgrano": 2650, "caballito": 2100, "villa-urquiza": 2200, "otros": 1800 };
-const FACT = { "excelente": 1.1, "bueno": 0.95, "regular": 0.8 };
-const RANGO = 0.07;
-const WA_NUMBER = "5491131635778";
-
-function fmt(n) { return 'USD ' + Math.round(n).toLocaleString('de-DE'); }
-
-function calcular() {
-    let b = document.getElementById('sBarrio').value;
-    let m = parseFloat(document.getElementById('sMetros').value);
-    let t = document.querySelector('input[name="tipo"]:checked');
-    let e = document.querySelector('input[name="est"]:checked');
-    let ok = true;
-
-    document.querySelectorAll('.error-msg').forEach(el => el.style.display='none');
-
-    if(!b) { document.getElementById('eBarrio').style.display='block'; ok=false; }
-    if(!t) { document.getElementById('eTipo').style.display='block'; ok=false; }
-    if(!m || m < 10) { document.getElementById('eMetros').style.display='block'; ok=false; }
-    if(!e) { document.getElementById('eEst').style.display='block'; ok=false; }
-
-    if(!ok) return;
-
-    let base = m * (VM2[b] || 2000) * (FACT[e.value] || 1);
-    let mn = base * (1 - RANGO);
-    let mx = base * (1 + RANGO);
-
-    document.getElementById('sPrecio').textContent = fmt(mn) + ' – ' + fmt(mx);
-    document.getElementById('sRes').style.display = 'block';
-    document.getElementById('sRes').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-function enviarWA() {
-    const bLbl = document.getElementById('sBarrio').options[document.getElementById('sBarrio').selectedIndex].text;
-    const m = document.getElementById('sMetros').value;
-    const tLbl = document.querySelector('input[name="tipo"]:checked').parentElement.textContent.trim();
-    const eLbl = document.querySelector('input[name="est"]:checked').parentElement.textContent.trim();
-    const precio = document.getElementById('sPrecio').textContent;
-
-    // Mensaje limpio sin emojis para evitar errores de codificación
-    const texto = `Hola Dani, quiero solicitar una tasacion profesional.\n\nUse el simulador y estos son mis datos:\nBarrio: ${bLbl}\nTipo: ${tLbl}\nMetros: ${m}m2\nEstado: ${eLbl}\nEstimado: ${precio}`;
-    
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}`, '_blank');
-}
-</script>
   
 
     <footer class="py-12 bg-black text-center px-6">
