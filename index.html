@@ -328,71 +328,105 @@
         
         <div style="text-align: center; margin-bottom: 35px;">
             <div style="display: inline-block; padding: 6px 15px; border-radius: 50px; background: #fff5f0; color: #ff8017; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; border: 1px solid #ffede5;">
-                Tasación Express CABA
+                Tasación Express & Estrategia
             </div>
             <h2 style="font-weight: 800; font-size: 34px; color: #111827; margin-bottom: 12px; line-height: 1.1;">
-                Simulador de <span style="background: linear-gradient(135deg, #ff8017 0%, #e00079 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Valor de Mercado</span>
+                ¿Cuánto vale tu <span style="background: linear-gradient(135deg, #ff8017 0%, #e00079 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Propiedad?</span>
             </h2>
-            <p style="color: #64748b; font-size: 16px;">Obtené un diagnóstico de venta real para tu propiedad.</p>
+            <p style="color: #64748b; font-size: 16px;">Completá el simulador o hablá directo con Danila.</p>
         </div>
 
         <div style="background: #ffffff; padding: 35px; border-radius: 28px; border: 1px solid #f1f5f9; box-shadow: 0 25px 50px -12px rgba(224, 0, 121, 0.12);">
             
-            <div style="margin-bottom: 20px;">
-                <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Tu Nombre</label>
-                <input type="text" id="diagNombre" placeholder="¿Cómo te llamas?" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
+            <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 12px; text-transform: uppercase; text-align: center;">1. Tipo de Propiedad</label>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 25px;">
+                <div onclick="selectTipo('Depto', this)" class="tipo-card" style="cursor:pointer; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px 5px; text-align: center; transition: 0.3s;">
+                    <span style="font-size: 20px; display: block;">🏢</span>
+                    <span style="font-size: 10px; font-weight: 700;">DEPTO</span>
+                </div>
+                <div onclick="selectTipo('PH', this)" class="tipo-card" style="cursor:pointer; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px 5px; text-align: center; transition: 0.3s;">
+                    <span style="font-size: 20px; display: block;">🏠</span>
+                    <span style="font-size: 10px; font-weight: 700;">PH</span>
+                </div>
+                <div onclick="selectTipo('Casa', this)" class="tipo-card" style="cursor:pointer; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px 5px; text-align: center; transition: 0.3s;">
+                    <span style="font-size: 20px; display: block;">🏰</span>
+                    <span style="font-size: 10px; font-weight: 700;">CASA</span>
+                </div>
+                <div onclick="selectTipo('Lote', this)" class="tipo-card" style="cursor:pointer; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px 5px; text-align: center; transition: 0.3s;">
+                    <span style="font-size: 20px; display: block;">🏗️</span>
+                    <span style="font-size: 10px; font-weight: 700;">LOTE</span>
+                </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
-                <div>
-                    <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Inmueble</label>
-                    <select id="diagTipo" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
-                        <option value="">Seleccionar...</option>
-                        <option value="Departamento">Departamento</option>
-                        <option value="PH">PH</option>
-                        <option value="Casa">Casa</option>
-                        <option value="Lote">Lote / Terreno</option>
-                    </select>
-                </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
                 <div>
                     <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Barrio</label>
-                    <select id="diagBarrio" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
-                        <option value="">Seleccionar...</option>
-                        <option value="Palermo">Palermo</option>
-                        <option value="Recoleta">Recoleta</option>
-                        <option value="Belgrano">Belgrano</option>
-                        <option value="Caballito">Caballito</option>
-                        <option value="Villa Urquiza">Villa Urquiza</option>
-                        <option value="Nuñez">Nuñez</option>
-                        <option value="Almagro">Almagro</option>
-                        <option value="Villa Crespo">Villa Crespo</option>
-                        <option value="Otro">Otro Barrio CABA</option>
+                    <input type="text" id="simBarrio" placeholder="Ej: Palermo" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
+                </div>
+                <div>
+                    <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Ambientes</label>
+                    <select id="simAmb" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-weight: 600; outline: none;">
+                        <option value="">¿Cuántos?</option>
+                        <option value="1">1 Amb</option>
+                        <option value="2">2 Amb</option>
+                        <option value="3">3 Amb</option>
+                        <option value="4+">4 o más</option>
                     </select>
                 </div>
             </div>
 
-            <button onclick="enviarSimuladorWA()" style="width: 100%; background: linear-gradient(135deg, #ff8017 0%, #e00079 100%); color: white; border: none; padding: 20px; border-radius: 16px; font-weight: 800; font-size: 15px; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(224, 0, 121, 0.2); text-transform: uppercase;">
-                Simular Valor en WhatsApp
-            </button>
-            
-            <p style="text-align: center; color: #94a3b8; font-size: 11px; margin-top: 15px; font-weight: 500;">
-                Recibí un rango de precio y estrategia de venta en el acto.
-            </p>
+            <div style="margin-bottom: 25px; text-align: center;">
+                <label style="display: block; font-weight: 700; font-size: 12px; color: #94a3b8; margin-bottom: 10px; text-transform: uppercase;">¿Tiene Cochera?</label>
+                <div style="display: flex; justify-content: center; gap: 20px;">
+                    <label style="font-weight: 600; cursor: pointer;"><input type="radio" name="cochera" value="Si"> Sí</label>
+                    <label style="font-weight: 600; cursor: pointer;"><input type="radio" name="cochera" value="No"> No</label>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <button onclick="enviarSimu(true)" style="width: 100%; background: linear-gradient(135deg, #ff8017 0%, #e00079 100%); color: white; border: none; padding: 18px; border-radius: 16px; font-weight: 800; font-size: 15px; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(224, 0, 121, 0.2); text-transform: uppercase;">
+                    Obtener Valor y Estrategia
+                </button>
+                
+                <div style="text-align: center; margin: 5px 0;">
+                    <span style="font-size: 12px; color: #94a3b8; font-weight: 700;">O TAMBIÉN</span>
+                </div>
+
+                <button onclick="enviarSimu(false)" style="width: 100%; background: #ffffff; color: #25d366; border: 2px solid #25d366; padding: 14px; border-radius: 16px; font-weight: 800; font-size: 14px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="18" alt="wa">
+                    Hablar Directo por WhatsApp
+                </button>
+            </div>
         </div>
     </div>
 </section>
 
-<script>
-function enviarSimuladorWA() {
-    const nom = document.getElementById('diagNombre').value || "Hola";
-    const tipo = document.getElementById('diagTipo').value || "propiedad";
-    const bar = document.getElementById('diagBarrio').value || "CABA";
-    
-    // Si eligió algo, lo ponemos lindo en el mensaje
-    let desc = (tipo === "propiedad") ? "mi propiedad" : `mi ${tipo}`;
-    let loc = (bar === "CABA") ? "" : ` en ${bar}`;
+<style>
+    .tipo-card:hover { border-color: #ff8017 !important; background: #fffaf0; }
+    .tipo-selected { border-color: #e00079 !important; background: #fff0f6 !important; color: #e00079; }
+</style>
 
-    const msg = `Hola Danila! Soy ${nom}. Usé el simulador de tu web para ${desc}${loc} y quiero conocer el valor de mercado hoy para vender.`;
+<script>
+let selectedTipoValue = "";
+
+function selectTipo(tipo, el) {
+    selectedTipoValue = tipo;
+    document.querySelectorAll('.tipo-card').forEach(card => card.classList.remove('tipo-selected'));
+    el.classList.add('tipo-selected');
+}
+
+function enviarSimu(esCompleto) {
+    const bar = document.getElementById('simBarrio').value || "CABA";
+    const amb = document.getElementById('simAmb').value || "-";
+    const cochera = document.querySelector('input[name="cochera"]:checked')?.value || "-";
+    
+    let msg = "";
+    
+    if(esCompleto) {
+        msg = `Hola Danila! Use el simulador de tu web. \n\nPropiedad: ${selectedTipoValue || 'Inmueble'}\nUbicacion: ${bar}\nAmbientes: ${amb}\nCochera: ${cochera}\n\nQuiero conocer el valor de mercado hoy.`;
+    } else {
+        msg = `Hola Danila! Quiero consultarte por una propiedad en ${bar} para vender. ¿Podemos hablar?`;
+    }
     
     window.open(`https://wa.me/5491131635778?text=${encodeURIComponent(msg)}`, '_blank');
 }
