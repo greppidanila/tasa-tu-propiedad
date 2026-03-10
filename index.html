@@ -457,6 +457,7 @@ function enviarSimu(esCompleto) {
     }
     
     window.open(`https://wa.me/5491131635778?text=${encodeURIComponent(msg)}`, '_blank');
+  gtag_report_conversion(urlWhatsapp);
 }
 </script>
 <section id="sobre-danila" class="py-20 bg-white">
@@ -1572,6 +1573,20 @@ if (tipo === 'Lote / Terreno') {
                 }, 300);
             });
     </script>
+  <script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-11191760775/MnhwCOj1od0bEIfv0tgp',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
 
 </body>
 
