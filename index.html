@@ -456,8 +456,9 @@ function enviarSimu(esCompleto) {
         msg = `Hola Danila! Te escribo desde la web para consultarte por una propiedad para vender. ¿Cómo estás?`;
     }
     
-    window.open(`https://wa.me/5491131635778?text=${encodeURIComponent(msg)}`, '_blank');
-  gtag_report_conversion(urlWhatsapp);
+    
+    var urlWhatsapp = `https://wa.me/5491131635778?text=${encodeURIComponent(msg)}`;
+    gtag_report_conversion(urlWhatsapp);
 }
 </script>
 <section id="sobre-danila" class="py-20 bg-white">
