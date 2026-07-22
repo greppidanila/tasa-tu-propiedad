@@ -18,6 +18,18 @@
   <meta name="google-site-verification" content="X0MVRBq2ZOKXLh5eaw9UYnpZIFXOuqvNBgRYmQlGdXE" />
   <link rel="canonical" href="https://danilarealestate.netlify.app/">
 
+<!-- =========================
+     SEO LOCAL / GEO
+========================== -->
+<meta name="keywords" content="vender propiedad CABA, inmobiliaria Villa Urquiza, tasación Saavedra, vender departamento Belgrano, inmobiliaria Palermo, martillera pública CABA, vender casa Buenos Aires">
+<meta name="author" content="Danila Greppi">
+<meta name="geo.region" content="AR-C">
+<meta name="geo.placename" content="Ciudad Autónoma de Buenos Aires">
+<meta name="geo.position" content="-34.5722;-58.4784">
+<meta name="ICBM" content="-34.5722, -58.4784">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Danila Greppi | Estrategia Inmobiliaria CABA">
+
   <!-- =========================
        OPEN GRAPH / SOCIAL
   ========================== -->
@@ -79,7 +91,15 @@
         "addressLocality": "Buenos Aires",
         "addressCountry": "AR"
       },
-      "areaServed": "CABA"
+      "areaServed": [
+        { "@type": "City", "name": "Ciudad Autónoma de Buenos Aires" },
+        { "@type": "Place", "name": "Villa Urquiza" },
+        { "@type": "Place", "name": "Saavedra" },
+        { "@type": "Place", "name": "Belgrano" },
+        { "@type": "Place", "name": "Palermo" },
+        { "@type": "Place", "name": "Núñez" },
+        { "@type": "Place", "name": "Colegiales" }
+      ]
     },
 
     {
@@ -180,8 +200,15 @@
     .text-gradient {
       background: linear-gradient(135deg, var(--brand-orange), var(--brand-pink));
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
+      color: transparent;
       display: inline-block;
+      line-height: 1.15;
+      padding: 0.06em 0.14em;
+      margin: -0.06em -0.05em;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
     
     .bg-gradient-action {
@@ -300,12 +327,9 @@ gtag('config', 'AW-11191760775');
                     Estrategia Inmobiliaria 2026
                 </span>
 
-                <h1 class="text-[32px] md:text-5xl lg:text-[56px] font-black leading-[0.95] tracking-tighter text-slate-900 uppercase mb-6">
-                    Vendé tu propiedad en CABA <br>
-                    en menos de <br>
-                    <span class="italic text-gradient inline-block pr-6 lg:pr-10">
-                        120 días
-                    </span>
+                <h1 class="text-[30px] md:text-5xl lg:text-[54px] font-black leading-[1.05] tracking-tight text-slate-900 uppercase mb-6">
+                    Vendé tu propiedad en CABA en menos de
+                    <span class="italic text-gradient inline-block whitespace-nowrap">120 días</span>
                 </h1>
 
                 <p class="text-lg md:text-xl text-slate-600 font-medium italic max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
@@ -418,11 +442,6 @@ gtag('config', 'AW-11191760775');
                 </select>
             </div>
 
-            <div style="display: flex; align-items: center; background: #f8fafc; padding: 12px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #e2e8f0;">
-                <label style="font-size: 13px; font-weight: 700; color: #334155; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-                    <input type="checkbox" id="simCochera"> 🚗 Tiene cochera
-                </label>
-            </div>
 
             <div style="display: flex; flex-direction: column; gap: 10px;">
                 <button onclick="enviarSimu(true)" class="btn-main">OBTENER TASACIÓN ESTIMADA</button>
@@ -461,11 +480,10 @@ function enviarSimu(esCompleto) {
     const dir = document.getElementById('simDireccion').value || "-";
     const m2 = document.getElementById('simM2').value || "-";
     const publicada = document.getElementById('simPublicada').value || "-";
-    const cochera = document.getElementById('simCochera').checked ? "con cochera" : "sin cochera";
     
     let msg = "";
     if(esCompleto) {
-        msg = `Hola Danila! Usé el simulador de tu web.\n\nPropiedad: ${selectedTipoValue || 'Inmueble'}\nBarrio: ${bar}\nDirección: ${dir}\nSuperficie: ${m2}m2\nPublicada: ${publicada}\nExtras: ${cochera}\n\nQuiero conocer el valor de mercado hoy para vender.`;
+        msg = `Hola Danila! Usé el simulador de tu web.\n\nPropiedad: ${selectedTipoValue || 'Inmueble'}\nBarrio: ${bar}\nDirección: ${dir}\nSuperficie: ${m2}m2\nPublicada: ${publicada}\n\nQuiero conocer el valor de mercado hoy para vender.`;
     } else {
         msg = `Hola Danila! Te escribo desde la web para consultarte por una propiedad para vender. ¿Cómo estás?`;
     }
@@ -723,54 +741,62 @@ function enviarSimu(esCompleto) {
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <section id="servicios" class="scroll-mt-28 py-12 md:py-24 px-6 bg-white border-t border-slate-100">
+        <section id="servicios" class="scroll-mt-28 py-12 md:py-24 px-6 bg-white">
         <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-14">
-                <span class="text-pink-600 font-black text-[10px] uppercase tracking-[0.4em] italic">Todo incluido</span>
-                <h2 class="text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-black mt-4 uppercase tracking-tighter text-slate-900 leading-tight">
+                <span class="text-pink-600 font-black text-[10px] uppercase tracking-[0.3em] italic">Todo incluido</span>
+                <h2 class="text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-black italic uppercase text-slate-900 tracking-tighter leading-tight mt-3">
                     La comercialización corre <span class="text-gradient">por nuestra cuenta</span>
                 </h2>
-                <p class="text-slate-500 font-bold italic mt-6 max-w-2xl mx-auto leading-relaxed">
-                    Invertimos en todo el proceso de venta. Vos no gastás nada en marketing.
+                <p class="text-slate-500 font-bold italic mt-6 max-w-2xl mx-auto text-base md:text-lg">
+                    Invertimos nosotros en todo el proceso. Vos no gastás nada en marketing.
                 </p>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
                 <div class="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 text-center hover:bg-white hover:shadow-xl transition-all">
                     <span class="text-3xl block mb-3">📸</span>
                     <p class="text-xs font-black uppercase tracking-wide text-slate-900">Fotos profesionales</p>
+                    <p class="text-[11px] font-medium text-slate-500 mt-1 leading-snug">Que tu propiedad enamore desde la primera foto.</p>
                 </div>
                 <div class="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 text-center hover:bg-white hover:shadow-xl transition-all">
-                    <span class="text-3xl block mb-3">🎥</span>
-                    <p class="text-xs font-black uppercase tracking-wide text-slate-900">Video profesional</p>
+                    <span class="text-3xl block mb-3">🎬</span>
+                    <p class="text-xs font-black uppercase tracking-wide text-slate-900">Video para YouTube</p>
+                    <p class="text-[11px] font-medium text-slate-500 mt-1 leading-snug">Recorrido profesional para que la vean sin moverse.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 text-center hover:bg-white hover:shadow-xl transition-all">
+                    <span class="text-3xl block mb-3">📱</span>
+                    <p class="text-xs font-black uppercase tracking-wide text-slate-900">Videos para redes</p>
+                    <p class="text-[11px] font-medium text-slate-500 mt-1 leading-snug">Reels y TikToks para llegar a más compradores.</p>
                 </div>
                 <div class="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 text-center hover:bg-white hover:shadow-xl transition-all">
                     <span class="text-3xl block mb-3">🚁</span>
                     <p class="text-xs font-black uppercase tracking-wide text-slate-900">Tomas con drone</p>
+                    <p class="text-[11px] font-medium text-slate-500 mt-1 leading-snug">Según la propiedad, sumamos vista aérea.</p>
                 </div>
                 <div class="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 text-center hover:bg-white hover:shadow-xl transition-all">
                     <span class="text-3xl block mb-3">🕶️</span>
                     <p class="text-xs font-black uppercase tracking-wide text-slate-900">Tour virtual 360°</p>
+                    <p class="text-[11px] font-medium text-slate-500 mt-1 leading-snug">Visitas online las 24 hs, desde cualquier lugar.</p>
                 </div>
                 <div class="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 text-center hover:bg-white hover:shadow-xl transition-all">
                     <span class="text-3xl block mb-3">📐</span>
                     <p class="text-xs font-black uppercase tracking-wide text-slate-900">Plano a medida</p>
+                    <p class="text-[11px] font-medium text-slate-500 mt-1 leading-snug">Claridad de metros y distribución para el comprador.</p>
                 </div>
                 <div class="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 text-center hover:bg-white hover:shadow-xl transition-all">
                     <span class="text-3xl block mb-3">📢</span>
-                    <p class="text-xs font-black uppercase tracking-wide text-slate-900">Campañas y marketing pago</p>
-                </div>
-                <div class="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 text-center hover:bg-white hover:shadow-xl transition-all">
-                    <span class="text-3xl block mb-3">🎬</span>
-                    <p class="text-xs font-black uppercase tracking-wide text-slate-900">Videos para redes sociales</p>
+                    <p class="text-xs font-black uppercase tracking-wide text-slate-900">Campañas y marketing</p>
+                    <p class="text-[11px] font-medium text-slate-500 mt-1 leading-snug">Pauta paga según la propiedad. Marketing, siempre.</p>
                 </div>
                 <div class="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 text-center hover:bg-white hover:shadow-xl transition-all">
                     <span class="text-3xl block mb-3">📄</span>
-                    <p class="text-xs font-black uppercase tracking-wide text-slate-900">Informes y documentación (sucesiones, declaratorias, donaciones)</p>
+                    <p class="text-xs font-black uppercase tracking-wide text-slate-900">Informes y documentación</p>
+                    <p class="text-[11px] font-medium text-slate-500 mt-1 leading-snug">Dominio e inhibición los gestionamos nosotros. Sucesiones, declaratorias y donaciones las revisa nuestro abogado.</p>
                 </div>
             </div>
-            <div class="mt-10 p-6 bg-slate-900 rounded-[2rem] text-center">
-                <p class="text-white italic font-bold text-sm md:text-base leading-relaxed">
-                    Exclusividad comercial: la propiedad la manejamos nosotros. Pero abrimos las visitas a todos los colegas que quieran traernos un comprador. Así sumás más gente buscando, sin perder el control de la venta.
+            <div class="mt-12 bg-slate-900 rounded-[2rem] p-8 md:p-10 text-center">
+                <p class="text-white font-bold italic text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
+                    <span class="text-gradient">Exclusividad comercial:</span> la propiedad la manejamos nosotros, pero abrimos las visitas a todos los colegas que quieran traernos un comprador. Más gente buscando, sin perder el control de tu venta.
                 </p>
             </div>
         </div>
@@ -1460,6 +1486,54 @@ function enviarSimu(esCompleto) {
 
 
   
+
+        <!-- =========================================================
+         SECCIÓN BLOG (OCULTA / EN CONSTRUCCIÓN)
+         Para activar: quitar el atributo style="display:none;"
+         de abajo y agregar el link "Blog" en el menú.
+    ========================================================== -->
+    <section id="blog" class="scroll-mt-28 py-16 md:py-24 px-6 bg-slate-50" style="display:none;">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-14">
+                <span class="text-pink-600 font-black text-[10px] uppercase tracking-[0.3em] italic">Notas y guías</span>
+                <h2 class="text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-black italic uppercase text-slate-900 tracking-tighter leading-tight mt-3">
+                    El blog de <span class="text-gradient">Danila</span>
+                </h2>
+                <p class="text-slate-500 font-bold italic mt-6 max-w-2xl mx-auto text-base md:text-lg">
+                    Guías claras sobre cómo vender bien en la Ciudad de Buenos Aires.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article class="bg-white rounded-[2rem] border border-slate-100 overflow-hidden hover:shadow-xl transition-all flex flex-col">
+                    <div class="h-40 bg-slate-100 flex items-center justify-center text-5xl">📊</div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="text-pink-600 font-black text-[10px] uppercase tracking-[0.2em] mb-2">Mercado</span>
+                        <h3 class="text-lg font-black text-slate-900 leading-tight mb-2">Cuánto vale realmente tu propiedad en CABA</h3>
+                        <p class="text-sm text-slate-500 font-medium leading-snug flex-1">Cómo se forma el precio real de mercado y por qué difiere de los portales.</p>
+                        <a href="#" class="mt-4 text-sm font-black text-pink-600 uppercase tracking-wide">Leer nota →</a>
+                    </div>
+                </article>
+                <article class="bg-white rounded-[2rem] border border-slate-100 overflow-hidden hover:shadow-xl transition-all flex flex-col">
+                    <div class="h-40 bg-slate-100 flex items-center justify-center text-5xl">🏛️</div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="text-pink-600 font-black text-[10px] uppercase tracking-[0.2em] mb-2">Legales</span>
+                        <h3 class="text-lg font-black text-slate-900 leading-tight mb-2">Vender una propiedad en sucesión: guía práctica</h3>
+                        <p class="text-sm text-slate-500 font-medium leading-snug flex-1">Declaratoria de herederos, documentación y tiempos que tenés que conocer.</p>
+                        <a href="#" class="mt-4 text-sm font-black text-pink-600 uppercase tracking-wide">Leer nota →</a>
+                    </div>
+                </article>
+                <article class="bg-white rounded-[2rem] border border-slate-100 overflow-hidden hover:shadow-xl transition-all flex flex-col">
+                    <div class="h-40 bg-slate-100 flex items-center justify-center text-5xl">📈</div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="text-pink-600 font-black text-[10px] uppercase tracking-[0.2em] mb-2">Estrategia</span>
+                        <h3 class="text-lg font-black text-slate-900 leading-tight mb-2">Home staging y marketing: por qué se vende más rápido</h3>
+                        <p class="text-sm text-slate-500 font-medium leading-snug flex-1">El impacto real de fotos, video y difusión profesional en el tiempo de venta.</p>
+                        <a href="#" class="mt-4 text-sm font-black text-pink-600 uppercase tracking-wide">Leer nota →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
     <footer class="py-12 bg-black text-center px-6">
         <div class="flex items-center justify-center gap-6 mb-6">
