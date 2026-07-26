@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://danilarealestate.netlify.app/sitemap.xml
+Sitemap: https://danilarealestate.com.ar/sitemap.xml
