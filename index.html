@@ -863,6 +863,75 @@ footer{padding:12px}
   .foot-bot{flex-direction:column;font-size:13px}
   .wa{right:14px;bottom:14px;width:54px;height:54px}
 }
+
+/* ===== MEJORAS: accesibilidad / navegación ===== */
+.skip{position:fixed;left:12px;top:-64px;z-index:100;background:#fff;color:var(--ink);padding:10px 18px;border-radius:999px;font-weight:500;transition:top .3s var(--ease)}
+.skip:focus{top:12px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.form :focus-visible{outline-color:#fff}
+.nav.open{backdrop-filter:none;-webkit-backdrop-filter:none}
+body.lock{overflow:hidden}
+.pac-container{z-index:2000;border-radius:12px;margin-top:4px;font-family:var(--sans);box-shadow:0 20px 40px -20px rgba(0,0,0,.4)}
+@media (min-width:1181px){.t-grid{grid-template-columns:repeat(4,1fr)}}
+.t-card.photo b.sm{font-size:28px;line-height:1.12}
+
+/* ===== ASISTENTE DE TASACIÓN ===== */
+.asist{padding:32px 32px 30px}
+.a-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.a-av{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:50% 24%;flex:none;box-shadow:0 0 0 2px rgba(255,255,255,.22)}
+.a-who b{display:block;font-size:17px;font-weight:500;letter-spacing:-.02em;line-height:1.2}
+.a-who small{color:rgba(255,255,255,.6);font-size:13px}
+.a-count{margin-left:auto;font-size:13px;color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums;white-space:nowrap}
+.a-bar{height:3px;background:rgba(255,255,255,.12);border-radius:3px;overflow:hidden;margin-bottom:22px}
+.a-bar i{display:block;height:100%;width:33.33%;background:var(--accent);border-radius:3px;transition:width .6s var(--ease)}
+.bubble{background:rgba(255,255,255,.08);border-radius:4px 16px 16px 16px;padding:14px 16px;font-size:15.5px;line-height:1.5;margin-bottom:20px;color:rgba(255,255,255,.92)}
+.bubble b{font-weight:500;color:#fff}
+.a-panel{display:none}
+.a-panel.on{display:block;animation:aIn .5s var(--ease)}
+@keyframes aIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.asist .form-label,.asist label{display:block}
+.asist input,.asist select,.asist textarea{font-size:16px}
+.asist textarea{width:100%;min-height:92px;resize:vertical;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:13px 14px;color:#fff;font:inherit;font-size:16px;outline:none;transition:border .3s,background .3s}
+.asist textarea:focus{border-color:#fff;background:rgba(255,255,255,.1)}
+.asist input::placeholder,.asist textarea::placeholder{color:rgba(255,255,255,.38)}
+.asist .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.asist .three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pill{display:inline-block;border-radius:999px;background:rgba(255,255,255,.1);padding:4px 12px;font-size:13px;margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{border:1px solid rgba(255,255,255,.18);background:transparent;border-radius:999px;padding:10px 16px;cursor:pointer;font-size:15px;transition:.35s var(--ease)}
+.chips button:hover{border-color:rgba(255,255,255,.5)}
+.chips button.on{background:#fff;color:var(--ink);border-color:#fff}
+.more-opt{margin:2px 0 6px;border-top:1px solid rgba(255,255,255,.12);padding-top:14px}
+.more-opt summary{cursor:pointer;font-size:14px;color:rgba(255,255,255,.75);list-style:none;display:flex;gap:8px;align-items:center;margin-bottom:14px}
+.more-opt summary::-webkit-details-marker{display:none}
+.more-opt summary::before{content:"+";display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.1)}
+.more-opt[open] summary::before{content:"\2013"}
+.help{display:block;margin-top:6px;font-size:13px;color:rgba(255,255,255,.55)}
+.help.ok{color:#9fe3b4}
+.err{display:block;margin-top:6px;font-size:13px;color:#ff9db8}
+.err:empty{display:none}
+.form input.bad,.form select.bad,.asist textarea.bad{border-color:#ff9db8}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.asist .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px}
+.asist .actions .btn.white{flex:1;justify-content:center;min-width:170px}
+.asist .btn[disabled]{opacity:.6;pointer-events:none}
+.priv{font-size:12.5px;color:rgba(255,255,255,.5);margin-top:14px}
+.priv a{text-decoration:underline;text-underline-offset:3px}
+form[data-tipo="Lote"] [data-hide~="lote"],form[data-tipo="Casa"] [data-hide~="casa"]{display:none}
+.a-done[hidden],#asistForm[hidden]{display:none}
+.a-done .a-fest{display:block;width:100%;height:150px;object-fit:cover;object-position:50% 18%;border-radius:12px;margin-bottom:18px}
+.sum{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin:0 0 6px;font-size:14px}
+.sum li{display:flex;flex-direction:column;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:8px;word-break:break-word}
+.sum li span{font-size:12px;color:rgba(255,255,255,.5)}
+.a-done .btn.white{width:100%;justify-content:center}
+@media (max-width:767px){
+  .asist{padding:24px 16px}
+  .asist .three{grid-template-columns:1fr 1fr}
+  .asist .two{grid-template-columns:1fr 1fr;gap:10px}
+  .chips button{padding:10px 14px}
+  .sum{grid-template-columns:1fr}
+  .a-who small{font-size:12px}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .rv,.hero-in{opacity:1!important;transform:none!important}
@@ -888,6 +957,7 @@ footer{padding:12px}
 </svg>
 
 <!-- NAV -->
+<a class="skip" href="#main">Ir al contenido</a>
 <header class="nav" id="nav">
   <div class="container">
     <a href="#hero" class="logo" aria-label="Danila Greppi, inicio">
@@ -903,15 +973,15 @@ footer{padding:12px}
       <a href="/blog/">Blog</a>
     </nav>
     <a class="btn white desk" href="#contacto"><svg class="a"><use href="#arr"/></svg><span class="lbl"><span>Vender ahora</span><span>Vender ahora</span></span></a>
-    <button class="burger" id="burger" aria-label="Abrir menú"><i></i></button>
-    <div class="mobile-menu">
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-controls="mobile-menu"><i></i></button>
+    <div class="mobile-menu" id="mobile-menu">
       <a href="#hero">Inicio</a><a href="#servicios">Cómo vendemos</a><a href="#proceso">Proceso</a><a href="#faq">Preguntas</a><a href="#descargables">Descargables</a><a href="/blog/">Blog</a>
       <a class="btn red" href="#contacto"><svg class="a"><use href="#arr"/></svg><span class="lbl"><span>Vender ahora</span><span>Vender ahora</span></span></a>
     </div>
   </div>
 </header>
 
-<main>
+<main id="main">
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-card">
@@ -1089,14 +1159,15 @@ footer{padding:12px}
 <section class="section testi">
   <div class="container">
     <div class="head">
-      <span class="tag rv"><svg><use href="#house"/></svg>Opiniones</span>
+      <span class="tag rv"><svg><use href="#house"/></svg>Clientes y opiniones</span>
       <h2 class="rv">Empatía real, <span class="serif muted">resultados de martillera.</span></h2>
       <div class="gpill rv"><span class="g">G</span><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><b>4.9/5</b><span class="muted">139 opiniones en Google Maps</span></div>
     </div>
     <div class="t-grid">
-      <div class="t-card rv"><div><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><p>"<span class="ph">[pegar reseña real de Google]</span>"</p></div><div class="who"><span class="av">A</span><div><b class="ph">[Nombre]</b><small>Vendió en Saavedra</small></div></div></div>
-      <div class="t-card dark rv d1"><div><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><p>"<span class="ph">[pegar reseña real de Google]</span>"</p></div><div class="who"><span class="av">B</span><div><b class="ph">[Nombre]</b><small>Vendió en Villa Urquiza</small></div></div></div>
+      <div class="t-card photo rv"><img src="clientes-escritura-1.jpg" alt="Danila Greppi y su equipo junto a clientes el día de la escritura" loading="lazy" style="object-position:center 35%"><div><b class="sm">Día de escritura.</b></div></div>
+      <div class="t-card photo rv d1"><img src="clientes-escritura-2.jpg" alt="Danila Greppi y su equipo con clientes en una escribanía" loading="lazy" style="object-position:center 30%"><div><b class="sm">Escritura con clientes.</b></div></div>
       <div class="t-card photo rv d2"><img src="DanilaGreppi60.JPG" alt="Danila Greppi" loading="lazy"><div><b>Venta en menos de 4 meses.</b></div></div>
+      <div class="t-card photo rv d3"><img src="regalo-clientes.jpg" alt="Regalo de agradecimiento para clientes con tarjeta de Marcela Genta" loading="lazy" style="object-position:center 55%"><div><b class="sm">Un gracias para nuestros clientes.</b></div></div>
     </div>
   </div>
 </section>
@@ -1176,13 +1247,13 @@ footer{padding:12px}
   </div>
 </section>
 
-<!-- CONTACTO / SIMULADOR -->
+<!-- CONTACTO / TASACIÓN GUIADA -->
 <section class="section contact" id="contacto">
   <div class="container contact-grid">
     <div>
-      <span class="tag rv"><svg><use href="#house"/></svg>Simulador Express CABA</span>
+      <span class="tag rv"><svg><use href="#house"/></svg>Tasación guiada</span>
       <h2 class="rv">¿Cuánto vale tu <span class="serif muted">propiedad?</span></h2>
-      <p class="lead rv">Seleccioná las características y recibí el valor por WhatsApp. ¿Tu caso es más complejo? Sucesiones, departamentos con deuda o una opinión honesta sobre tu barrio. Dejá de adivinar.</p>
+      <p class="lead rv">Contame dónde está y cómo es, y te respondo personalmente por WhatsApp con una primera orientación. ¿Tu caso es más complejo? Sucesiones, departamentos con deuda o una opinión honesta sobre tu barrio. Dejá de adivinar.</p>
       <div class="cinfo">
         <a class="rv" href="https://wa.me/5491170615041" onclick="return gtag_report_conversion(this.href)"><span class="ci"><svg><use href="#wa"/></svg></span><span><small>WhatsApp</small>+54 9 11 7061-5041</span></a>
         <a class="rv d1" href="https://www.instagram.com/danila.realestate/" target="_blank" rel="noopener"><span class="ci"><svg><use href="#ig"/></svg></span><span><small>Instagram</small>@danila.realestate</span></a>
@@ -1190,23 +1261,99 @@ footer{padding:12px}
         <div class="rv d3"><span class="ci"><svg><use href="#pin"/></svg></span><span><small>Zonas</small>Urquiza · Saavedra · Belgrano · Palermo</span></div>
       </div>
     </div>
-    <form class="form rv" id="propietarioForm" onsubmit="event.preventDefault();enviarSimu(true)">
-      <h3>Tasación estimada</h3>
-      <p>Te respondo personalmente por WhatsApp.</p>
-      <div class="tipos" id="tipos">
-        <button type="button" data-v="Depto" class="on">Depto</button><button type="button" data-v="PH">PH</button><button type="button" data-v="Casa">Casa</button><button type="button" data-v="Lote">Lote</button>
+
+    <div class="form asist rv" id="asistente">
+      <div class="a-head">
+        <img class="a-av" src="danila-pensando.jpg" alt="Danila Greppi" width="48" height="48" loading="lazy">
+        <div class="a-who"><b>Danila Greppi</b><small>Tasación guiada · 2 minutos</small></div>
+        <span class="a-count" id="aCount" aria-live="polite">1 / 3</span>
       </div>
-      <div class="two">
-        <div class="f"><label for="simBarrio">Barrio (CABA)</label><select id="simBarrio"><option value="">Seleccionar...</option><option>Saavedra</option><option>Villa Urquiza</option><option>Belgrano</option><option>Nuñez</option><option>Palermo</option><option>Recoleta</option><option>Caballito</option><option>Villa Crespo</option><option>Almagro</option><option>Puerto Madero</option><option>Otros Barrios</option></select></div>
-        <div class="f"><label for="simM2">Metros (m²)</label><input id="simM2" type="number" inputmode="numeric" placeholder="Ej: 75"></div>
+      <div class="a-bar" aria-hidden="true"><i id="aBar"></i></div>
+
+      <form id="asistForm" novalidate autocomplete="off">
+        <div class="hp" aria-hidden="true"><label>No completar este campo<input type="text" id="aHp" tabindex="-1" autocomplete="off"></label></div>
+
+        <!-- PASO 1 · UBICACIÓN -->
+        <div class="a-panel on" data-p="1">
+          <p class="bubble">Vamos a conocer un poco la propiedad para darte una primera orientación. Empecemos por la <b>ubicación</b>: la dirección del inmueble que querés analizar.</p>
+          <div class="f">
+            <label for="aDir">Dirección</label>
+            <input id="aDir" type="text" placeholder="Ej: Av. Balbín 4000, Saavedra" autocomplete="off" aria-describedby="aDirHelp eDir">
+            <small class="help" id="aDirHelp">Buscá la dirección y seleccioná la opción correcta para identificar la propiedad.</small>
+            <span class="err" id="eDir" role="alert"></span>
+          </div>
+          <div class="actions">
+            <button class="btn white" type="button" data-next><span class="lbl"><span>Continuar</span><span>Continuar</span></span><svg class="a"><use href="#arr"/></svg></button>
+          </div>
+        </div>
+
+        <!-- PASO 2 · CARACTERÍSTICAS -->
+        <div class="a-panel" data-p="2">
+          <p class="bubble" id="bub2">Perfecto, ya tengo la ubicación. Ahora contame algunas <b>características</b> de la propiedad.</p>
+          <span class="pill">Operación: Venta</span>
+          <div class="f">
+            <label id="lTipo">Tipología</label>
+            <div class="chips" id="aTipo" role="radiogroup" aria-labelledby="lTipo">
+              <button type="button" role="radio" aria-checked="false" data-v="Departamento">Departamento</button>
+              <button type="button" role="radio" aria-checked="false" data-v="PH">PH</button>
+              <button type="button" role="radio" aria-checked="false" data-v="Casa">Casa</button>
+              <button type="button" role="radio" aria-checked="false" data-v="Lote">Lote</button>
+              <button type="button" role="radio" aria-checked="false" data-v="Otro">Otro</button>
+            </div>
+            <span class="err" id="eTipo" role="alert"></span>
+          </div>
+          <div class="two">
+            <div class="f"><label for="aM2">Superficie cubierta (m²)</label><input id="aM2" type="number" inputmode="decimal" min="1" placeholder="Ej: 75"><span class="err" id="eM2" role="alert"></span></div>
+            <div class="f" data-hide="lote"><label for="aAmb">Ambientes</label><select id="aAmb"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6 o más</option></select><span class="err" id="eAmb" role="alert"></span></div>
+          </div>
+          <div class="three" data-hide="lote">
+            <div class="f"><label for="aDorm">Dormitorios</label><select id="aDorm"><option value="">—</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5 o más</option></select></div>
+            <div class="f"><label for="aBan">Baños</label><select id="aBan"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4 o más</option></select></div>
+            <div class="f"><label for="aCoc">Cocheras</label><select id="aCoc"><option value="">—</option><option>0</option><option>1</option><option>2</option><option>3 o más</option></select></div>
+          </div>
+          <div class="f" data-hide="lote"><label for="aAnt">Antigüedad</label><select id="aAnt"><option value="">Seleccionar...</option><option>A estrenar</option><option>Hasta 5 años</option><option>5 a 10 años</option><option>10 a 20 años</option><option>20 a 30 años</option><option>30 a 50 años</option><option>Más de 50 años</option><option>No lo sé</option></select></div>
+          <details class="more-opt">
+            <summary>Sumar más datos (opcional)</summary>
+            <div class="two" data-hide="casa lote">
+              <div class="f"><label for="aPiso">Piso</label><input id="aPiso" type="text" maxlength="20" placeholder="Ej: 3°"></div>
+              <div class="f"><label for="aUni">Unidad</label><input id="aUni" type="text" maxlength="20" placeholder="Ej: B"></div>
+            </div>
+            <div class="f" data-hide="lote"><label for="aBalc">Balcón / terraza</label><select id="aBalc"><option value="">Seleccionar...</option><option>No tiene</option><option>Balcón</option><option>Terraza</option><option>Balcón y terraza</option></select></div>
+            <div class="f"><label for="aDesc">Descripción de la propiedad</label><textarea id="aDesc" maxlength="600" placeholder="Estado, luz, reformas, lo que quieras contarme"></textarea></div>
+          </details>
+          <div class="actions">
+            <button class="alt" type="button" data-back>Volver</button>
+            <button class="btn white" type="button" data-next><span class="lbl"><span>Continuar</span><span>Continuar</span></span><svg class="a"><use href="#arr"/></svg></button>
+          </div>
+        </div>
+
+        <!-- PASO 3 · CONTACTO -->
+        <div class="a-panel" data-p="3">
+          <p class="bubble">Casi listo. Dejame tus datos y te escribo personalmente para darte una <b>primera orientación</b> sobre tu propiedad.</p>
+          <div class="f"><label for="aNom">Nombre</label><input id="aNom" type="text" autocomplete="name" placeholder="Tu nombre"><span class="err" id="eNom" role="alert"></span></div>
+          <div class="two">
+            <div class="f"><label for="aTel">WhatsApp</label><input id="aTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="11 1234 5678"><span class="err" id="eTel" role="alert"></span></div>
+            <div class="f"><label for="aMail">Email (opcional)</label><input id="aMail" type="email" autocomplete="email" placeholder="vos@email.com"><span class="err" id="eMail" role="alert"></span></div>
+          </div>
+          <div class="actions">
+            <button class="alt" type="button" data-back>Volver</button>
+            <button class="btn white" type="button" data-next><svg><use href="#wa"/></svg><span class="lbl"><span>Enviar mi solicitud</span><span>Enviar mi solicitud</span></span></button>
+          </div>
+          <p class="priv">Uso estos datos solo para contactarte por esta consulta. <a href="/privacidad.html">Privacidad</a></p>
+        </div>
+      </form>
+
+      <!-- CIERRE -->
+      <div class="a-done" id="aDone" hidden>
+        <img class="a-fest" src="danila-brindis.jpg" alt="Danila Greppi brindando" loading="lazy">
+        <p class="bubble" id="aDoneMsg"></p>
+        <ul class="sum" id="aSum"></ul>
+        <div class="actions">
+          <a class="btn white" id="aWa" href="https://wa.me/5491170615041"><svg><use href="#wa"/></svg><span class="lbl"><span>Hablar con Danila por WhatsApp</span><span>Hablar con Danila por WhatsApp</span></span></a>
+          <button class="alt" type="button" id="aReset">Cargar otra propiedad</button>
+        </div>
       </div>
-      <div class="f"><label for="simDireccion">Dirección (calle y altura)</label><input id="simDireccion" type="text" placeholder="Ej: Av. Balbín 4000"></div>
-      <div class="f"><label for="simPublicada">¿Ya está publicada?</label><select id="simPublicada"><option value="">Seleccionar...</option><option>Sí, con otra inmobiliaria</option><option>Sí, como dueño directo</option><option>No, todavía no</option></select></div>
-      <div class="actions">
-        <button class="btn white" type="submit"><svg><use href="#wa"/></svg><span class="lbl"><span>Obtener tasación estimada</span><span>Obtener tasación estimada</span></span></button>
-        <button class="alt" type="button" onclick="enviarSimu(false)">Consulta rápida por WhatsApp</button>
-      </div>
-    </form>
+    </div>
   </div>
 </section>
 </main>
@@ -1242,7 +1389,7 @@ footer{padding:12px}
   </div>
 </footer>
 
-<a class="wa" id="wa" href="https://wa.me/5491170615041" aria-label="Escribime por WhatsApp" onclick="return gtag_report_conversion(this.href)"><svg><use href="#wa"/></svg></a>
+<a class="wa" id="waFloat" href="https://wa.me/5491170615041" aria-label="Escribime por WhatsApp" onclick="return gtag_report_conversion(this.href)"><svg><use href="#wa"/></svg></a>
 
 <script>
 /* ===== Conversión Google Ads (original) ===== */
@@ -1254,27 +1401,17 @@ function gtag_report_conversion(url){
   } else { callback(); }
   return false;
 }
-/* ===== Simulador (original, adaptado) ===== */
-let selectedTipoValue="Depto";
-document.querySelectorAll('#tipos button').forEach(b=>b.addEventListener('click',()=>{selectedTipoValue=b.dataset.v;document.querySelectorAll('#tipos button').forEach(x=>x.classList.toggle('on',x===b))}));
-function enviarSimu(esCompleto){
-  const bar=document.getElementById('simBarrio').value||"CABA";
-  const dir=document.getElementById('simDireccion').value||"-";
-  const m2=document.getElementById('simM2').value||"-";
-  const publicada=document.getElementById('simPublicada').value||"-";
-  const msg=esCompleto
-    ?`Hola Danila! Usé el simulador de tu web.\n\nPropiedad: ${selectedTipoValue||'Inmueble'}\nBarrio: ${bar}\nDirección: ${dir}\nSuperficie: ${m2}m2\nPublicada: ${publicada}\n\nQuiero conocer el valor de mercado hoy para vender.`
-    :`Hola Danila! Te escribo desde la web para consultarte por una propiedad para vender. ¿Cómo estás?`;
-  gtag_report_conversion(`https://wa.me/5491170615041?text=${encodeURIComponent(msg)}`);
-}
-
 /* ===== UI ===== */
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const nav=document.getElementById('nav'),wa=document.getElementById('wa');
+const nav=document.getElementById('nav'),wa=document.getElementById('waFloat');
 const onS=()=>{nav.classList.toggle('scrolled',scrollY>60);wa.classList.toggle('show',scrollY>innerHeight*.7)};
 addEventListener('scroll',onS,{passive:true});onS();
-document.getElementById('burger').onclick=()=>nav.classList.toggle('open');
-nav.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+const burger=document.getElementById('burger');burger.setAttribute('aria-expanded','false');
+const setMenu=o=>{nav.classList.toggle('open',o);burger.setAttribute('aria-expanded',String(o));document.body.classList.toggle('lock',o)};
+burger.onclick=()=>setMenu(!nav.classList.contains('open'));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open'))setMenu(false)});
+nav.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.querySelectorAll('.btn .lbl span+span').forEach(s=>s.setAttribute('aria-hidden','true'));
 // anclas con offset
 document.querySelectorAll('a[href^="#"]').forEach(l=>l.addEventListener('click',e=>{const t=document.querySelector(l.getAttribute('href'));if(!t)return;e.preventDefault();scrollTo({top:t.getBoundingClientRect().top+pageYOffset-80,behavior:reduce?'auto':'smooth'})}));
 // menú activo
@@ -1297,7 +1434,7 @@ document.querySelectorAll('.rv').forEach(e=>io.observe(e));
 // tabs
 (()=>{const box=document.getElementById('tabs'),bs=box.querySelectorAll('.tabs-menu button'),ps=box.querySelectorAll('.pane'),cap=document.getElementById('tabcap');
 const caps=['Amoblamiento virtual 3D: intervención visual para sets de revista.','Plano técnico pro: claridad técnica para el comprador inteligente.','Video profesional para YouTube: recorrido para que la vean sin moverse.','Saavedra: el barrio que conocemos como nadie.'];
-let cur=0,t;const go=(i,user)=>{cur=i;bs.forEach((b,k)=>b.classList.toggle('on',k==i));ps.forEach((p,k)=>p.classList.toggle('on',k==i));cap.textContent=caps[i];cap.style.opacity=i==2?0:1;
+let cur=0,t;const go=(i,user)=>{cur=i;bs.forEach((b,k)=>{b.classList.toggle('on',k==i);b.setAttribute('aria-selected',String(k==i))});ps.forEach((p,k)=>p.classList.toggle('on',k==i));cap.textContent=caps[i];cap.style.opacity=i==2?0:1;
   if(i==2){const f=ps[2].querySelector('iframe');if(!f.src)f.src=f.dataset.src;clearInterval(t)}if(user)clearInterval(t)};
 bs.forEach(b=>b.onclick=()=>go(+b.dataset.t,true));
 const auto=()=>{if(!reduce)t=setInterval(()=>go(cur==1?3:(cur+1)%4),5000)};auto()})();
@@ -1316,6 +1453,181 @@ document.querySelectorAll('.qa').forEach(d=>d.addEventListener('toggle',()=>{if(
 const rows=[['Tasación con operaciones cerradas',ok,no,no],['Fotos y video profesional',ok,'A veces',no],['Reels y TikToks (+191K)',ok,no,no],['Tomas con drone',ok,no,no],['Tour virtual 360°',ok,no,no],['Plano técnico a medida',ok,no,no],['Amoblamiento virtual 3D',ok,no,no],['Destaque máximo en portales',ok,'Básico','Pago propio'],['Dominio e inhibición',ok,ok,no],['Red de colegas (colegueo)',ok,'A veces',no],['Reporte quincenal con métricas',ok,no,no],['Costo de marketing','$0','Variable','A tu cargo']];
 const head=['Qué incluye','<small>Recomendado</small>Danila Greppi','Inmobiliaria tradicional','Dueño directo'],cls=['feat','c2','c3','c4'];
 document.getElementById('tbl').innerHTML=cls.map((c,k)=>'<div class="col '+c+'"><div class="hcell">'+head[k]+'</div>'+rows.map(r=>'<div class="cell">'+r[k]+'</div>').join('')+(k==1?'<div class="end"></div>':'')+'</div>').join('')})();
+
+/* ===== Asistente de tasación ===== */
+/* CONFIGURACIÓN — completar estos 2 datos (ver instrucciones en la entrega) */
+const CONFIG={
+  whatsapp:'5491170615041',        // WhatsApp de Danila (ya cargado, igual que el resto del sitio)
+  emailEndpoint:'',                // COMPLETAR: URL del servicio que reenvía el formulario a tu email (ej. Formspree). Vacío = el lead NO llega por email.
+  googleMapsApiKey:''              // COMPLETAR: API key de Google Maps (Places API). Vacío = la dirección se escribe a mano, sin autocompletado.
+};
+(()=>{
+  const form=document.getElementById('asistForm');
+  if(!form)return;
+  const $=id=>document.getElementById(id);
+  const panels=[...form.querySelectorAll('.a-panel')];
+  const card=$('asistente'),bar=$('aBar'),count=$('aCount'),done=$('aDone');
+  const NI='No informado';
+  let step=1,tipo='',sending=false;
+  const v=id=>($(id)?$(id).value.trim():'');
+  const mark=(id,errId,msg)=>{const el=$(id),er=$(errId);if(el)el.classList.toggle('bad',!!msg);if(er)er.textContent=msg||'';return !msg};
+  const label=(btn,t)=>btn.querySelectorAll('.lbl span').forEach(s=>s.textContent=t);
+  const reveal=()=>{const r=card.getBoundingClientRect();if(r.top<70)scrollTo({top:r.top+pageYOffset-90,behavior:reduce?'auto':'smooth'})};
+
+  /* ---- navegación entre pasos ---- */
+  function go(n,focus){
+    step=n;
+    panels.forEach((p,i)=>p.classList.toggle('on',i+1===n));
+    bar.style.width=(n/3*100)+'%';
+    count.textContent=n+' / 3';
+    if(n===2)$('bub2').textContent='Perfecto, ya tengo la ubicación ('+v('aDir')+'). Ahora contame algunas características de la propiedad.';
+    if(focus){const f=panels[n-1].querySelector('input,select,textarea');if(f)f.focus({preventScroll:true})}
+    reveal();
+  }
+  function validate(n){
+    let ok=true,first=null;
+    const chk=(id,err,msg)=>{if(!mark(id,err,msg)){ok=false;if(!first)first=id}};
+    if(n===1)chk('aDir','eDir',v('aDir').length<5?'Escribí la calle y la altura.':'');
+    if(n===2){
+      $('eTipo').textContent=tipo?'':'Elegí una opción.';
+      if(!tipo){ok=false;first='aTipo'}
+      const m2=parseFloat(v('aM2').replace(',','.'));
+      chk('aM2','eM2',(!(m2>0)||m2>100000)?'Indicá los m² cubiertos.':'');
+      if(tipo!=='Lote')chk('aAmb','eAmb',v('aAmb')?'':'Elegí los ambientes.');
+    }
+    if(n===3){
+      chk('aNom','eNom',v('aNom').length<2?'Decime tu nombre.':'');
+      chk('aTel','eTel',v('aTel').replace(/\D/g,'').length<8?'Dejá un WhatsApp con código de área.':'');
+      const mail=v('aMail');
+      chk('aMail','eMail',(mail&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail))?'Revisá el email.':'');
+    }
+    if(first){const el=$(first);const t=first==='aTipo'?el.querySelector('button'):el;if(t)t.focus()}
+    return ok;
+  }
+  function next(){
+    if(sending||!validate(step))return;
+    if(step<3)go(step+1,step+1===3);else submit();
+  }
+  form.addEventListener('click',e=>{
+    const b=e.target.closest('[data-next],[data-back]');
+    if(!b)return;
+    if(b.hasAttribute('data-back'))go(step-1,true);else next();
+  });
+  form.addEventListener('keydown',e=>{
+    if(e.key!=='Enter')return;
+    const t=e.target.tagName;
+    if(t==='TEXTAREA'||t==='BUTTON'||t==='SUMMARY')return;
+    e.preventDefault();
+    if(e.target.id!=='aDir')next();   // en la dirección, Enter solo elige la sugerencia
+  });
+  form.addEventListener('submit',e=>e.preventDefault());
+
+  /* ---- tipología ---- */
+  const chips=[...document.querySelectorAll('#aTipo button')];
+  chips.forEach(b=>b.addEventListener('click',()=>{
+    tipo=b.dataset.v;
+    chips.forEach(x=>{const on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-checked',String(on))});
+    form.dataset.tipo=tipo;
+    $('eTipo').textContent='';
+  }));
+  ['aDir','aM2','aAmb','aNom','aTel','aMail'].forEach(id=>$(id).addEventListener('input',()=>$(id).classList.remove('bad')));
+
+  /* ---- datos ---- */
+  function data(){
+    const lote=tipo==='Lote',noPiso=tipo==='Casa'||lote;
+    const g=(id,skip)=>skip?NI:(v(id)||NI);
+    return {
+      fecha:new Date().toLocaleString('es-AR',{timeZone:'America/Argentina/Buenos_Aires'}),
+      nombre:v('aNom')||NI,email:v('aMail')||NI,whatsapp:v('aTel')||NI,
+      direccion:v('aDir')||NI,operacion:'Venta',tipologia:tipo||NI,
+      superficie:v('aM2')?v('aM2')+' m² cubiertos':NI,
+      ambientes:g('aAmb',lote),dormitorios:g('aDorm',lote),banos:g('aBan',lote),cocheras:g('aCoc'),antiguedad:g('aAnt',lote),
+      piso:g('aPiso',noPiso),unidad:g('aUni',noPiso),balcon:g('aBalc',lote),descripcion:v('aDesc')||NI
+    };
+  }
+  function waMsg(d){
+    const L=['Hola Danila, completé la solicitud de tasación de mi propiedad en '+d.direccion+'. Quería consultarte por la tasación.',''];
+    const add=(k,x)=>{if(x&&x!==NI)L.push(k+': '+x)};
+    add('Nombre',d.nombre);add('Operación',d.operacion);add('Tipología',d.tipologia);add('Superficie',d.superficie);
+    add('Ambientes',d.ambientes);add('Dormitorios',d.dormitorios);add('Baños',d.banos);add('Cocheras',d.cocheras);add('Antigüedad',d.antiguedad);
+    return L.join('\n');
+  }
+  function payload(d){
+    const p={_subject:'Nueva solicitud de tasación',
+      'Fecha':d.fecha,'Nombre':d.nombre,'Email':d.email,'WhatsApp':d.whatsapp,'Dirección':d.direccion,'Operación':d.operacion,
+      'Tipología':d.tipologia,'Superficie':d.superficie,'Ambientes':d.ambientes,'Dormitorios':d.dormitorios,'Baños':d.banos,
+      'Cocheras':d.cocheras,'Antigüedad':d.antiguedad,'Piso':d.piso,'Unidad':d.unidad,'Balcón / terraza':d.balcon,'Descripción':d.descripcion};
+    if(d.email!==NI)p.email=d.email;   // reply-to
+    return p;
+  }
+  async function sendEmail(p){
+    if(!CONFIG.emailEndpoint){console.warn('[Tasación] CONFIG.emailEndpoint está vacío: este lead NO se envió por email.');return false}
+    try{
+      const r=await fetch(CONFIG.emailEndpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(p)});
+      if(!r.ok)throw new Error('HTTP '+r.status);
+      return true;
+    }catch(err){console.error('[Tasación] No se pudo enviar el email:',err);return false}
+  }
+
+  /* ---- envío y cierre ---- */
+  async function submit(){
+    sending=true;
+    const btn=panels[2].querySelector('[data-next]');
+    btn.disabled=true;label(btn,'Enviando…');
+    const d=data();
+    if(!$('aHp').value){   // honeypot anti-spam
+      await sendEmail(payload(d));
+      try{if(typeof gtag==='function')gtag('event','generate_lead',{event_category:'tasacion'})}catch(_){}
+    }
+    showDone(d);
+    btn.disabled=false;label(btn,'Enviar mi solicitud');
+    sending=false;
+  }
+  function showDone(d){
+    form.hidden=true;done.hidden=false;
+    bar.style.width='100%';count.textContent='Listo';
+    const first=d.nombre===NI?'':d.nombre.split(/\s+/)[0];
+    $('aDoneMsg').textContent=(first?'Gracias, '+first+'. ':'Gracias. ')+'Con estos datos ya puedo hacer una primera evaluación de tu propiedad. Para una tasación más precisa conviene analizar la propiedad, la documentación y el mercado comparable. Seguimos por WhatsApp.';
+    const ul=$('aSum');ul.textContent='';
+    [['Dirección',d.direccion],['Tipología',d.tipologia],['Superficie',d.superficie],['Ambientes',d.ambientes],['Dormitorios',d.dormitorios],['Baños',d.banos],['Cocheras',d.cocheras],['Antigüedad',d.antiguedad]]
+      .filter(r=>r[1]!==NI).forEach(r=>{const li=document.createElement('li'),s=document.createElement('span');s.textContent=r[0];li.appendChild(s);li.appendChild(document.createTextNode(r[1]));ul.appendChild(li)});
+    $('aWa').href='https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(waMsg(d));
+    reveal();
+  }
+  $('aWa').addEventListener('click',e=>{e.preventDefault();gtag_report_conversion($('aWa').href)});
+  $('aReset').addEventListener('click',()=>{
+    form.reset();tipo='';delete form.dataset.tipo;
+    chips.forEach(x=>{x.classList.remove('on');x.setAttribute('aria-checked','false')});
+    form.querySelectorAll('.err').forEach(x=>x.textContent='');
+    form.querySelectorAll('.bad').forEach(x=>x.classList.remove('bad'));
+    const hp=$('aDirHelp');hp.textContent='Buscá la dirección y seleccioná la opción correcta para identificar la propiedad.';hp.classList.remove('ok');
+    done.hidden=true;form.hidden=false;go(1,true);
+  });
+
+  /* ---- autocompletado de dirección (Google Places, solo si hay API key) ---- */
+  const dir=$('aDir'),help=$('aDirHelp'),helpTxt=help.textContent;
+  window.initPlaces=()=>{
+    try{
+      const ac=new google.maps.places.Autocomplete(dir,{
+        componentRestrictions:{country:'ar'},types:['address'],fields:['formatted_address'],
+        bounds:new google.maps.LatLngBounds({lat:-34.705,lng:-58.531},{lat:-34.526,lng:-58.335})
+      });
+      ac.addListener('place_changed',()=>{
+        const p=ac.getPlace();
+        if(p&&p.formatted_address){dir.value=p.formatted_address;dir.classList.remove('bad');$('eDir').textContent='';help.textContent='✓ Dirección identificada.';help.classList.add('ok')}
+      });
+      dir.addEventListener('input',()=>{help.textContent=helpTxt;help.classList.remove('ok')});
+    }catch(err){console.warn('[Tasación] Google Places no disponible:',err)}
+  };
+  if(CONFIG.googleMapsApiKey){
+    dir.addEventListener('focus',()=>{
+      const s=document.createElement('script');
+      s.src='https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(CONFIG.googleMapsApiKey)+'&libraries=places&language=es&region=AR&callback=initPlaces';
+      s.async=true;s.onerror=()=>console.warn('[Tasación] No se pudo cargar Google Maps; la dirección se completa a mano.');
+      document.head.appendChild(s);
+    },{once:true});
+  }
+})();
 </script>
 </body>
 </html>
