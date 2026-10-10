@@ -875,63 +875,384 @@ body.lock{overflow:hidden}
 @media (min-width:1181px){.t-grid{grid-template-columns:repeat(4,1fr)}}
 .t-card.photo b.sm{font-size:28px;line-height:1.12}
 
-/* ===== ASISTENTE DE TASACIÓN ===== */
-.asist{padding:32px 32px 30px}
-.a-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-.a-av{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:50% 24%;flex:none;box-shadow:0 0 0 2px rgba(255,255,255,.22)}
+/* ===== v2 · PERSONALIDAD, CONTRASTE Y MOVIMIENTO ===== */
+[hidden]{display:none!important}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(var(--r0,0deg))}50%{transform:translateY(-10px) rotate(var(--r1,0deg))}}
+.hl{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
+
+/* --- Sobre mí: sello + stickers --- */
+.about-fig{position:relative}
+.about-fig .about-img{height:420px}
+.seal{position:absolute;right:-34px;bottom:-30px;width:132px;height:132px;z-index:3;filter:drop-shadow(0 14px 24px rgba(200,16,106,.35))}
+.seal .bgc{fill:var(--accent)}
+.seal text{font:600 10.4px var(--sans);letter-spacing:.04em;fill:#fff}
+.seal .spin{transform-origin:60px 60px;animation:spin 14s linear infinite}
+.seal use{color:#fff}
+.stickers{display:flex;flex-wrap:wrap;gap:10px;margin:-10px 0 34px}
+.stk{display:inline-block;padding:9px 16px;border-radius:999px;font-weight:500;font-size:15px;letter-spacing:-.01em;transition:transform .5s var(--ease);cursor:default}
+.stk.s1{background:var(--orange);color:var(--ink);transform:rotate(-3deg)}
+.stk.s2{background:var(--accent);color:#fff;transform:rotate(2deg)}
+.stk.s3{background:var(--olive);color:var(--ink);transform:rotate(-1.5deg)}
+.stk:hover{transform:rotate(0) scale(1.08)}
+
+/* --- "Yo la muevo": escena ligada al scroll --- */
+.push{margin:90px 0 10px;background:#fff;border-radius:var(--r);padding:30px 36px 40px;position:relative;overflow:hidden}
+.push-hd{display:flex;justify-content:space-between;font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--ink70)}
+.push-hd .r{color:var(--accent)}
+.stage{position:relative;height:190px;margin-top:4px}
+.road{position:absolute;left:0;right:0;bottom:18px;height:6px;border-radius:6px;background:var(--ink10)}
+.road i{position:absolute;left:0;top:0;bottom:0;width:calc(var(--p,0)*100%);background:var(--accent);border-radius:6px}
+.finish{position:absolute;right:0;bottom:26px;width:180px;height:180px;display:grid;place-items:center}
+.finish::before{content:"";position:absolute;inset:14px;border:3px dashed var(--ink20);border-radius:50%;transition:border-color .5s,background .5s}
+.stage.done .finish::before{border-color:var(--accent);background:rgba(200,16,106,.07);animation:spin 18s linear infinite}
+.sold{position:relative;z-index:3;border:4px solid var(--accent);color:var(--accent);border-radius:10px;padding:6px 14px;font-weight:600;font-size:24px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;opacity:0;transform:rotate(-14deg) scale(2.6);transition:opacity .25s,transform .55s cubic-bezier(.3,1.6,.5,1);background:rgba(255,255,255,.7)}
+.stage.done .sold{opacity:1;transform:rotate(-10deg) scale(1)}
+.stage.done .say{opacity:0}
+.sold{margin-top:-34px}
+.mover{position:absolute;left:96px;bottom:24px;width:150px;height:130px;transform:translateX(var(--x,0px)) scale(var(--k,1));transform-origin:left bottom;will-change:transform}
+.hse{width:150px;height:auto;display:block;overflow:visible}
+.wheel{transform-box:fill-box;transform-origin:center;transform:rotate(var(--rot,0deg))}
+.stage.go .hse{animation:rumble .28s linear infinite}
+@keyframes rumble{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+.pusher{position:absolute;left:-82px;bottom:2px;width:74px;height:74px}
+.pusher img{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 10px 24px -8px rgba(22,20,21,.45);transition:opacity .35s}
+.pusher .a2{opacity:0}
+.stage.done .pusher .a1{opacity:0}.stage.done .pusher .a2{opacity:1}
+.stage.go .pusher{animation:lean .5s ease-in-out infinite alternate}
+@keyframes lean{from{transform:translateY(0) rotate(3deg)}to{transform:translateY(-7px) rotate(9deg)}}
+.say{position:absolute;left:-64px;bottom:88px;background:var(--ink);color:#fff;font-size:13px;font-weight:500;padding:6px 12px;border-radius:12px 12px 12px 2px;white-space:nowrap;transition:opacity .3s}
+.zzz{position:absolute;left:150px;bottom:150px;font-family:var(--serif);font-style:italic;font-size:30px;color:var(--ink70);transition:opacity .4s;pointer-events:none}
+.zzz span{display:inline-block;animation:zz 2s ease-in-out infinite}
+.zzz span:nth-child(2){animation-delay:.35s;font-size:1.25em}.zzz span:nth-child(3){animation-delay:.7s;font-size:1.5em}
+@keyframes zz{0%,100%{transform:translateY(0);opacity:.35}50%{transform:translateY(-10px);opacity:1}}
+.stage.go .zzz,.stage.done .zzz{opacity:0}
+.confetti{position:absolute;right:90px;bottom:120px;width:0;height:0;pointer-events:none}
+.confetti span{position:absolute;width:9px;height:14px;border-radius:2px;background:var(--c);opacity:0}
+.stage.burst .confetti span{animation:burst 1.2s cubic-bezier(.15,.8,.3,1) forwards}
+@keyframes burst{0%{opacity:1;transform:translate(0,0) rotate(0) scale(.5)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rt)) scale(1)}}
+.push-t{font-size:56px;letter-spacing:-.04em;line-height:1.04;text-align:center;margin-top:6px;font-weight:400}
+.push-t .serif{color:var(--accent);font-size:1.08em}
+
+/* --- Cintas --- */
+.ribbons{position:relative;height:178px;overflow:hidden;margin:40px 0 0}
+.rib{position:absolute;left:-6%;width:112%;padding:14px 0;white-space:nowrap;overflow:hidden}
+.rib.r1{top:22px;background:var(--accent);color:#fff;transform:rotate(-1.4deg)}
+.rib.r2{top:92px;background:var(--ink);color:#fff;transform:rotate(-1.4deg)}
+.rib-track{display:flex;width:max-content;animation:marq 42s linear infinite}
+.rib.r2 .rib-track{animation-direction:reverse;animation-duration:50s}
+.rib span{display:inline-flex;align-items:center;gap:26px;padding-right:26px;font-size:26px;letter-spacing:-.02em;font-weight:500}
+.rib span em{font-family:var(--serif);font-weight:400;font-size:1.12em}
+.rib svg{width:20px;height:20px;color:var(--orange)}
+
+/* --- Servicios: recibo + tarjetas de color --- */
+.svc-wrap{display:grid;grid-template-columns:390px 1fr;gap:34px;align-items:start}
+.ticket{position:relative;background:#fff;padding:30px 28px 30px;border-radius:6px 6px 0 0;transform:rotate(-1.6deg);box-shadow:0 40px 70px -40px rgba(22,20,21,.45);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;margin-bottom:16px}
+.ticket::after{content:"";position:absolute;left:0;right:0;bottom:-13px;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='14' viewBox='0 0 20 14'%3E%3Cpath d='M0 0h20L10 14Z' fill='%23fff'/%3E%3C/svg%3E") repeat-x}
+.tk-top{display:flex;flex-direction:column;gap:2px;border-bottom:2px dashed var(--ink20);padding-bottom:14px;margin-bottom:14px}
+.tk-top span{font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+.tk-top small{color:var(--ink70);font-size:12.5px}
+.tk-list{list-style:none;display:flex;flex-direction:column;gap:11px;font-size:14px}
+.tk-list li{display:flex;align-items:baseline;gap:8px;opacity:0;transform:translateX(-14px);transition:opacity .5s var(--ease),transform .5s var(--ease);transition-delay:calc(var(--i)*.13s + .25s)}
+.tk-list li i{flex:1;border-bottom:2px dotted var(--ink20);transform:translateY(-3px)}
+.tk-list li b{color:var(--accent);font-weight:700}
+.ticket.in .tk-list li{opacity:1;transform:none}
+.tk-total{display:flex;justify-content:space-between;align-items:baseline;border-top:2px dashed var(--ink20);margin-top:16px;padding-top:14px;opacity:0;transition:opacity .5s .3s}
+.tk-total span{font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:14px}
+.tk-total strong{font-family:var(--sans);font-size:52px;letter-spacing:-.05em;line-height:1;font-weight:500;color:var(--accent)}
+.ticket.in .tk-total{opacity:1;transition-delay:1.45s}
+.tk-stamp{position:absolute;right:14px;top:16px;border:4px solid var(--accent);color:var(--accent);border-radius:8px;padding:5px 12px;font-weight:700;font-size:19px;letter-spacing:.08em;text-transform:uppercase;transform:rotate(-14deg) scale(2.6);opacity:0;transition:opacity .2s,transform .5s cubic-bezier(.3,1.6,.5,1);transition-delay:2s;mix-blend-mode:multiply;background:rgba(255,255,255,.55)}
+.ticket.in .tk-stamp{opacity:1;transform:rotate(-11deg) scale(1)}
+.svc-grid{grid-template-columns:1fr 1fr;gap:16px}
+.svc{min-height:312px;border-radius:var(--r);padding:28px;position:relative;overflow:hidden}
+.svc .ico{width:64px;height:64px;margin-bottom:34px}
+.svc .ico svg{width:100%;height:100%;overflow:visible}
+.svc h3{font-size:25px;line-height:1.1}
+.svc p{color:inherit;opacity:.82;font-size:15.5px}
+.svc.c-mag{background:var(--accent);color:#fff}
+.svc.c-org{background:var(--orange);color:var(--ink)}
+.svc.c-ink{background:var(--dark);color:#fff}
+.svc.c-oli{background:var(--olive);color:var(--ink)}
+.svc li{background:rgba(255,255,255,.18);color:inherit}
+.svc.c-org li,.svc.c-oli li{background:rgba(22,20,21,.1)}
+.svc:hover{transform:translateY(-8px) rotate(-.8deg);box-shadow:0 34px 60px -30px rgba(22,20,21,.5)}
+.svc .bar{transform-box:fill-box;transform-origin:bottom;transform:scaleY(.12);transition:transform 1s var(--ease)}
+.svc.in .bar{transform:scaleY(1)}
+.svc.in .bar:nth-child(2){transition-delay:.12s}.svc.in .bar:nth-child(3){transition-delay:.24s}.svc.in .bar:nth-child(4){transition-delay:.36s}
+.svc .trend{stroke-dasharray:90;stroke-dashoffset:90;transition:stroke-dashoffset 1.4s .5s var(--ease)}
+.svc.in .trend{stroke-dashoffset:0}
+.flash{transform-box:fill-box;transform-origin:center;animation:flash 3s ease-in-out infinite}
+@keyframes flash{0%,82%,100%{opacity:0;transform:scale(.3)}88%{opacity:1;transform:scale(1.15)}}
+.ring{transform-box:fill-box;transform-origin:center;animation:ringOut 2.8s ease-out infinite;opacity:0}
+.ring:nth-of-type(2){animation-delay:.9s}.ring:nth-of-type(3){animation-delay:1.8s}
+@keyframes ringOut{0%{transform:scale(.25);opacity:.9}100%{transform:scale(1.2);opacity:0}}
+.tick{stroke-dasharray:34;stroke-dashoffset:34;animation:tickDraw 3s ease-in-out infinite}
+@keyframes tickDraw{0%,15%{stroke-dashoffset:34}45%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:34}}
+
+/* --- Zonas: mapa esquemático --- */
+.zwrap{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.zmap{position:relative;background:var(--dark);border-radius:var(--r);overflow:hidden;aspect-ratio:560/400}
+.zmap svg{display:block;width:100%;height:100%}
+.zmap .river{fill:rgba(212,221,213,.16)}
+.zmap .wave{fill:none;stroke:rgba(212,221,213,.35);stroke-width:1.4;stroke-dasharray:6 8;animation:dash 4s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-56}}
+.zmap .route{fill:none;stroke:var(--orange);stroke-width:2.2;stroke-dasharray:3 9;stroke-linecap:round;animation:dash 1.2s linear infinite}
+.zmap .park{fill:rgba(160,200,150,.16)}
+.zmap .pin{cursor:pointer}
+.zmap .pin .pulse{transform-box:fill-box;transform-origin:center;fill:var(--accent);opacity:0;animation:pinPulse 2.4s ease-out infinite}
+@keyframes pinPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(3.4);opacity:0}}
+.zmap .pin .pd{fill:var(--accent);stroke:#fff;stroke-width:3;transform-box:fill-box;transform-origin:center;transition:transform .4s var(--ease),fill .3s}
+.zmap .pin.on .pd{transform:scale(1.5);fill:var(--orange)}
+.zmap .pin .lb rect{fill:#fff;transition:fill .3s}
+.zmap .pin .lb text{font:600 14px var(--sans);fill:var(--ink);letter-spacing:-.01em}
+.zmap .pin.on .lb rect{fill:var(--orange)}
+.zlegend{position:absolute;left:16px;bottom:12px;font-size:12px;color:rgba(255,255,255,.5)}
+.zwrap .proj-grid{grid-template-columns:1fr;row-gap:30px}
+.proj.on .top::after{width:100%}
+.proj.on .go{background:var(--accent);border-color:var(--accent);color:#fff;transform:rotate(-45deg)}
+
+/* --- Mercado: puntos + mini gráficos --- */
+.mk-viz{display:grid;grid-template-columns:1.5fr 1fr;gap:64px;align-items:center;margin-top:70px}
+.dots{display:grid;grid-template-columns:repeat(20,1fr);gap:clamp(5px,.7vw,10px)}
+.dots i{aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.16);opacity:0;transform:scale(.2);transition:opacity .45s var(--ease),transform .45s var(--ease);transition-delay:calc(var(--d)*1ms)}
+.mk-viz.in .dots i{opacity:1;transform:none}
+.mk-viz.in .dots i.s{animation:soldPop 1.4s cubic-bezier(.3,1.5,.5,1) 2s forwards}
+@keyframes soldPop{0%{background:rgba(255,255,255,.16);transform:scale(1)}40%{transform:scale(2.2);background:var(--accent);box-shadow:0 0 0 0 rgba(200,16,106,.7)}100%{transform:scale(1.35);background:var(--accent);box-shadow:0 0 22px 2px rgba(200,16,106,.65)}}
+.dots-t{font-size:clamp(34px,3.6vw,52px);letter-spacing:-.04em;line-height:1.06;font-weight:400}
+.dots-t .serif{color:var(--accent);font-size:1.08em}
+.lg{display:flex;flex-direction:column;gap:10px;margin-top:26px;font-size:15px;color:rgba(255,255,255,.7)}
+.lg span{display:flex;align-items:center;gap:10px}
+.lg i{width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.2);flex:none}
+.lg i.s{background:var(--accent);box-shadow:0 0 12px rgba(200,16,106,.8)}
+.mk .viz{height:74px;margin-bottom:22px;display:flex;align-items:flex-end}
+.ringc{width:74px;height:74px;transform:rotate(-90deg)}
+.ringc circle{fill:none;stroke-width:9}
+.ringc .trk{stroke:rgba(255,255,255,.14)}
+.ringc .arc{stroke:var(--accent);stroke-linecap:round;stroke-dasharray:0 100;transition:stroke-dasharray 1.8s .2s var(--ease)}
+.mk.in .ringc .arc{stroke-dasharray:75 100}
+.hb{width:100%;display:flex;flex-direction:column;gap:8px;font-size:11.5px;color:rgba(255,255,255,.65)}
+.hb div{display:grid;grid-template-columns:98px 1fr;align-items:center;gap:10px}
+.hb u{display:block;height:8px;border-radius:8px;background:rgba(255,255,255,.1);text-decoration:none;position:relative;overflow:hidden}
+.hb u::after{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--accent);border-radius:8px;transition:width 1.4s .3s var(--ease)}
+.mk.in .hb u::after{width:var(--w)}
+.hb .g u::after{background:rgba(255,255,255,.5)}
+.sc{width:100%;position:relative}
+.sc-bar{display:flex;gap:3px;height:12px}
+.sc-bar i{border-radius:12px;background:rgba(255,255,255,.14)}
+.sc-bar i:nth-child(1){flex:10}.sc-bar i:nth-child(2){flex:10}.sc-bar i:nth-child(3){flex:12;background:var(--accent)}
+.sc-m{position:absolute;top:-9px;left:2%;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid #fff;transition:left 1.8s .3s var(--ease)}
+.mk.in .sc-m{left:calc(78% - 7px)}
+.sc-l{display:flex;justify-content:space-between;font-size:11.5px;color:rgba(255,255,255,.55);margin-top:8px}
+.mx .c.yes{animation:glow 2.6s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(200,16,106,0)}50%{box-shadow:0 0 34px 2px rgba(200,16,106,.55)}}
+.matrix.rv .mx .c{opacity:0;transform:scale(.92);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.matrix.in .mx .c{opacity:1;transform:none}
+.matrix.in .mx .c:nth-child(2){transition-delay:.1s}.matrix.in .mx .c:nth-child(3){transition-delay:.2s}.matrix.in .mx .c:nth-child(4){transition-delay:.3s}
+
+/* --- Proceso: contraste magenta + gráficos --- */
+.process{background:var(--accent);color:#fff}
+.process .tag.white{color:var(--ink)}
+.process h2 .serif{color:rgba(255,255,255,.82)}
+.trio{display:grid;grid-template-columns:1fr 44px 1fr 44px 1fr;align-items:center;gap:12px;margin:64px 0 28px}
+.tr{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:var(--r);padding:22px 24px 20px}
+.tr b{display:flex;justify-content:space-between;align-items:center;font-size:20px;font-weight:500;letter-spacing:-.02em}
+.tr b em{font-style:normal;font-size:26px}
+.tr svg{display:block;width:100%;height:84px;margin-top:6px;overflow:visible}
+.tr .ar{fill:rgba(255,255,255,.14);opacity:0;transition:opacity 1s 1s}
+.tr .ln{fill:none;stroke:#fff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:260;stroke-dashoffset:260;transition:stroke-dashoffset 1.8s var(--ease)}
+.tr .dt{fill:var(--orange);stroke:#fff;stroke-width:2.5;opacity:0;transition:opacity .4s 1.6s}
+.trio.in .tr .ln{stroke-dashoffset:0}.trio.in .tr .ar{opacity:1}.trio.in .tr .dt{opacity:1}
+.trio.in .t2 .ln{transition-delay:.35s}.trio.in .t3 .ln{transition-delay:.7s}
+.chev{display:grid;place-items:center;font-size:30px;opacity:.7;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(-3px)}50%{transform:translateX(5px)}}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.stp{background:#fff;color:var(--ink);border-radius:var(--r);padding:16px 16px 26px;transition:transform .5s var(--ease),box-shadow .5s}
+.stp:hover{transform:translateY(-8px);box-shadow:0 36px 60px -34px rgba(0,0,0,.55)}
+.scene{position:relative;height:178px;border-radius:calc(var(--r) - 6px);background:var(--ink);overflow:hidden;margin-bottom:22px}
+.stp em{font-family:var(--serif);color:var(--accent);font-size:22px}
+.stp h3{font-size:27px;letter-spacing:-.03em;margin:2px 0 8px;font-weight:500}
+.stp p{color:var(--ink70);font-size:15.5px}
+.s1 .hs{position:absolute;left:50%;top:50%;width:40px;height:40px;margin:-20px 0 0 -20px;color:#fff;z-index:2}
+.s1 .rg{position:absolute;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border:2px solid var(--accent);border-radius:50%;opacity:0;animation:ringOut 3s ease-out infinite}
+.s1 .rg:nth-of-type(2){animation-delay:1s}.s1 .rg:nth-of-type(3){animation-delay:2s}
+.s1 .ch{position:absolute;background:#fff;color:var(--ink);font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;white-space:nowrap;animation:floaty 4s ease-in-out infinite}
+.s1 .ch:nth-of-type(1){left:8px;top:14px}.s1 .ch:nth-of-type(2){right:8px;top:24px;animation-delay:.7s;background:var(--orange)}.s1 .ch:nth-of-type(3){left:12px;bottom:18px;animation-delay:1.4s}.s1 .ch:nth-of-type(4){right:10px;bottom:30px;animation-delay:2.1s;background:var(--accent);color:#fff}.s1 .ch:nth-of-type(5){left:50%;margin-left:-34px;top:8px;animation-delay:2.8s;background:var(--olive)}
+.s2 .cd{position:absolute;left:50%;bottom:22px;width:84px;height:112px;margin-left:-42px;border-radius:10px;display:grid;place-items:center;font-weight:600;font-size:15px;color:var(--ink);transform-origin:50% 130%;transition:transform .9s var(--ease);box-shadow:0 10px 24px -10px rgba(0,0,0,.6)}
+.s2 .cd:nth-child(1){background:var(--olive)}.s2 .cd:nth-child(2){background:var(--orange)}.s2 .cd:nth-child(3){background:#fff}.s2 .cd:nth-child(4){background:var(--accent);color:#fff}
+.stp.in .s2 .cd:nth-child(1){transform:rotate(-27deg)}.stp.in .s2 .cd:nth-child(2){transform:rotate(-9deg)}.stp.in .s2 .cd:nth-child(3){transform:rotate(9deg)}.stp.in .s2 .cd:nth-child(4){transform:rotate(27deg)}
+.stp:hover .s2 .cd:nth-child(1){transform:rotate(-34deg)}.stp:hover .s2 .cd:nth-child(4){transform:rotate(34deg)}
+.s3 .bx{position:absolute;left:18px;right:18px;bottom:18px;top:34px;display:flex;align-items:flex-end;gap:12px}
+.s3 .bx div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px;font-size:11px;color:rgba(255,255,255,.75)}
+.s3 .bx i{display:block;width:100%;border-radius:6px 6px 0 0;background:var(--accent);height:18%;transition:height 1.2s var(--ease)}
+.stp.in .s3 .bx div:nth-child(1) i{height:78%}.stp.in .s3 .bx div:nth-child(2) i{height:56%;background:var(--orange)}.stp.in .s3 .bx div:nth-child(3) i{height:38%;background:var(--olive)}.stp.in .s3 .bx div:nth-child(4) i{height:24%;background:#fff}
+.s3 .bd{position:absolute;left:14px;top:8px;font-size:11px;font-weight:600;color:#fff;background:rgba(255,255,255,.14);padding:3px 10px;border-radius:999px}
+.process .story{color:#fff}
+
+/* --- Tabla: contraste y entrada --- */
+.table .col.feat,.table .col.c3,.table .col.c4{background:transparent}
+.table .col.c3,.table .col.c4{background:rgba(22,20,21,.045)}
+.table .col.c3 .hcell,.table .col.c4 .hcell,.table .col.feat .hcell{background:transparent}
+.table .col.c3,.table .col.c4{color:var(--ink70)}
+.table .col.c2{background:var(--accent);color:#fff;position:relative;box-shadow:0 40px 70px -30px rgba(200,16,106,.6)}
+.table .col.c2 .hcell{background:var(--accent);color:#fff}
+.table .col.c2 .hcell small{color:var(--olive)}
+.table .col.c2 .cell{border-bottom-color:rgba(255,255,255,.2);font-weight:500}
+.table .col.c2 .chk{background:#fff;color:var(--accent)}
+.table .col.c2 .end{background:var(--accent);border-radius:0 0 var(--r) var(--r)}
+.table .cell{opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease),background .3s;transition-delay:calc(var(--r)*55ms)}
+.table.in .cell{opacity:1;transform:none}
+.table .cell.hl{background:rgba(200,16,106,.09)}
+.table .col.c2 .cell.hl{background:rgba(0,0,0,.16)}
+.table.in .chk{animation:chkPop .6s var(--ease) both;animation-delay:calc(var(--r)*55ms + .25s)}
+@keyframes chkPop{0%{transform:scale(0)}65%{transform:scale(1.3)}100%{transform:scale(1)}}
+.table .cell.cost{height:92px;font-size:20px}
+.table .col.c2 .cell.cost{font-size:42px;letter-spacing:-.04em;font-weight:500}
+.pick{position:absolute;top:-30px;right:-8px;z-index:4;background:var(--orange);color:var(--ink);font-weight:600;font-size:14px;padding:6px 14px;border-radius:999px;transform:rotate(7deg);animation:floaty 3s ease-in-out infinite;--r0:7deg;--r1:3deg;box-shadow:0 10px 20px -8px rgba(0,0,0,.4)}
+
+/* --- Descargables: naranja con gancho --- */
+.news{background:var(--orange);padding:110px 0}
+.dl-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.news h2{margin-top:20px;font-size:62px;letter-spacing:-.04em;line-height:1.02}
+.news h2 .serif{color:#fff;font-size:1.1em}
+.dl-copy p{font-size:19px;max-width:520px;margin-top:22px;color:rgba(22,20,21,.85)}
+.dl-art{position:relative;margin:0}
+.dl-art img{width:100%;height:auto;filter:drop-shadow(0 30px 34px rgba(22,20,21,.35));animation:floaty 6s ease-in-out infinite;--r0:-2deg;--r1:1deg}
+.gratis{position:absolute;right:-6px;top:-34px;width:104px;height:104px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:600;font-size:19px;letter-spacing:.04em;text-transform:uppercase;transform:rotate(12deg);box-shadow:0 18px 30px -12px rgba(0,0,0,.5);animation:wob 3.2s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:rotate(12deg) scale(1)}50%{transform:rotate(4deg) scale(1.07)}}
+.dl-grid{grid-template-columns:repeat(3,1fr);gap:18px;margin-top:64px}
+.dl{background:#fff;border-radius:var(--r);padding:30px 28px 28px;min-height:330px;position:relative;overflow:hidden;gap:12px}
+.dl:hover{background:#fff;transform:translateY(-10px) rotate(-.6deg);box-shadow:0 36px 60px -30px rgba(22,20,21,.55)}
+.dl .di{width:58px;height:58px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;margin-bottom:10px}
+.dl .di svg{width:30px;height:30px;overflow:visible}
+.dl .n{position:absolute;right:24px;top:20px;font-family:var(--serif);font-size:38px;color:var(--ink20)}
+.dl h3{font-size:29px;line-height:1.08}
+.dl p{font-size:16px}
+.dl .lk{margin-top:auto;align-self:flex-start;background:var(--accent);color:#fff;border-radius:999px;padding:12px 20px;font-weight:500;display:inline-flex;gap:10px;align-items:center;transition:background .4s,transform .4s var(--ease)}
+.dl:hover .lk{background:var(--accent-d);transform:translateX(4px)}
+.dl .thumb{position:absolute;right:14px;bottom:70px;width:84px;transform:rotate(8deg);filter:drop-shadow(0 12px 14px rgba(22,20,21,.25));transition:transform .6s var(--ease)}
+.dl:hover .thumb{transform:rotate(-2deg) scale(1.12)}
+.coin{transform-box:fill-box;transform-origin:center;animation:coin 3.2s ease-in-out infinite}
+@keyframes coin{0%,100%{transform:rotateY(0)}50%{transform:rotateY(180deg)}}
+.flame{transform-box:fill-box;transform-origin:50% 100%;animation:flame .9s ease-in-out infinite alternate}
+@keyframes flame{from{transform:scale(1,1) rotate(-3deg)}to{transform:scale(.92,1.1) rotate(3deg)}}
+
+/* --- Chat de tasación --- */
+.chat{padding:26px 26px 22px}
+.c-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.c-head .av-wrap{position:relative;flex:none}
+.a-av{width:48px;height:48px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 2px rgba(255,255,255,.22);transition:opacity .3s}
+.on-dot{position:absolute;right:0;bottom:0;width:12px;height:12px;border-radius:50%;background:#35d07f;border:2px solid var(--dark)}
 .a-who b{display:block;font-size:17px;font-weight:500;letter-spacing:-.02em;line-height:1.2}
-.a-who small{color:rgba(255,255,255,.6);font-size:13px}
-.a-count{margin-left:auto;font-size:13px;color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums;white-space:nowrap}
-.a-bar{height:3px;background:rgba(255,255,255,.12);border-radius:3px;overflow:hidden;margin-bottom:22px}
-.a-bar i{display:block;height:100%;width:33.33%;background:var(--accent);border-radius:3px;transition:width .6s var(--ease)}
-.bubble{background:rgba(255,255,255,.08);border-radius:4px 16px 16px 16px;padding:14px 16px;font-size:15.5px;line-height:1.5;margin-bottom:20px;color:rgba(255,255,255,.92)}
-.bubble b{font-weight:500;color:#fff}
-.a-panel{display:none}
-.a-panel.on{display:block;animation:aIn .5s var(--ease)}
-@keyframes aIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.asist .form-label,.asist label{display:block}
-.asist input,.asist select,.asist textarea{font-size:16px}
-.asist textarea{width:100%;min-height:92px;resize:vertical;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:13px 14px;color:#fff;font:inherit;font-size:16px;outline:none;transition:border .3s,background .3s}
-.asist textarea:focus{border-color:#fff;background:rgba(255,255,255,.1)}
-.asist input::placeholder,.asist textarea::placeholder{color:rgba(255,255,255,.38)}
-.asist .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.asist .three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.pill{display:inline-block;border-radius:999px;background:rgba(255,255,255,.1);padding:4px 12px;font-size:13px;margin-bottom:18px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips button{border:1px solid rgba(255,255,255,.18);background:transparent;border-radius:999px;padding:10px 16px;cursor:pointer;font-size:15px;transition:.35s var(--ease)}
-.chips button:hover{border-color:rgba(255,255,255,.5)}
-.chips button.on{background:#fff;color:var(--ink);border-color:#fff}
-.more-opt{margin:2px 0 6px;border-top:1px solid rgba(255,255,255,.12);padding-top:14px}
-.more-opt summary{cursor:pointer;font-size:14px;color:rgba(255,255,255,.75);list-style:none;display:flex;gap:8px;align-items:center;margin-bottom:14px}
-.more-opt summary::-webkit-details-marker{display:none}
-.more-opt summary::before{content:"+";display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.1)}
-.more-opt[open] summary::before{content:"\2013"}
-.help{display:block;margin-top:6px;font-size:13px;color:rgba(255,255,255,.55)}
-.help.ok{color:#9fe3b4}
-.err{display:block;margin-top:6px;font-size:13px;color:#ff9db8}
-.err:empty{display:none}
-.form input.bad,.form select.bad,.asist textarea.bad{border-color:#ff9db8}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.asist .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px}
-.asist .actions .btn.white{flex:1;justify-content:center;min-width:170px}
-.asist .btn[disabled]{opacity:.6;pointer-events:none}
-.priv{font-size:12.5px;color:rgba(255,255,255,.5);margin-top:14px}
-.priv a{text-decoration:underline;text-underline-offset:3px}
-form[data-tipo="Lote"] [data-hide~="lote"],form[data-tipo="Casa"] [data-hide~="casa"]{display:none}
-.a-done[hidden],#asistForm[hidden]{display:none}
-.a-done .a-fest{display:block;width:100%;height:150px;object-fit:cover;object-position:50% 18%;border-radius:12px;margin-bottom:18px}
-.sum{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin:0 0 6px;font-size:14px}
+.a-who small{color:rgba(255,255,255,.6);font-size:13px;line-height:1.3;display:block}
+.c-undo{margin-left:auto;border:1px solid rgba(255,255,255,.22);background:transparent;color:rgba(255,255,255,.85);border-radius:999px;padding:7px 12px;font-size:13px;cursor:pointer;white-space:nowrap;transition:.3s}
+.c-undo:hover{background:rgba(255,255,255,.12)}
+.a-bar{height:3px;background:rgba(255,255,255,.12);border-radius:3px;overflow:hidden;margin-bottom:16px}
+.a-bar i{display:block;height:100%;width:4%;background:linear-gradient(90deg,var(--accent),var(--orange));border-radius:3px;transition:width .7s var(--ease)}
+.c-log{height:380px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:2px 6px 8px 0;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.25) transparent;overscroll-behavior:contain}
+.msg{display:flex;max-width:88%;animation:msgIn .45s var(--ease) both}
+.msg.bot{align-self:flex-start;gap:8px;align-items:flex-end}
+.msg.me{align-self:flex-end}
+@keyframes msgIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
+.msg .mini{width:26px;height:26px;border-radius:50%;object-fit:cover;flex:none;visibility:hidden}
+.msg.bot.first .mini{visibility:visible}
+.bub{padding:11px 15px;border-radius:18px;font-size:15.5px;line-height:1.45;word-break:break-word}
+.msg.bot .bub{background:rgba(255,255,255,.1);border-bottom-left-radius:5px;color:rgba(255,255,255,.95)}
+.msg.me .bub{background:#fff;color:var(--ink);border-bottom-right-radius:5px;font-weight:500}
+.msg.me.sk .bub{background:transparent;border:1px dashed rgba(255,255,255,.35);color:rgba(255,255,255,.7);font-weight:400;font-style:italic}
+.typing .bub{display:flex;gap:5px;padding:14px 16px}
+.typing .bub i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.7);animation:tdot 1.1s ease-in-out infinite}
+.typing .bub i:nth-child(2){animation-delay:.15s}.typing .bub i:nth-child(3){animation-delay:.3s}
+@keyframes tdot{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+.msg.card{max-width:100%;width:100%}
+.msg.card .bub{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:18px}
+.sum{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin:0 0 16px;font-size:14px}
 .sum li{display:flex;flex-direction:column;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:8px;word-break:break-word}
 .sum li span{font-size:12px;color:rgba(255,255,255,.5)}
-.a-done .btn.white{width:100%;justify-content:center}
-@media (max-width:767px){
-  .asist{padding:24px 16px}
-  .asist .three{grid-template-columns:1fr 1fr}
-  .asist .two{grid-template-columns:1fr 1fr;gap:10px}
-  .chips button{padding:10px 14px}
-  .sum{grid-template-columns:1fr}
-  .a-who small{font-size:12px}
+.msg.card .btn.white{width:100%;justify-content:center}
+.msg.card .again{display:block;margin:12px auto 0;background:none;border:0;color:rgba(255,255,255,.65);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-size:14px}
+.c-cmp{margin-top:12px;border-top:1px solid rgba(255,255,255,.12);padding-top:14px;min-height:112px}
+.cm{display:flex;gap:8px;align-items:flex-end}
+.cm input,.cm textarea{flex:1;min-width:0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:13px 15px;color:#fff;font:inherit;font-size:16px;outline:none;transition:border .3s,background .3s;-webkit-appearance:none;appearance:none}
+.cm textarea{min-height:76px;resize:none}
+.cm input:focus,.cm textarea:focus{border-color:#fff;background:rgba(255,255,255,.12)}
+.cm input::placeholder,.cm textarea::placeholder{color:rgba(255,255,255,.4)}
+.cm input.bad,.cm textarea.bad{border-color:#ff9db8}
+.cm.cm-two input{width:50%}
+.send{flex:none;width:48px;height:48px;border-radius:50%;border:0;background:var(--accent);color:#fff;display:grid;place-items:center;cursor:pointer;transition:transform .35s var(--ease),background .3s}
+.send:hover{background:var(--accent-d);transform:scale(1.08)}
+.send svg{width:18px;height:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.04);color:#fff;border-radius:999px;padding:10px 16px;cursor:pointer;font-size:15px;transition:.3s var(--ease)}
+.chips button:hover{background:#fff;color:var(--ink);border-color:#fff;transform:translateY(-2px)}
+.chips.cm-skip{margin-top:10px}
+.chips.cm-skip button{border-style:dashed;border-color:rgba(255,255,255,.3);background:transparent;color:rgba(255,255,255,.72);font-size:14px;padding:7px 13px}
+.chips.cm-skip button:hover{color:var(--ink)}
+.help{display:block;margin-top:7px;font-size:13px;color:rgba(255,255,255,.55)}
+.help.ok{color:#9fe3b4}
+.err{display:block;margin-top:7px;font-size:13px;color:#ff9db8;min-height:0}
+.err:empty{display:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.priv{font-size:12.5px;color:rgba(255,255,255,.5);margin-top:12px}
+.priv a{text-decoration:underline;text-underline-offset:3px}
+
+
+/* --- Hero: el contenido nunca queda debajo del header --- */
+.hero-card{height:auto;min-height:clamp(720px,calc(100vh - 24px),980px);max-height:none;display:flex;flex-direction:column;justify-content:flex-end}
+.hero-inner{position:relative;left:auto;right:auto;bottom:auto;padding-top:120px}
+@media (max-width:900px){
+  .nav{padding:14px 0}
+  .nav.scrolled{background:rgba(255,252,247,.97);box-shadow:0 1px 0 var(--ink10),0 10px 30px -18px rgba(22,20,21,.35);padding:10px 0}
+  .nav.open{background:var(--bg)}
 }
+@media (max-width:767px){
+  .hero-card{min-height:max(640px,calc(100svh - 16px))}
+  .hero-inner{padding:112px 20px 28px}
+}
+/* --- Responsive v2 --- */
+@media (max-width:1180px){
+  .svc-wrap{grid-template-columns:1fr;gap:44px}.ticket{max-width:430px;margin-inline:auto}
+  .zwrap{grid-template-columns:1fr;gap:36px}
+  .mk-viz{grid-template-columns:1fr;gap:40px}
+  .trio{grid-template-columns:1fr;gap:10px}.chev{transform:rotate(90deg);animation:none;height:24px}
+  .steps{grid-template-columns:1fr}
+  .dl-hero{grid-template-columns:1fr;gap:44px}.news h2{font-size:48px}
+  .dl-grid{grid-template-columns:1fr 1fr}
+  .push-t{font-size:44px}
+  .svc-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:767px){
+  .seal{width:96px;height:96px;right:-6px;bottom:-22px}
+  .about-fig .about-img{height:440px}
+  .stickers{margin-bottom:26px}.stk{font-size:14px;padding:8px 13px}
+  .push{margin-top:60px;padding:22px 14px 28px}
+  .stage{height:170px}
+  .mover{left:66px;--k:.72}
+  .pusher{left:-70px;width:60px;height:60px}.say{left:-56px;bottom:66px;font-size:12px}
+  .zzz{left:112px;bottom:112px;font-size:24px}
+  .finish{width:120px;height:120px}.sold{font-size:16px;padding:4px 9px}
+  .confetti{right:60px;bottom:96px}
+  .push-t{font-size:32px}
+  .ribbons{height:150px;margin-top:24px}.rib{padding:11px 0}.rib span{font-size:19px;gap:18px;padding-right:18px}.rib.r2{top:70px}
+  .svc-grid{grid-template-columns:1fr;gap:14px}.svc{min-height:0;padding:24px}.svc .ico{margin-bottom:24px}
+  .ticket{transform:rotate(-1deg);padding:24px 18px}.tk-total strong{font-size:44px}.tk-list{font-size:13px}.tk-stamp{font-size:14px;right:6px;top:auto;bottom:-8px}
+  .zwrap{gap:28px}
+  .mk-viz{margin-top:50px}
+  .mk .viz{height:auto;min-height:74px}
+  .tr{padding:18px}.trio{margin-top:44px}
+  .scene{height:168px}.stp h3{font-size:24px}
+  .table .col.c2{margin-top:-16px}.table .cell.cost{height:78px;font-size:15px}.table .col.c2 .cell.cost{font-size:28px}
+  .pick{top:-26px;right:-4px;font-size:12px;padding:5px 10px}
+  .news{padding:80px 0}.news h2{font-size:38px}.dl-copy p{font-size:17px}
+  .gratis{width:80px;height:80px;font-size:15px;top:-26px;right:0}
+  .dl-grid{grid-template-columns:1fr;margin-top:44px}.dl{min-height:0}.dl h3{font-size:25px}
+  .dl .thumb{width:70px;bottom:78px}
+  .chat{padding:20px 14px 18px}
+  .c-log{height:340px}
+  .msg{max-width:92%}
+  .a-who small{font-size:12px}
+  .sum{grid-template-columns:1fr}
+}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .rv,.hero-in{opacity:1!important;transform:none!important}
@@ -1026,13 +1347,48 @@ form[data-tipo="Lote"] [data-hide~="lote"],form[data-tipo="Casa"] [data-hide~="c
 <section class="section" id="nosotros" style="padding-top:70px">
   <div class="container">
     <div class="about-top">
-      <div class="about-img rv"><img src="DanilaGreppi93.JPG" alt="Danila Greppi, martillera y corredora inmobiliaria en CABA" loading="lazy"></div>
+      <div class="about-fig">
+        <div class="about-img rv"><img src="DanilaGreppi93.JPG" alt="Danila Greppi, martillera y corredora inmobiliaria en CABA" loading="lazy"></div>
+        <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="bgc" cx="60" cy="60" r="60"/>
+          <defs><path id="sealPath" d="M60 60m-43 0a43 43 0 1 1 86 0a43 43 0 1 1-86 0"/></defs>
+          <g class="spin"><text><textPath href="#sealPath" textLength="262" lengthAdjust="spacing">SOCIA · NO ADMINISTRATIVA · </textPath></text></g>
+          <use href="#house" x="42" y="42" width="36" height="36"/>
+        </svg>
+      </div>
       <div class="about-txt">
         <span class="tag rv"><svg><use href="#house"/></svg>Martillera, Tasadora y Corredora Inmobiliaria</span>
-        <p class="words">Soy tu socia, no una administrativa. Mi enfoque es 100% proactivo: si tu propiedad no se mueve, yo la muevo. Invierto capital, tiempo y estrategia para cuidar tu patrimonio como si fuera mío.</p>
+        <p class="words">Soy tu socia, no una administrativa. Pongo <em class="hl">capital, tiempo y estrategia</em> y cuido tu patrimonio como si fuera mío. Mi enfoque es 100% proactivo: no espero a que suene el teléfono.</p>
+        <div class="stickers rv"><span class="stk s1">100% proactiva</span><span class="stk s2">Invierto yo, no vos</span><span class="stk s3">Tu patrimonio, como mío</span></div>
         <a class="btn red rv" href="#contacto"><svg class="a"><use href="#arr"/></svg><span class="lbl"><span>Quiero mi tasación</span><span>Quiero mi tasación</span></span></a>
       </div>
     </div>
+
+    <div class="push rv" id="push">
+      <div class="push-hd"><span>Tu propiedad hoy</span><span class="r">Con Danila</span></div>
+      <div class="stage" id="stage">
+        <div class="road"><i></i></div>
+        <div class="zzz" aria-hidden="true"><span>z</span><span>z</span><span>Z</span></div>
+        <div class="mover" id="mover">
+          <div class="pusher" aria-hidden="true"><img class="a1" src="danila-avatar-pensando.jpg" alt="" width="74" height="74" loading="lazy"><img class="a2" src="danila-avatar-brindis.jpg" alt="" width="74" height="74" loading="lazy"></div>
+          <div class="say" id="say" aria-hidden="true">mmm… ¿y si la muevo?</div>
+          <svg class="hse" viewBox="0 0 160 136" role="img" aria-label="Una casa con ruedas que Danila empuja hasta que se vende">
+            <rect x="112" y="16" width="14" height="30" fill="#161415"/>
+            <rect x="22" y="58" width="116" height="62" rx="4" fill="#fff" stroke="#161415" stroke-width="3"/>
+            <path d="M10 64 80 8l70 56Z" fill="#C8106A" stroke="#161415" stroke-width="3" stroke-linejoin="round"/>
+            <rect x="66" y="84" width="28" height="36" rx="3" fill="#FF8017" stroke="#161415" stroke-width="3"/>
+            <rect x="32" y="74" width="22" height="20" rx="2" fill="#D4DDD5" stroke="#161415" stroke-width="3"/>
+            <rect x="106" y="74" width="22" height="20" rx="2" fill="#D4DDD5" stroke="#161415" stroke-width="3"/>
+            <g class="wheel"><circle cx="44" cy="124" r="10" fill="#161415"/><path d="M37 124h14" stroke="#fff" stroke-width="2.5"/></g>
+            <g class="wheel"><circle cx="116" cy="124" r="10" fill="#161415"/><path d="M109 124h14" stroke="#fff" stroke-width="2.5"/></g>
+          </svg>
+        </div>
+        <div class="finish"><div class="sold">¡Vendida!</div></div>
+        <div class="confetti" id="confetti" aria-hidden="true"></div>
+      </div>
+      <h3 class="push-t">Si tu propiedad no se mueve, <span class="serif">yo la muevo.</span></h3>
+    </div>
+
     <div class="stats">
       <div class="stat rv"><div class="num" data-count="120"></div><h4>Días para vender</h4><p>Venta en menos de 4 meses con estrategia acelerada.</p></div>
       <div class="stat rv d1"><div class="num" data-count="200" data-pre="+"></div><h4>Operaciones concretadas</h4><p>Con el respaldo de Marcela Genta Inmobiliaria.</p></div>
@@ -1041,6 +1397,22 @@ form[data-tipo="Lote"] [data-hide~="lote"],form[data-tipo="Casa"] [data-hide~="c
     </div>
   </div>
 </section>
+
+<!-- CINTAS -->
+<div class="ribbons" aria-hidden="true">
+  <div class="rib r1"><div class="rib-track">
+    <span>Soy tu socia, no una administrativa<svg><use href="#star"/></svg></span>
+    <span><em>Si tu propiedad no se mueve, yo la muevo</em><svg><use href="#star"/></svg></span>
+    <span>Precio de cierre, no de portal<svg><use href="#star"/></svg></span>
+    <span><em>Vos no gastás en marketing</em><svg><use href="#star"/></svg></span>
+  </div></div>
+  <div class="rib r2"><div class="rib-track">
+    <span><em>Exclusividad comercial, visitas abiertas</em><svg><use href="#star"/></svg></span>
+    <span>Más exposición, más visitas<svg><use href="#star"/></svg></span>
+    <span><em>Urquiza · Saavedra · Belgrano · Palermo</em><svg><use href="#star"/></svg></span>
+    <span>Vendé en menos de 120 días<svg><use href="#star"/></svg></span>
+  </div></div>
+</div>
 
 <!-- PRESENTACION / TABS -->
 <section class="section design" style="padding-top:30px">
@@ -1070,11 +1442,27 @@ form[data-tipo="Lote"] [data-hide~="lote"],form[data-tipo="Casa"] [data-hide~="c
       <div><span class="tag rv"><svg><use href="#house"/></svg>Todo incluido</span></div>
       <h2 class="rv">La comercialización corre por nuestra cuenta. <span class="serif muted">Vos no gastás nada en marketing.</span></h2>
     </div>
-    <div class="svc-grid">
-      <div class="svc rv"><svg class="ic" viewBox="0 0 40 40"><path d="M6 34V14h10v20M16 34V6h18v28M6 34h28" fill="none" stroke="currentColor" stroke-width="4"/></svg><div><h3>Tasación real</h3><p>Con datos de operaciones cerradas en los últimos 90 días, no con precios de portal.</p><ul><li>Precio de cierre</li><li>Demanda por zona</li></ul></div></div>
-      <div class="svc rv d1"><svg class="ic" viewBox="0 0 40 40"><rect x="4" y="10" width="32" height="24" rx="2" fill="currentColor"/><circle cx="20" cy="22" r="7" fill="#fff"/><rect x="13" y="5" width="14" height="6" fill="currentColor"/></svg><div><h3>Material visual pro</h3><p>Que tu propiedad enamore desde la primera foto.</p><ul><li>Fotos</li><li>Video YouTube</li><li>Reels y TikToks</li><li>Drone</li><li>Tour 360°</li><li>Plano</li></ul></div></div>
-      <div class="svc rv d2"><svg class="ic" viewBox="0 0 40 40"><path d="M20 3 37 20 20 37 3 20Z" fill="currentColor"/><path d="M20 12 28 20 20 28 12 20Z" fill="#fff"/></svg><div><h3>Visibilidad máxima</h3><p>Zonaprop, Argenprop y Mercado Libre con destacación máxima desde el inicio, más pauta paga.</p><ul><li>Portales</li><li>Campañas</li></ul></div></div>
-      <div class="svc rv d3"><svg class="ic" viewBox="0 0 40 40"><path d="M4 4h32v32H4z" fill="currentColor"/><path d="M4 4l16 14L36 4" fill="none" stroke="#fff" stroke-width="4"/></svg><div><h3>Informes y documentación</h3><p>Dominio e inhibición los gestionamos nosotros. Sucesiones, declaratorias y donaciones las revisa nuestro abogado.</p></div></div>
+    <div class="svc-wrap">
+      <div class="ticket rv" id="ticket" role="img" aria-label="Presupuesto de marketing de tu propiedad: cada ítem a cargo de Danila, total para el vendedor: cero pesos">
+        <div class="tk-top"><span>Presupuesto de marketing</span><small>Tu propiedad · Danila Greppi</small></div>
+        <ul class="tk-list">
+          <li style="--i:0"><span>Fotos y video profesionales</span><i></i><b>$0</b></li>
+          <li style="--i:1"><span>Reels y TikToks</span><i></i><b>$0</b></li>
+          <li style="--i:2"><span>Drone y tour 360°</span><i></i><b>$0</b></li>
+          <li style="--i:3"><span>Plano técnico</span><i></i><b>$0</b></li>
+          <li style="--i:4"><span>Amoblamiento virtual 3D</span><i></i><b>$0</b></li>
+          <li style="--i:5"><span>Portales, destaque máximo</span><i></i><b>$0</b></li>
+          <li style="--i:6"><span>Pauta paga</span><i></i><b>$0</b></li>
+        </ul>
+        <div class="tk-total"><span>Vos ponés</span><strong>$0</strong></div>
+        <div class="tk-stamp">Lo pongo yo</div>
+      </div>
+      <div class="svc-grid">
+        <div class="svc c-mag rv"><div class="ico"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><g fill="#fff"><rect class="bar" x="6" y="36" width="10" height="22" rx="2"/><rect class="bar" x="21" y="26" width="10" height="32" rx="2"/><rect class="bar" x="36" y="16" width="10" height="42" rx="2"/><rect class="bar" x="51" y="6" width="10" height="52" rx="2"/></g><path class="trend" d="M8 30 24 20 40 12 58 3" stroke="#FF8017" stroke-width="3.5" stroke-linecap="round" pathLength="90"/></svg></div><div><h3>Tasación real</h3><p>Con datos de operaciones cerradas en los últimos 90 días, no con precios de portal.</p><ul><li>Precio de cierre</li><li>Demanda por zona</li></ul></div></div>
+        <div class="svc c-org rv d1"><div class="ico"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="18" width="56" height="38" rx="6" fill="#161415"/><rect x="18" y="10" width="20" height="10" rx="3" fill="#161415"/><circle cx="32" cy="37" r="12" fill="#FF8017"/><circle cx="32" cy="37" r="7" fill="#161415"/><circle cx="28.5" cy="33.5" r="2.4" fill="#fff"/><g class="flash"><path d="M52 4v10M47 9h10M46 5l12 8M58 5 46 13" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/></g></svg></div><div><h3>Material visual pro</h3><p>Que tu propiedad enamore desde la primera foto.</p><ul><li>Fotos</li><li>Video YouTube</li><li>Reels y TikToks</li><li>Drone</li><li>Tour 360°</li><li>Plano</li></ul></div></div>
+        <div class="svc c-ink rv d2"><div class="ico"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle class="ring" cx="32" cy="32" r="30" stroke="#C8106A" stroke-width="3"/><circle class="ring" cx="32" cy="32" r="30" stroke="#FF8017" stroke-width="3"/><circle class="ring" cx="32" cy="32" r="30" stroke="#C8106A" stroke-width="3"/><circle cx="32" cy="32" r="7" fill="#fff"/></svg></div><div><h3>Visibilidad máxima</h3><p>Zonaprop, Argenprop y Mercado Libre con destacación máxima desde el inicio, más pauta paga.</p><ul><li>Portales</li><li>Campañas</li></ul></div></div>
+        <div class="svc c-oli rv d3"><div class="ico"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="12" y="4" width="40" height="54" rx="5" fill="#fff" stroke="#161415" stroke-width="3"/><path d="M21 18h22M21 27h22M21 36h12" stroke="#161415" stroke-width="3" stroke-linecap="round"/><circle cx="44" cy="46" r="11" fill="#C8106A"/><path class="tick" d="M38.5 46l4 4 7.5-8" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>Informes y documentación</h3><p>Dominio e inhibición los gestionamos nosotros. Sucesiones, declaratorias y donaciones las revisa nuestro abogado.</p></div></div>
+      </div>
     </div>
     <div class="ceo-row">
       <div class="ceo rv">
@@ -1100,11 +1488,30 @@ form[data-tipo="Lote"] [data-hide~="lote"],form[data-tipo="Casa"] [data-hide~="c
       <h2 class="rv">Especialista en Urquiza, Saavedra, <span class="serif muted">Belgrano y Palermo.</span></h2></div>
       <a class="btn red rv" href="#contacto"><svg class="a"><use href="#arr"/></svg><span class="lbl"><span>Tasá en tu barrio</span><span>Tasá en tu barrio</span></span></a>
     </div>
-    <div class="proj-grid">
-      <a class="proj rv" href="/blog/saavedra-precio" data-img="saavedra.jpg"><div class="top"><h3>Saavedra</h3><span class="go"><svg><use href="#arr"/></svg></span></div><div class="feats"><span>Parque Sarmiento</span><span>Casas y PH</span><span>Zona Dandy</span><span>Guía de precios 2026</span></div></a>
-      <a class="proj rv d1" href="#contacto" data-img="tasacion-propiedad-caba-ciudad-atardecer.jpg"><div class="top"><h3>Villa Urquiza</h3><span class="go"><svg><use href="#arr"/></svg></span></div><div class="feats"><span>Departamentos</span><span>PH</span><span>Casas</span><span>Alta demanda</span></div></a>
-      <a class="proj rv" href="#contacto" data-img="render.jpg"><div class="top"><h3>Belgrano</h3><span class="go"><svg><use href="#arr"/></svg></span></div><div class="feats"><span>2 amb: USD 3.128/m²</span><span>3 amb: USD 2.946/m²</span><span>Valor de lista promedio</span></div></a>
-      <a class="proj rv d1" href="#contacto" data-img="plano.webp"><div class="top"><h3>Palermo</h3><span class="go"><svg><use href="#arr"/></svg></span></div><div class="feats"><span>2 amb: USD 3.179/m²</span><span>3 amb: USD 3.203/m²</span><span>Valor de lista promedio</span></div></a>
+    <div class="zwrap">
+      <div class="zmap rv" role="img" aria-label="Esquema ilustrativo de Saavedra, Villa Urquiza, Belgrano y Palermo">
+        <svg viewBox="0 0 560 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><pattern id="st" width="30" height="30" patternUnits="userSpaceOnUse" patternTransform="rotate(-9)"><path d="M30 0H0V30" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1"/></pattern></defs>
+          <rect width="560" height="400" fill="url(#st)"/>
+          <path class="river" d="M330 0C380 70 470 120 560 205V0Z"/>
+          <path class="wave" d="M345 8C392 74 478 126 560 212"/>
+          <path class="wave" d="M395 0C440 56 505 98 560 150" style="animation-duration:5s"/>
+          <ellipse class="park" cx="62" cy="168" rx="46" ry="30"/>
+          <path d="M0 222 560 160M70 400 330 40" stroke="rgba(255,255,255,.12)" stroke-width="5" fill="none"/>
+          <path class="route" d="M125 120 115 235 285 185 430 285"/>
+          <g class="pin" data-z="saavedra" transform="translate(125,120)"><circle class="pulse" r="9"/><circle class="pd" r="9"/><g class="lb" transform="translate(16,-14)"><rect width="84" height="28" rx="14"/><text x="42" y="19" text-anchor="middle">Saavedra</text></g></g>
+          <g class="pin" data-z="urquiza" transform="translate(115,235)"><circle class="pulse" r="9" style="animation-delay:.6s"/><circle class="pd" r="9"/><g class="lb" transform="translate(16,-14)"><rect width="112" height="28" rx="14"/><text x="56" y="19" text-anchor="middle">Villa Urquiza</text></g></g>
+          <g class="pin" data-z="belgrano" transform="translate(285,185)"><circle class="pulse" r="9" style="animation-delay:1.2s"/><circle class="pd" r="9"/><g class="lb" transform="translate(16,-14)"><rect width="84" height="28" rx="14"/><text x="42" y="19" text-anchor="middle">Belgrano</text></g></g>
+          <g class="pin" data-z="palermo" transform="translate(430,285)"><circle class="pulse" r="9" style="animation-delay:1.8s"/><circle class="pd" r="9"/><g class="lb" transform="translate(16,-14)"><rect width="80" height="28" rx="14"/><text x="40" y="19" text-anchor="middle">Palermo</text></g></g>
+        </svg>
+        <small class="zlegend">Esquema ilustrativo, no a escala</small>
+      </div>
+      <div class="proj-grid">
+        <a class="proj rv" data-z="saavedra" href="/blog/saavedra-precio" data-img="saavedra.jpg"><div class="top"><h3>Saavedra</h3><span class="go"><svg><use href="#arr"/></svg></span></div><div class="feats"><span>Parque Sarmiento</span><span>Casas y PH</span><span>Zona Dandy</span><span>Guía de precios 2026</span></div></a>
+        <a class="proj rv d1" data-z="urquiza" href="#contacto" data-img="tasacion-propiedad-caba-ciudad-atardecer.jpg"><div class="top"><h3>Villa Urquiza</h3><span class="go"><svg><use href="#arr"/></svg></span></div><div class="feats"><span>Departamentos</span><span>PH</span><span>Casas</span><span>Alta demanda</span></div></a>
+        <a class="proj rv" data-z="belgrano" href="#contacto" data-img="render.jpg"><div class="top"><h3>Belgrano</h3><span class="go"><svg><use href="#arr"/></svg></span></div><div class="feats"><span>2 amb: USD 3.128/m²</span><span>3 amb: USD 2.946/m²</span><span>Valor de lista promedio</span></div></a>
+        <a class="proj rv d1" data-z="palermo" href="#contacto" data-img="plano.webp"><div class="top"><h3>Palermo</h3><span class="go"><svg><use href="#arr"/></svg></span></div><div class="feats"><span>2 amb: USD 3.179/m²</span><span>3 amb: USD 3.203/m²</span><span>Valor de lista promedio</span></div></a>
+      </div>
     </div>
     <p class="muted rv" style="font-size:13px;margin-top:36px">Valores de lista promedio 2° trimestre 2026 (Informe Trimestral, deinmobiliarios). El precio de cierre suele ser menor: por eso tasamos con operaciones cerradas.</p>
   </div>
@@ -1120,11 +1527,18 @@ form[data-tipo="Lote"] [data-hide~="lote"],form[data-tipo="Casa"] [data-hide~="c
         <h2 class="rv">Hoy se vende solo el <span class="serif">5,5% de lo publicado.</span></h2></div>
         <p class="rv">Los valores de publicación no reflejan la realidad. Lo que importa son los precios de cierre. Tu propiedad se vende si está en precio <b>y</b> tiene una buena comercialización.</p>
       </div>
+      <div class="mk-viz rv" id="mkViz">
+        <div class="dots" id="dots" role="img" aria-label="De cada 200 propiedades publicadas, se venden 11: el 5,5%"></div>
+        <div>
+          <p class="dots-t">De cada 200 avisos publicados, <span class="serif">se venden 11.</span></p>
+          <div class="lg"><span><i></i>Publicadas que siguen esperando</span><span><i class="s"></i>Las que se venden: 5,5%</span></div>
+        </div>
+      </div>
       <div class="mk-grid">
-        <div class="mk rv"><div class="big" data-count="75" data-suf="%"></div><h4>se reserva en los primeros 4 meses</h4><p>El pico de interés está al inicio. Salir caro es perder ese momento.</p></div>
-        <div class="mk rv d1"><div class="big">&lt;1%</div><h4>de los avisos está 100% completo</h4><p>Solo el 4,5% tiene tour virtual, el 11,3% plano y el 13,7% video. Los avisos completos se muestran primero.</p></div>
-        <div class="mk rv d2"><div class="big" data-count="15" data-suf="%"></div><h4>debajo del promedio de 20 años</h4><p>Así están hoy los precios de cierre en CABA, con escrituras en niveles altos.</p></div>
-        <div class="mk rv d3"><div class="big" data-count="20" data-pre="+"></div><h4>clics diarios: zona de reserva</h4><p>Medimos cada aviso. Con menos de 10 por día, el precio está en zona de especulación.</p></div>
+        <div class="mk rv"><div class="viz"><svg class="ringc" viewBox="0 0 80 80" aria-hidden="true"><circle class="trk" cx="40" cy="40" r="32"/><circle class="arc" cx="40" cy="40" r="32" pathLength="100"/></svg></div><div class="big" data-count="75" data-suf="%"></div><h4>se reserva en los primeros 4 meses</h4><p>El pico de interés está al inicio. Salir caro es perder ese momento.</p></div>
+        <div class="mk rv d1"><div class="viz"><div class="hb"><div><span>Tour virtual</span><u style="--w:4.5%"></u></div><div><span>Plano</span><u style="--w:11.3%"></u></div><div><span>Video</span><u style="--w:13.7%"></u></div></div></div><div class="big">&lt;1%</div><h4>de los avisos está 100% completo</h4><p>Solo el 4,5% tiene tour virtual, el 11,3% plano y el 13,7% video. Los avisos completos se muestran primero.</p></div>
+        <div class="mk rv d2"><div class="viz"><div class="hb"><div class="g"><span>Prom. 20 años</span><u style="--w:100%"></u></div><div><span>Hoy</span><u style="--w:85%"></u></div></div></div><div class="big" data-count="15" data-suf="%"></div><h4>debajo del promedio de 20 años</h4><p>Así están hoy los precios de cierre en CABA, con escrituras en niveles altos.</p></div>
+        <div class="mk rv d3"><div class="viz"><div class="sc"><i class="sc-m"></i><div class="sc-bar"><i></i><i></i><i></i></div><div class="sc-l"><span>&lt;10 · especulación</span><span>20+ · reserva</span></div></div></div><div class="big" data-count="20" data-pre="+"></div><h4>clics diarios: zona de reserva</h4><p>Medimos cada aviso. Con menos de 10 por día, el precio está en zona de especulación.</p></div>
       </div>
       <div class="matrix rv">
         <div class="mx-lbl"><span>En precio</span><span>Fuera de precio</span></div>
@@ -1144,12 +1558,27 @@ form[data-tipo="Lote"] [data-hide~="lote"],form[data-tipo="Casa"] [data-hide~="c
 <section class="section process" id="proceso">
   <div class="container">
     <span class="tag white rv"><svg><use href="#house"/></svg>Estrategia Viral 2026</span>
-    <h2 class="rv">Más exposición, más visitas, <span class="serif muted">en menos tiempo.</span></h2>
-    <hr>
-    <div class="circles" id="circles">
-      <div class="circle"><em>01</em>Visibilidad<small>Publicación en Zonaprop, Argenprop y Mercado Libre con destacación máxima. Aparece donde los compradores ya están buscando.</small></div>
-      <div class="circle on"><em>02</em>Presentación<small>Video profesional, plano técnico, tour 360° y amoblamiento virtual. Mejora las consultas y filtra curiosos.</small></div>
-      <div class="circle"><em>03</em>Decisión<small>Medimos clics, consultas, visitas y ofertas, con reporte quincenal. El precio se ajusta con datos, no con intuición.</small></div>
+    <h2 class="rv">Más exposición, más visitas, <span class="serif">en menos tiempo.</span></h2>
+    <div class="trio rv" id="trio" role="img" aria-label="Esquema ilustrativo: la exposición sube, las visitas suben y los días de venta bajan">
+      <div class="tr t1"><b>Exposición<em>↑</em></b><svg viewBox="0 0 220 84" aria-hidden="true"><path class="ar" d="M4 74C40 70 60 62 90 50S150 30 214 8L214 84 4 84Z"/><path class="ln" d="M4 74C40 70 60 62 90 50S150 30 214 8"/><circle class="dt" cx="214" cy="8" r="6"/></svg></div>
+      <div class="chev" aria-hidden="true">→</div>
+      <div class="tr t2"><b>Visitas<em>↑</em></b><svg viewBox="0 0 220 84" aria-hidden="true"><path class="ar" d="M4 76C60 74 100 66 140 44S190 14 214 6L214 84 4 84Z"/><path class="ln" d="M4 76C60 74 100 66 140 44S190 14 214 6"/><circle class="dt" cx="214" cy="6" r="6"/></svg></div>
+      <div class="chev" aria-hidden="true">→</div>
+      <div class="tr t3"><b>Días de venta<em>↓</em></b><svg viewBox="0 0 220 84" aria-hidden="true"><path class="ar" d="M4 8C50 10 90 20 130 44S190 70 214 76L214 84 4 84Z"/><path class="ln" d="M4 8C50 10 90 20 130 44S190 70 214 76"/><circle class="dt" cx="214" cy="76" r="6"/></svg></div>
+    </div>
+    <div class="steps" id="steps">
+      <article class="stp rv">
+        <div class="scene s1"><i class="rg"></i><i class="rg"></i><i class="rg"></i><svg class="hs" aria-hidden="true"><use href="#house"/></svg><span class="ch">Zonaprop</span><span class="ch">Argenprop</span><span class="ch">Mercado Libre</span><span class="ch">TikTok</span><span class="ch">Instagram</span></div>
+        <em>01</em><h3>Visibilidad</h3><p>Publicación en Zonaprop, Argenprop y Mercado Libre con destacación máxima. Aparece donde los compradores ya están buscando.</p>
+      </article>
+      <article class="stp rv d1">
+        <div class="scene s2"><div class="cd">Foto</div><div class="cd">Video</div><div class="cd">Plano</div><div class="cd">360°</div></div>
+        <em>02</em><h3>Presentación</h3><p>Video profesional, plano técnico, tour 360° y amoblamiento virtual. Mejora las consultas y filtra curiosos.</p>
+      </article>
+      <article class="stp rv d2">
+        <div class="scene s3"><span class="bd">Reporte quincenal</span><div class="bx"><div><i></i>Clics</div><div><i></i>Consultas</div><div><i></i>Visitas</div><div><i></i>Ofertas</div></div></div>
+        <em>03</em><h3>Decisión</h3><p>Medimos clics, consultas, visitas y ofertas, con reporte quincenal. El precio se ajusta con datos, no con intuición.</p>
+      </article>
     </div>
     <p class="story words">Desde el arranque viralizamos tu propiedad en redes con fotos y videos profesionales, con máximo destaque y primeros en los listados de Zonaprop. Más exposición es más visitas en menos tiempo.</p>
   </div>
@@ -1235,14 +1664,18 @@ form[data-tipo="Lote"] [data-hide~="lote"],form[data-tipo="Casa"] [data-hide~="c
 <!-- DESCARGABLES -->
 <section class="news" id="descargables">
   <div class="container">
-    <div class="news-top">
-      <div><span class="tag white rv"><svg><use href="#house"/></svg>Sin vueltas</span><h2 class="rv" style="margin-top:20px">Descargables <span class="serif muted">gratis.</span></h2></div>
-      <p class="rv">Información clave para vender una propiedad en CABA.</p>
+    <div class="dl-hero">
+      <div class="dl-copy">
+        <span class="tag white rv"><svg><use href="#house"/></svg>Gratis · Sin formularios</span>
+        <h2 class="rv">Antes de vender, <span class="serif">leé esto.</span></h2>
+        <p class="rv">Tres guías cortas con lo que veo todos los días vendiendo en CABA: cuánto te queda en el bolsillo, qué hacer si nadie llama y cómo evitar que la venta se caiga. Las abrís directo, sin dejar tus datos.</p>
+      </div>
+      <figure class="dl-art rv"><img src="descargables-recursos.png" alt="Guía para vendedores, ficha de propiedad, checklist y esquema de pasos para vender" width="480" height="176" loading="lazy"><span class="gratis" aria-hidden="true">Gratis</span></figure>
     </div>
     <div class="dl-grid">
-      <a class="dl rv" href="https://www.canva.com/design/DAG9jZ5X550/csorhx98lPjBa4nbSecveg/view?utm_content=DAG9jZ5X550&utm_campaign=designshare&utm_medium=link&utm_source=viewer" target="_blank" rel="noopener"><span class="n">01</span><h3>Qué gastos tenés al vender una propiedad</h3><p>Guía clara de gastos al vender en CABA: sellos, ganancia cedular y honorarios, para que sepas tu neto real.</p><span class="lk">Ver guía online <svg><use href="#arr"/></svg></span></a>
-      <a class="dl rv d1" href="https://www.canva.com/design/DAG9j-Otk80/E4rUb82Php-2rTnceRwllg/edit?utm_content=DAG9j-Otk80&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener"><span class="n">02</span><h3>Tu aviso está "quemado"</h3><p>Qué hacer cuando una propiedad no se vende y nadie llama para visitar. La verdad sobre el home staging.</p><span class="lk">Descargar tips <svg><use href="#arr"/></svg></span></a>
-      <a class="dl rv d2" href="https://www.canva.com/design/DAG9jyRhsLo/UY6wO83PywNZ7HHqtFXkZg/edit?utm_content=DAG9jyRhsLo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener"><span class="n">03</span><h3>Que tu venta no se caiga</h3><p>Lo que tenés que saber para que la venta no se caiga después de la reserva.</p><span class="lk">Descargar guía <svg><use href="#arr"/></svg></span></a>
+      <a class="dl rv" href="https://www.canva.com/design/DAG9jZ5X550/csorhx98lPjBa4nbSecveg/view?utm_content=DAG9jZ5X550&utm_campaign=designshare&utm_medium=link&utm_source=viewer" target="_blank" rel="noopener"><span class="di"><svg viewBox="0 0 30 30" aria-hidden="true"><g class="coin"><circle cx="15" cy="15" r="12" fill="#FF8017" stroke="#fff" stroke-width="2"/><text x="15" y="20" text-anchor="middle" font-size="14" font-weight="700" fill="#161415" font-family="sans-serif">$</text></g></svg></span><span class="n">01</span><h3>¿Cuánto te queda en el bolsillo?</h3><p>Sellos, ganancia cedular y honorarios al vender en CABA. Tu neto real, antes de firmar nada.</p><span class="lk">Ver la guía gratis <svg><use href="#arr"/></svg></span></a>
+      <a class="dl rv d1" href="https://www.canva.com/design/DAG9j-Otk80/E4rUb82Php-2rTnceRwllg/edit?utm_content=DAG9j-Otk80&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener"><span class="di"><svg viewBox="0 0 30 30" aria-hidden="true"><path class="flame" d="M15 2c1 5 8 8 8 16a8 8 0 0 1-16 0c0-3 2-5 3-7 1 2 2 3 3 3 0-4-1-7 2-12Z" fill="#FF8017"/><path d="M15 15c2 3 4 4 4 7a4 4 0 0 1-8 0c0-2 2-4 4-7Z" fill="#fff"/></svg></span><span class="n">02</span><h3>Tu aviso está “quemado”. ¿Y ahora?</h3><p>Qué hacer cuando nadie llama para visitar. Incluye la verdad sobre el home staging.</p><span class="lk">Descargar tips gratis <svg><use href="#arr"/></svg></span></a>
+      <a class="dl rv d2" href="https://www.canva.com/design/DAG9jyRhsLo/UY6wO83PywNZ7HHqtFXkZg/edit?utm_content=DAG9jyRhsLo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener"><span class="di"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#badge"/></svg></span><span class="n">03</span><img class="thumb" src="descargables-checklist.png" alt="Vista previa de la guía" width="84" height="80" loading="lazy"><h3>Que la venta no se te caiga</h3><p>Lo que hay que saber para que la operación llegue a la escritura después de la reserva.</p><span class="lk">Descargar guía gratis <svg><use href="#arr"/></svg></span></a>
     </div>
   </div>
 </section>
@@ -1253,7 +1686,7 @@ form[data-tipo="Lote"] [data-hide~="lote"],form[data-tipo="Casa"] [data-hide~="c
     <div>
       <span class="tag rv"><svg><use href="#house"/></svg>Tasación guiada</span>
       <h2 class="rv">¿Cuánto vale tu <span class="serif muted">propiedad?</span></h2>
-      <p class="lead rv">Contame dónde está y cómo es, y te respondo personalmente por WhatsApp con una primera orientación. ¿Tu caso es más complejo? Sucesiones, departamentos con deuda o una opinión honesta sobre tu barrio. Dejá de adivinar.</p>
+      <p class="lead rv">Charlemos como en WhatsApp: contame dónde está y cómo es tu propiedad, y lo que no sepas lo salteás. Después te escribo yo, en persona, con una primera orientación.</p>
       <div class="cinfo">
         <a class="rv" href="https://wa.me/5491170615041" onclick="return gtag_report_conversion(this.href)"><span class="ci"><svg><use href="#wa"/></svg></span><span><small>WhatsApp</small>+54 9 11 7061-5041</span></a>
         <a class="rv d1" href="https://www.instagram.com/danila.realestate/" target="_blank" rel="noopener"><span class="ci"><svg><use href="#ig"/></svg></span><span><small>Instagram</small>@danila.realestate</span></a>
@@ -1262,97 +1695,26 @@ form[data-tipo="Lote"] [data-hide~="lote"],form[data-tipo="Casa"] [data-hide~="c
       </div>
     </div>
 
-    <div class="form asist rv" id="asistente">
-      <div class="a-head">
-        <img class="a-av" src="danila-pensando.jpg" alt="Danila Greppi" width="48" height="48" loading="lazy">
-        <div class="a-who"><b>Danila Greppi</b><small>Tasación guiada · 2 minutos</small></div>
-        <span class="a-count" id="aCount" aria-live="polite">1 / 3</span>
+    <div class="form asist chat rv" id="asistente">
+      <div class="c-head">
+        <span class="av-wrap"><img class="a-av" id="cAv" src="danila-avatar-pensando.jpg" alt="Danila Greppi" width="48" height="48"><i class="on-dot" aria-hidden="true"></i></span>
+        <div class="a-who"><b>Danila Greppi</b><small>Tasación guiada · después te escribo yo por WhatsApp</small></div>
+        <button class="c-undo" id="cUndo" type="button" hidden>↩ Corregir</button>
       </div>
       <div class="a-bar" aria-hidden="true"><i id="aBar"></i></div>
-
-      <form id="asistForm" novalidate autocomplete="off">
+      <div class="c-log" id="cLog" role="log" aria-live="polite" aria-label="Conversación de tasación"></div>
+      <div class="c-cmp" id="cCmp">
         <div class="hp" aria-hidden="true"><label>No completar este campo<input type="text" id="aHp" tabindex="-1" autocomplete="off"></label></div>
-
-        <!-- PASO 1 · UBICACIÓN -->
-        <div class="a-panel on" data-p="1">
-          <p class="bubble">Vamos a conocer un poco la propiedad para darte una primera orientación. Empecemos por la <b>ubicación</b>: la dirección del inmueble que querés analizar.</p>
-          <div class="f">
-            <label for="aDir">Dirección</label>
-            <input id="aDir" type="text" placeholder="Ej: Av. Balbín 4000, Saavedra" autocomplete="off" aria-describedby="aDirHelp eDir">
-            <small class="help" id="aDirHelp">Buscá la dirección y seleccioná la opción correcta para identificar la propiedad.</small>
-            <span class="err" id="eDir" role="alert"></span>
-          </div>
-          <div class="actions">
-            <button class="btn white" type="button" data-next><span class="lbl"><span>Continuar</span><span>Continuar</span></span><svg class="a"><use href="#arr"/></svg></button>
-          </div>
-        </div>
-
-        <!-- PASO 2 · CARACTERÍSTICAS -->
-        <div class="a-panel" data-p="2">
-          <p class="bubble" id="bub2">Perfecto, ya tengo la ubicación. Ahora contame algunas <b>características</b> de la propiedad.</p>
-          <span class="pill">Operación: Venta</span>
-          <div class="f">
-            <label id="lTipo">Tipología</label>
-            <div class="chips" id="aTipo" role="radiogroup" aria-labelledby="lTipo">
-              <button type="button" role="radio" aria-checked="false" data-v="Departamento">Departamento</button>
-              <button type="button" role="radio" aria-checked="false" data-v="PH">PH</button>
-              <button type="button" role="radio" aria-checked="false" data-v="Casa">Casa</button>
-              <button type="button" role="radio" aria-checked="false" data-v="Lote">Lote</button>
-              <button type="button" role="radio" aria-checked="false" data-v="Otro">Otro</button>
-            </div>
-            <span class="err" id="eTipo" role="alert"></span>
-          </div>
-          <div class="two">
-            <div class="f"><label for="aM2">Superficie cubierta (m²)</label><input id="aM2" type="number" inputmode="decimal" min="1" placeholder="Ej: 75"><span class="err" id="eM2" role="alert"></span></div>
-            <div class="f" data-hide="lote"><label for="aAmb">Ambientes</label><select id="aAmb"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6 o más</option></select><span class="err" id="eAmb" role="alert"></span></div>
-          </div>
-          <div class="three" data-hide="lote">
-            <div class="f"><label for="aDorm">Dormitorios</label><select id="aDorm"><option value="">—</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5 o más</option></select></div>
-            <div class="f"><label for="aBan">Baños</label><select id="aBan"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4 o más</option></select></div>
-            <div class="f"><label for="aCoc">Cocheras</label><select id="aCoc"><option value="">—</option><option>0</option><option>1</option><option>2</option><option>3 o más</option></select></div>
-          </div>
-          <div class="f" data-hide="lote"><label for="aAnt">Antigüedad</label><select id="aAnt"><option value="">Seleccionar...</option><option>A estrenar</option><option>Hasta 5 años</option><option>5 a 10 años</option><option>10 a 20 años</option><option>20 a 30 años</option><option>30 a 50 años</option><option>Más de 50 años</option><option>No lo sé</option></select></div>
-          <details class="more-opt">
-            <summary>Sumar más datos (opcional)</summary>
-            <div class="two" data-hide="casa lote">
-              <div class="f"><label for="aPiso">Piso</label><input id="aPiso" type="text" maxlength="20" placeholder="Ej: 3°"></div>
-              <div class="f"><label for="aUni">Unidad</label><input id="aUni" type="text" maxlength="20" placeholder="Ej: B"></div>
-            </div>
-            <div class="f" data-hide="lote"><label for="aBalc">Balcón / terraza</label><select id="aBalc"><option value="">Seleccionar...</option><option>No tiene</option><option>Balcón</option><option>Terraza</option><option>Balcón y terraza</option></select></div>
-            <div class="f"><label for="aDesc">Descripción de la propiedad</label><textarea id="aDesc" maxlength="600" placeholder="Estado, luz, reformas, lo que quieras contarme"></textarea></div>
-          </details>
-          <div class="actions">
-            <button class="alt" type="button" data-back>Volver</button>
-            <button class="btn white" type="button" data-next><span class="lbl"><span>Continuar</span><span>Continuar</span></span><svg class="a"><use href="#arr"/></svg></button>
-          </div>
-        </div>
-
-        <!-- PASO 3 · CONTACTO -->
-        <div class="a-panel" data-p="3">
-          <p class="bubble">Casi listo. Dejame tus datos y te escribo personalmente para darte una <b>primera orientación</b> sobre tu propiedad.</p>
-          <div class="f"><label for="aNom">Nombre</label><input id="aNom" type="text" autocomplete="name" placeholder="Tu nombre"><span class="err" id="eNom" role="alert"></span></div>
-          <div class="two">
-            <div class="f"><label for="aTel">WhatsApp</label><input id="aTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="11 1234 5678"><span class="err" id="eTel" role="alert"></span></div>
-            <div class="f"><label for="aMail">Email (opcional)</label><input id="aMail" type="email" autocomplete="email" placeholder="vos@email.com"><span class="err" id="eMail" role="alert"></span></div>
-          </div>
-          <div class="actions">
-            <button class="alt" type="button" data-back>Volver</button>
-            <button class="btn white" type="button" data-next><svg><use href="#wa"/></svg><span class="lbl"><span>Enviar mi solicitud</span><span>Enviar mi solicitud</span></span></button>
-          </div>
-          <p class="priv">Uso estos datos solo para contactarte por esta consulta. <a href="/privacidad.html">Privacidad</a></p>
-        </div>
-      </form>
-
-      <!-- CIERRE -->
-      <div class="a-done" id="aDone" hidden>
-        <img class="a-fest" src="danila-brindis.jpg" alt="Danila Greppi brindando" loading="lazy">
-        <p class="bubble" id="aDoneMsg"></p>
-        <ul class="sum" id="aSum"></ul>
-        <div class="actions">
-          <a class="btn white" id="aWa" href="https://wa.me/5491170615041"><svg><use href="#wa"/></svg><span class="lbl"><span>Hablar con Danila por WhatsApp</span><span>Hablar con Danila por WhatsApp</span></span></a>
-          <button class="alt" type="button" id="aReset">Cargar otra propiedad</button>
-        </div>
+        <div class="cm cm-addr" hidden><input id="aDir" type="text" autocomplete="off" placeholder="Ej: Av. Balbín 4000, Saavedra" aria-label="Dirección de la propiedad"><button class="send" type="button" aria-label="Enviar respuesta"><svg><use href="#arr"/></svg></button></div>
+        <small class="help" id="aDirHelp" hidden>Buscá la dirección y elegí la opción correcta para ubicar la propiedad.</small>
+        <div class="cm cm-txt" hidden><input id="aTxt" type="text"><button class="send" type="button" aria-label="Enviar respuesta"><svg><use href="#arr"/></svg></button></div>
+        <div class="cm cm-two" hidden><input id="aP1" type="text" maxlength="20" placeholder="Piso (ej: 3°)" aria-label="Piso"><input id="aP2" type="text" maxlength="20" placeholder="Unidad (ej: B)" aria-label="Unidad"><button class="send" type="button" aria-label="Enviar respuesta"><svg><use href="#arr"/></svg></button></div>
+        <div class="cm cm-area" hidden><textarea id="aArea" maxlength="600" placeholder="Estado, luz, reformas, lo que quieras contarme" aria-label="Descripción de la propiedad"></textarea><button class="send" type="button" aria-label="Enviar respuesta"><svg><use href="#arr"/></svg></button></div>
+        <div class="chips cm-chips" hidden></div>
+        <div class="chips cm-skip" hidden></div>
+        <span class="err" id="cErr" role="alert"></span>
       </div>
+      <p class="priv">Uso estos datos solo para contactarte por esta consulta. <a href="/privacidad.html">Privacidad</a></p>
     </div>
   </div>
 </section>
@@ -1404,7 +1766,7 @@ function gtag_report_conversion(url){
 /* ===== UI ===== */
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const nav=document.getElementById('nav'),wa=document.getElementById('waFloat');
-const onS=()=>{nav.classList.toggle('scrolled',scrollY>60);wa.classList.toggle('show',scrollY>innerHeight*.7)};
+const onS=()=>{nav.classList.toggle('scrolled',scrollY>(innerWidth<900?16:60));wa.classList.toggle('show',scrollY>innerHeight*.7)};
 addEventListener('scroll',onS,{passive:true});onS();
 const burger=document.getElementById('burger');burger.setAttribute('aria-expanded','false');
 const setMenu=o=>{nav.classList.toggle('open',o);burger.setAttribute('aria-expanded',String(o));document.body.classList.toggle('lock',o)};
@@ -1419,10 +1781,12 @@ const secs=['hero','servicios','proceso','faq','descargables'].map(id=>document.
 addEventListener('scroll',()=>{let cur='hero';secs.forEach(s=>{if(s&&s.getBoundingClientRect().top<innerHeight*.4)cur=s.id});document.querySelectorAll('.menu a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur))},{passive:true});
 // marquee
 document.querySelectorAll('.marquee-track').forEach(t=>{t.innerHTML+=t.innerHTML.replace(/<img /g,'<img aria-hidden="true" ')});
+document.querySelectorAll('.rib-track').forEach(t=>{t.innerHTML+=t.innerHTML});
 // palabras rotando
 (()=>{const s=[...document.querySelectorAll('#rot span')];let i=0;if(reduce)return;setInterval(()=>{const p=s[i];p.className='off';setTimeout(()=>p.className='',800);i=(i+1)%s.length;s[i].className='on'},2800)})();
 // palabras que se iluminan
-document.querySelectorAll('.words').forEach(el=>{el.innerHTML=el.textContent.trim().split(/\s+/).map(w=>'<span class="w">'+w+'</span>').join(' ')});
+const wrapW=n=>[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(t=>{if(!t)return;if(/^\s+$/.test(t)){f.appendChild(document.createTextNode(' '))}else{const s=document.createElement('span');s.className='w';s.textContent=t;f.appendChild(s)}});c.replaceWith(f)}else if(c.nodeType===1)wrapW(c)});
+document.querySelectorAll('.words').forEach(wrapW);
 const lightWords=()=>document.querySelectorAll('.words').forEach(el=>{const r=el.getBoundingClientRect(),ws=el.querySelectorAll('.w');const p=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(r.height+innerHeight*.3)));const n=Math.round(p*ws.length);ws.forEach((w,k)=>w.classList.toggle('lit',reduce||k<n))});
 addEventListener('scroll',lightWords,{passive:true});lightWords();
 // contadores
@@ -1443,18 +1807,47 @@ const auto=()=>{if(!reduce)t=setInterval(()=>go(cur==1?3:(cur+1)%4),5000)};auto(
 const loop=()=>{x+=(tx-x)*.15;y+=(ty-y)*.15;f.style.left=x+'px';f.style.top=y+'px';if(run)requestAnimationFrame(loop)};
 document.querySelectorAll('.proj').forEach(p=>{p.addEventListener('mouseenter',e=>{im.src=p.dataset.img;x=tx=e.clientX;y=ty=e.clientY;f.classList.add('on');if(!run){run=true;loop()}});p.addEventListener('mouseleave',()=>{f.classList.remove('on');run=false})});
 addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY},{passive:true})})();
-// proceso
-(()=>{const cs=[...document.querySelectorAll('.circle')];let i=1,t;const set=k=>{i=k;cs.forEach((c,j)=>c.classList.toggle('on',j==k))};
-cs.forEach((c,k)=>{c.addEventListener('mouseenter',()=>{clearInterval(t);set(k)});c.addEventListener('click',()=>{clearInterval(t);set(k)})});if(!reduce)t=setInterval(()=>set((i+1)%3),3400)})();
 // FAQ: una abierta a la vez
 document.querySelectorAll('.qa').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)document.querySelectorAll('.qa').forEach(o=>{if(o!==d)o.open=false})}));
 // tabla comparativa
 (()=>{const ok='<span class="chk"><svg><use href="#check"/></svg></span>',no='<span class="x"><svg><use href="#xx"/></svg></span>';
 const rows=[['Tasación con operaciones cerradas',ok,no,no],['Fotos y video profesional',ok,'A veces',no],['Reels y TikToks (+191K)',ok,no,no],['Tomas con drone',ok,no,no],['Tour virtual 360°',ok,no,no],['Plano técnico a medida',ok,no,no],['Amoblamiento virtual 3D',ok,no,no],['Destaque máximo en portales',ok,'Básico','Pago propio'],['Dominio e inhibición',ok,ok,no],['Red de colegas (colegueo)',ok,'A veces',no],['Reporte quincenal con métricas',ok,no,no],['Costo de marketing','$0','Variable','A tu cargo']];
 const head=['Qué incluye','<small>Recomendado</small>Danila Greppi','Inmobiliaria tradicional','Dueño directo'],cls=['feat','c2','c3','c4'];
-document.getElementById('tbl').innerHTML=cls.map((c,k)=>'<div class="col '+c+'"><div class="hcell">'+head[k]+'</div>'+rows.map(r=>'<div class="cell">'+r[k]+'</div>').join('')+(k==1?'<div class="end"></div>':'')+'</div>').join('')})();
+document.getElementById('tbl').innerHTML=cls.map((c,k)=>'<div class="col '+c+'"><div class="hcell">'+head[k]+(k==1?'<span class="pick">¡Esta!</span>':'')+'</div>'+rows.map((r,ri)=>'<div class="cell'+(ri===rows.length-1?' cost':'')+'" data-r="'+ri+'" style="--r:'+ri+'">'+r[k]+'</div>').join('')+(k==1?'<div class="end"></div>':'')+'</div>').join('');
+const tb=document.getElementById('tbl'),clr=()=>tb.querySelectorAll('.cell.hl').forEach(x=>x.classList.remove('hl'));
+tb.addEventListener('mouseover',e=>{const c=e.target.closest('.cell[data-r]');clr();if(c)tb.querySelectorAll('.cell[data-r="'+c.dataset.r+'"]').forEach(x=>x.classList.add('hl'))});
+tb.addEventListener('mouseleave',clr)})();
 
-/* ===== Asistente de tasación ===== */
+/* ===== Escena "yo la muevo" (ligada al scroll) ===== */
+(()=>{const st=document.getElementById('stage');if(!st)return;
+const mv=document.getElementById('mover'),say=document.getElementById('say'),cf=document.getElementById('confetti'),fin=st.querySelector('.finish');
+const cols=['#C8106A','#FF8017','#E1DEB7','#161415','#D4DDD5'];
+for(let i=0;i<26;i++){const s=document.createElement('span'),a=(i/26)*Math.PI*2,d=70+Math.random()*90;s.style.cssText='--dx:'+Math.round(Math.cos(a)*d)+'px;--dy:'+Math.round(Math.sin(a)*d*.8-60)+'px;--rt:'+Math.round(Math.random()*720-360)+'deg;--c:'+cols[i%5];cf.appendChild(s)}
+let burst=false;
+const upd=()=>{const r=st.getBoundingClientRect(),vh=innerHeight;
+ const p=reduce?1:Math.min(1,Math.max(0,(vh*.92-r.top)/(vh*.62)));
+ const k=innerWidth<768?.72:1,hw=150*k;
+ const max=Math.max(0,st.clientWidth-fin.offsetWidth/2-(mv.offsetLeft+hw/2));
+ st.style.setProperty('--p',p);st.style.setProperty('--x',(p*max)+'px');
+ st.style.setProperty('--rot',(p*max/(58.9*k)*360)+'deg');
+ st.classList.toggle('go',p>.02&&p<.985);st.classList.toggle('done',p>=.985);
+ say.textContent=p<.02?'mmm… ¿y si la muevo?':(p<.985?'¡Dale que va!':'¡Brindemos!');
+ if(p>=.985&&!burst){burst=true;st.classList.add('burst')}
+ if(p<.9&&burst){burst=false;st.classList.remove('burst')}};
+addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd()})();
+
+/* ===== Zonas: mapa <-> lista ===== */
+(()=>{const pins=[...document.querySelectorAll('.zmap .pin')],rows=[...document.querySelectorAll('.zwrap .proj')];
+const set=(z,on)=>{pins.forEach(p=>p.classList.toggle('on',on&&p.dataset.z===z));rows.forEach(r=>r.classList.toggle('on',on&&r.dataset.z===z))};
+pins.forEach(p=>{p.addEventListener('mouseenter',()=>set(p.dataset.z,true));p.addEventListener('mouseleave',()=>set('',false));
+ p.addEventListener('click',()=>{const t=document.getElementById('contacto');scrollTo({top:t.getBoundingClientRect().top+pageYOffset-80,behavior:reduce?'auto':'smooth'})})});
+rows.forEach(r=>{r.addEventListener('mouseenter',()=>set(r.dataset.z,true));r.addEventListener('mouseleave',()=>set('',false));r.addEventListener('focus',()=>set(r.dataset.z,true));r.addEventListener('blur',()=>set('',false))})})();
+
+/* ===== Mercado: 200 puntos, 11 se venden (5,5%) ===== */
+(()=>{const d=document.getElementById('dots');if(!d)return;const sold=[7,31,48,66,83,97,121,139,152,171,188];let h='';
+for(let i=0;i<200;i++)h+='<i'+(sold.includes(i)?' class="s"':'')+' style="--d:'+(Math.floor(i/20)*30+(i%20)*14)+'"></i>';d.innerHTML=h})();
+
+/* ===== Chat de tasación ===== */
 /* CONFIGURACIÓN — completar estos 2 datos (ver instrucciones en la entrega) */
 const CONFIG={
   whatsapp:'5491170615041',        // WhatsApp de Danila (ya cargado, igual que el resto del sitio)
@@ -1462,88 +1855,105 @@ const CONFIG={
   googleMapsApiKey:''              // COMPLETAR: API key de Google Maps (Places API). Vacío = la dirección se escribe a mano, sin autocompletado.
 };
 (()=>{
-  const form=document.getElementById('asistForm');
-  if(!form)return;
   const $=id=>document.getElementById(id);
-  const panels=[...form.querySelectorAll('.a-panel')];
-  const card=$('asistente'),bar=$('aBar'),count=$('aCount'),done=$('aDone');
-  const NI='No informado';
-  let step=1,tipo='',sending=false;
-  const v=id=>($(id)?$(id).value.trim():'');
-  const mark=(id,errId,msg)=>{const el=$(id),er=$(errId);if(el)el.classList.toggle('bad',!!msg);if(er)er.textContent=msg||'';return !msg};
-  const label=(btn,t)=>btn.querySelectorAll('.lbl span').forEach(s=>s.textContent=t);
-  const reveal=()=>{const r=card.getBoundingClientRect();if(r.top<70)scrollTo({top:r.top+pageYOffset-90,behavior:reduce?'auto':'smooth'})};
+  const log=$('cLog');if(!log)return;
+  const card=$('asistente'),bar=$('aBar'),undoBtn=$('cUndo'),cAv=$('cAv'),err=$('cErr'),help=$('aDirHelp');
+  const R={addr:card.querySelector('.cm-addr'),txt:card.querySelector('.cm-txt'),two:card.querySelector('.cm-two'),area:card.querySelector('.cm-area'),chips:card.querySelector('.cm-chips'),skip:card.querySelector('.cm-skip')};
+  const inDir=$('aDir'),inTxt=$('aTxt'),in1=$('aP1'),in2=$('aP2'),inArea=$('aArea');
+  const NI='No informado',AV='danila-avatar-pensando.jpg',AV2='danila-avatar-brindis.jpg';
+  const sleep=ms=>new Promise(r=>setTimeout(r,reduce?0:ms));
+  const first=s=>(s||'').trim().split(/\s+/)[0];
+  const lote=A=>A.tipo==='Lote';
+  const steps=[
+    {k:'dir',type:'addr',ask:()=>['¡Hola! Soy Danila 👋 Te hago unas preguntas cortitas para darte una primera orientación sobre tu propiedad. Lo que no sepas, lo salteás sin drama.','Para empezar: ¿cuál es la dirección?'],
+      val:v=>v.length<5?'Escribí la calle y la altura, por ejemplo Av. Balbín 4000.':''},
+    {k:'tipo',type:'chips',ask:()=>['Perfecto, ya la ubico. ¿Qué tipo de propiedad es?'],opts:['Departamento','PH','Casa','Lote','Otro']},
+    {k:'m2',type:'txt',inp:A=>({mode:'decimal',ph:'Ej: 75',max:8,ac:'off',label:lote(A)?'Metros cuadrados del lote':'Metros cuadrados cubiertos'}),
+      ask:A=>[lote(A)?'¿Cuántos metros tiene el lote, más o menos? Un número aproximado alcanza.':'¿Cuántos metros cubiertos tiene, más o menos? Un número aproximado alcanza.'],skip:'No sé',
+      val:v=>{const n=parseFloat(v.replace(',','.'));return (!(n>0)||n>100000)?'Escribí solo el número, por ejemplo 75.':''},fmt:v=>v+' m²'},
+    {k:'amb',type:'chips',when:A=>!lote(A),ask:()=>['Anotado. ¿Cuántos ambientes?'],opts:['1','2','3','4','5','6 o más'],skip:'No sé'},
+    {k:'dorm',type:'chips',when:A=>!lote(A),ask:()=>['¿Y dormitorios?'],opts:['0','1','2','3','4 o más'],skip:'Saltear'},
+    {k:'ban',type:'chips',when:A=>!lote(A),ask:()=>['¿Baños?'],opts:['1','2','3 o más'],skip:'Saltear'},
+    {k:'coc',type:'chips',when:A=>!lote(A),ask:()=>['¿Tiene cochera?'],opts:['No tiene','1','2 o más'],skip:'Saltear'},
+    {k:'ant',type:'chips',when:A=>!lote(A),ask:()=>['¿Qué antigüedad tiene, más o menos?'],opts:['A estrenar','Hasta 10 años','10 a 30 años','Más de 30 años'],skip:'No sé'},
+    {k:'piso',type:'two',when:A=>A.tipo==='Departamento'||A.tipo==='PH'||A.tipo==='Otro',ask:()=>['Si es un departamento, ¿en qué piso está? Y si sabés la unidad, sumala.'],skip:'Saltear'},
+    {k:'balc',type:'chips',when:A=>!lote(A),ask:()=>['¿Tiene balcón o terraza?'],opts:['No','Balcón','Terraza','Balcón y terraza'],skip:'Saltear',store:v=>v==='No'?'No tiene':v},
+    {k:'desc',type:'area',ask:()=>['¿Querés contarme algo más? Estado, luz, reformas, lo que se te ocurra. Si preferís, lo charlamos por WhatsApp.'],skip:'Nada más'},
+    {k:'nom',type:'txt',req:true,ask:()=>['¡Ya casi! ¿Cómo te llamo?'],inp:()=>({mode:'text',ph:'Tu nombre',ac:'name',max:60,label:'Tu nombre'}),val:v=>v.length<2?'Decime tu nombre.':''},
+    {k:'tel',type:'txt',req:true,ask:A=>['Un gusto, '+first(A.nom)+'. ¿A qué WhatsApp te escribo con tu orientación?'],inp:()=>({type:'tel',mode:'tel',ph:'11 1234 5678',ac:'tel',max:25,label:'Tu WhatsApp'}),val:v=>v.replace(/\D/g,'').length<8?'Dejá el número con código de área.':''},
+    {k:'mail',type:'txt',ask:()=>['¿Y un email? Es opcional, por si querés que te mande algo por ahí.'],inp:()=>({type:'email',mode:'email',ph:'vos@email.com',ac:'email',max:80,label:'Tu email'}),skip:'Prefiero no dejarlo',val:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)?'':'Revisá el email.'}
+  ];
+  const NOM=steps.findIndex(s=>s.k==='nom');
+  const A={},stack=[];
+  let cur=-1,busy=false,done=false,started=false;
 
-  /* ---- navegación entre pasos ---- */
-  function go(n,focus){
-    step=n;
-    panels.forEach((p,i)=>p.classList.toggle('on',i+1===n));
-    bar.style.width=(n/3*100)+'%';
-    count.textContent=n+' / 3';
-    if(n===2)$('bub2').textContent='Perfecto, ya tengo la ubicación ('+v('aDir')+'). Ahora contame algunas características de la propiedad.';
-    if(focus){const f=panels[n-1].querySelector('input,select,textarea');if(f)f.focus({preventScroll:true})}
-    reveal();
-  }
-  function validate(n){
-    let ok=true,first=null;
-    const chk=(id,err,msg)=>{if(!mark(id,err,msg)){ok=false;if(!first)first=id}};
-    if(n===1)chk('aDir','eDir',v('aDir').length<5?'Escribí la calle y la altura.':'');
-    if(n===2){
-      $('eTipo').textContent=tipo?'':'Elegí una opción.';
-      if(!tipo){ok=false;first='aTipo'}
-      const m2=parseFloat(v('aM2').replace(',','.'));
-      chk('aM2','eM2',(!(m2>0)||m2>100000)?'Indicá los m² cubiertos.':'');
-      if(tipo!=='Lote')chk('aAmb','eAmb',v('aAmb')?'':'Elegí los ambientes.');
-    }
-    if(n===3){
-      chk('aNom','eNom',v('aNom').length<2?'Decime tu nombre.':'');
-      chk('aTel','eTel',v('aTel').replace(/\D/g,'').length<8?'Dejá un WhatsApp con código de área.':'');
-      const mail=v('aMail');
-      chk('aMail','eMail',(mail&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail))?'Revisá el email.':'');
-    }
-    if(first){const el=$(first);const t=first==='aTipo'?el.querySelector('button'):el;if(t)t.focus()}
-    return ok;
-  }
-  function next(){
-    if(sending||!validate(step))return;
-    if(step<3)go(step+1,step+1===3);else submit();
-  }
-  form.addEventListener('click',e=>{
-    const b=e.target.closest('[data-next],[data-back]');
-    if(!b)return;
-    if(b.hasAttribute('data-back'))go(step-1,true);else next();
-  });
-  form.addEventListener('keydown',e=>{
-    if(e.key!=='Enter')return;
-    const t=e.target.tagName;
-    if(t==='TEXTAREA'||t==='BUTTON'||t==='SUMMARY')return;
-    e.preventDefault();
-    if(e.target.id!=='aDir')next();   // en la dirección, Enter solo elige la sugerencia
-  });
-  form.addEventListener('submit',e=>e.preventDefault());
+  const scrollLog=()=>log.scrollTo({top:log.scrollHeight,behavior:reduce?'auto':'smooth'});
+  const mkMini=()=>{const i=document.createElement('img');i.className='mini';i.src=AV;i.alt='';i.width=26;i.height=26;return i};
+  function bub(text,who,idx,o){o=o||{};const m=document.createElement('div');m.className='msg '+who+(o.first?' first':'')+(o.sk?' sk':'');m.dataset.s=idx;
+    if(who==='bot')m.appendChild(mkMini());
+    const b=document.createElement('div');b.className='bub';b.textContent=text;m.appendChild(b);log.appendChild(m);scrollLog();return m}
+  function typing(idx){const m=document.createElement('div');m.className='msg bot typing';m.dataset.s=idx;m.appendChild(mkMini());const b=document.createElement('div');b.className='bub';b.innerHTML='<i></i><i></i><i></i>';m.appendChild(b);log.appendChild(m);scrollLog();return m}
+  async function say(texts,idx){let f=true;for(const t of texts){const ty=typing(idx);await sleep(450+Math.min(900,t.length*10));ty.remove();bub(t,'bot',idx,{first:f});f=false}}
 
-  /* ---- tipología ---- */
-  const chips=[...document.querySelectorAll('#aTipo button')];
-  chips.forEach(b=>b.addEventListener('click',()=>{
-    tipo=b.dataset.v;
-    chips.forEach(x=>{const on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-checked',String(on))});
-    form.dataset.tipo=tipo;
-    $('eTipo').textContent='';
-  }));
-  ['aDir','aM2','aAmb','aNom','aTel','aMail'].forEach(id=>$(id).addEventListener('input',()=>$(id).classList.remove('bad')));
+  function hideCmp(){Object.keys(R).forEach(k=>R[k].hidden=true);help.hidden=true;err.textContent='';[inDir,inTxt,in1,in2,inArea].forEach(x=>x.classList.remove('bad'))}
+  const chipBtn=t=>{const b=document.createElement('button');b.type='button';b.textContent=t;return b};
+  function updBar(){bar.style.width=Math.max(4,Math.min(100,((cur<0?steps.length:cur)+1)/steps.length*100))+'%'}
+  function showCmp(i,focus){
+    const s=steps[i];hideCmp();
+    let el=null;
+    if(s.type==='addr'){R.addr.hidden=false;help.hidden=false;inDir.value=A.dir||'';el=inDir}
+    if(s.type==='txt'){R.txt.hidden=false;const o=s.inp(A);inTxt.value='';inTxt.type=o.type||'text';inTxt.setAttribute('inputmode',o.mode||'text');inTxt.placeholder=o.ph;inTxt.maxLength=o.max;inTxt.setAttribute('autocomplete',o.ac);inTxt.setAttribute('aria-label',o.label);el=inTxt}
+    if(s.type==='two'){R.two.hidden=false;in1.value='';in2.value='';el=in1}
+    if(s.type==='area'){R.area.hidden=false;inArea.value='';el=inArea}
+    if(s.type==='chips'){R.chips.hidden=false;R.chips.textContent='';s.opts.forEach(o=>{const b=chipBtn(o);b.onclick=()=>answer(i,s.store?s.store(o):o,o);R.chips.appendChild(b)})}
+    R.skip.textContent='';
+    if(s.skip){const b=chipBtn(s.skip);b.onclick=()=>answer(i,'',s.skip,true);R.skip.appendChild(b)}
+    if(i>0&&i<NOM){const b=chipBtn('Prefiero dejar mis datos y seguir por WhatsApp');b.onclick=()=>jump(i);R.skip.appendChild(b)}
+    R.skip.hidden=!R.skip.children.length;
+    if(focus&&el)el.focus({preventScroll:true});
+  }
+  async function ask(i){cur=i;busy=true;hideCmp();updBar();await say(steps[i].ask(A),i);busy=false;showCmp(i,i>0)}
+  function next(i){let n=i+1;while(n<steps.length&&steps[n].when&&!steps[n].when(A))n++;if(n>=steps.length)finish();else ask(n)}
+  function setA(s,val,extra){if(s.k==='piso'){A.piso=extra?extra[0]:'';A.uni=extra?extra[1]:''}else A[s.k]=val}
+  function answer(i,val,disp,skipped,extra){
+    if(busy||cur!==i)return;const s=steps[i];setA(s,val,extra);busy=true;hideCmp();
+    bub(disp,'me',i,{sk:!!skipped});stack.push(i);undoBtn.hidden=false;next(i)}
+  function jump(i){if(busy||cur!==i)return;setA(steps[i],'');busy=true;hideCmp();bub('Prefiero dejar mis datos y seguir por WhatsApp','me',i,{sk:true});stack.push(i);undoBtn.hidden=false;ask(NOM)}
+  function undo(){
+    if(busy||!stack.length||done)return;const L=stack.pop();
+    [...log.children].forEach(n=>{const s=+n.dataset.s;if(s>L||(s===L&&n.classList.contains('me')))n.remove()});
+    const s=steps[L];if(s.k==='piso'){delete A.piso;delete A.uni}else delete A[s.k];
+    cur=L;updBar();showCmp(L,true);undoBtn.hidden=!stack.length}
+  undoBtn.addEventListener('click',undo);
 
-  /* ---- datos ---- */
+  const fail=(el,msg)=>{el.classList.add('bad');err.textContent=msg;el.focus({preventScroll:true})};
+  function submit(){
+    if(busy||cur<0)return;const i=cur,s=steps[i];let v;
+    if(s.type==='addr'){v=inDir.value.trim();const e=s.val(v);if(e)return fail(inDir,e);return answer(i,v,v)}
+    if(s.type==='txt'){v=inTxt.value.trim();
+      if(!v){if(s.skip)return answer(i,'',s.skip,true);return fail(inTxt,'Escribí tu respuesta para seguir.')}
+      const e=s.val?s.val(v):'';if(e)return fail(inTxt,e);return answer(i,v,s.fmt?s.fmt(v):v)}
+    if(s.type==='two'){const p=in1.value.trim(),u=in2.value.trim();
+      if(!p&&!u)return answer(i,'',s.skip,true);
+      return answer(i,'',[p&&'Piso '+p,u&&'Unidad '+u].filter(Boolean).join(' · '),false,[p,u])}
+    if(s.type==='area'){v=inArea.value.trim();if(!v)return answer(i,'',s.skip,true);return answer(i,v,v)}
+  }
+  const pacOpen=()=>[...document.querySelectorAll('.pac-container')].some(c=>getComputedStyle(c).display!=='none'&&c.querySelector('.pac-item'));
+  card.addEventListener('click',e=>{if(e.target.closest('.send'))submit()});
+  card.addEventListener('keydown',e=>{
+    if(e.key!=='Enter'||e.shiftKey)return;
+    const t=e.target;if(!t||t.tagName!=='INPUT'||t.id==='aHp')return;
+    if(t===inDir&&pacOpen())return;
+    e.preventDefault();submit()});
+  card.addEventListener('input',e=>{if(e.target.classList)e.target.classList.remove('bad');err.textContent=''});
+
+  /* ---- datos, WhatsApp y email ---- */
   function data(){
-    const lote=tipo==='Lote',noPiso=tipo==='Casa'||lote;
-    const g=(id,skip)=>skip?NI:(v(id)||NI);
-    return {
-      fecha:new Date().toLocaleString('es-AR',{timeZone:'America/Argentina/Buenos_Aires'}),
-      nombre:v('aNom')||NI,email:v('aMail')||NI,whatsapp:v('aTel')||NI,
-      direccion:v('aDir')||NI,operacion:'Venta',tipologia:tipo||NI,
-      superficie:v('aM2')?v('aM2')+' m² cubiertos':NI,
-      ambientes:g('aAmb',lote),dormitorios:g('aDorm',lote),banos:g('aBan',lote),cocheras:g('aCoc'),antiguedad:g('aAnt',lote),
-      piso:g('aPiso',noPiso),unidad:g('aUni',noPiso),balcon:g('aBalc',lote),descripcion:v('aDesc')||NI
-    };
+    const sup=A.m2?A.m2+(lote(A)?' m² (lote)':' m² cubiertos'):NI;
+    return {fecha:new Date().toLocaleString('es-AR',{timeZone:'America/Argentina/Buenos_Aires'}),
+      nombre:A.nom||NI,email:A.mail||NI,whatsapp:A.tel||NI,direccion:A.dir||NI,operacion:'Venta',tipologia:A.tipo||NI,superficie:sup,
+      ambientes:A.amb||NI,dormitorios:A.dorm||NI,banos:A.ban||NI,cocheras:A.coc||NI,antiguedad:A.ant||NI,
+      piso:A.piso||NI,unidad:A.uni||NI,balcon:A.balc||NI,descripcion:A.desc||NI};
   }
   function waMsg(d){
     const L=['Hola Danila, completé la solicitud de tasación de mi propiedad en '+d.direccion+'. Quería consultarte por la tasación.',''];
@@ -1553,80 +1963,69 @@ const CONFIG={
     return L.join('\n');
   }
   function payload(d){
-    const p={_subject:'Nueva solicitud de tasación',
-      'Fecha':d.fecha,'Nombre':d.nombre,'Email':d.email,'WhatsApp':d.whatsapp,'Dirección':d.direccion,'Operación':d.operacion,
+    const p={_subject:'Nueva solicitud de tasación','Fecha':d.fecha,'Nombre':d.nombre,'Email':d.email,'WhatsApp':d.whatsapp,'Dirección':d.direccion,'Operación':d.operacion,
       'Tipología':d.tipologia,'Superficie':d.superficie,'Ambientes':d.ambientes,'Dormitorios':d.dormitorios,'Baños':d.banos,
       'Cocheras':d.cocheras,'Antigüedad':d.antiguedad,'Piso':d.piso,'Unidad':d.unidad,'Balcón / terraza':d.balcon,'Descripción':d.descripcion};
-    if(d.email!==NI)p.email=d.email;   // reply-to
+    if(d.email!==NI)p.email=d.email;
     return p;
   }
   async function sendEmail(p){
     if(!CONFIG.emailEndpoint){console.warn('[Tasación] CONFIG.emailEndpoint está vacío: este lead NO se envió por email.');return false}
-    try{
-      const r=await fetch(CONFIG.emailEndpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(p)});
-      if(!r.ok)throw new Error('HTTP '+r.status);
-      return true;
-    }catch(err){console.error('[Tasación] No se pudo enviar el email:',err);return false}
+    try{const r=await fetch(CONFIG.emailEndpoint,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(p)});
+      if(!r.ok)throw new Error('HTTP '+r.status);return true}
+    catch(e){console.error('[Tasación] No se pudo enviar el email:',e);return false}
   }
 
-  /* ---- envío y cierre ---- */
-  async function submit(){
-    sending=true;
-    const btn=panels[2].querySelector('[data-next]');
-    btn.disabled=true;label(btn,'Enviando…');
+  async function finish(){
+    done=true;cur=-1;hideCmp();undoBtn.hidden=true;updBar();
     const d=data();
-    if(!$('aHp').value){   // honeypot anti-spam
-      await sendEmail(payload(d));
-      try{if(typeof gtag==='function')gtag('event','generate_lead',{event_category:'tasacion'})}catch(_){}
-    }
-    showDone(d);
-    btn.disabled=false;label(btn,'Enviar mi solicitud');
-    sending=false;
-  }
-  function showDone(d){
-    form.hidden=true;done.hidden=false;
-    bar.style.width='100%';count.textContent='Listo';
-    const first=d.nombre===NI?'':d.nombre.split(/\s+/)[0];
-    $('aDoneMsg').textContent=(first?'Gracias, '+first+'. ':'Gracias. ')+'Con estos datos ya puedo hacer una primera evaluación de tu propiedad. Para una tasación más precisa conviene analizar la propiedad, la documentación y el mercado comparable. Seguimos por WhatsApp.';
-    const ul=$('aSum');ul.textContent='';
+    let sent=null;
+    if(!$('aHp').value){sent=sendEmail(payload(d));try{if(typeof gtag==='function')gtag('event','generate_lead',{event_category:'tasacion'})}catch(_){}}
+    cAv.src=AV2;
+    await say(['Listo'+(d.nombre!==NI?', '+first(d.nombre):'')+'. Con lo que me contaste ya puedo hacer una primera evaluación de tu propiedad.','Para una tasación más precisa conviene analizar la propiedad, la documentación y el mercado comparable. Seguimos por WhatsApp 👇'],99);
+    const m=document.createElement('div');m.className='msg bot card';m.dataset.s=99;
+    const b=document.createElement('div');b.className='bub';
+    const ul=document.createElement('ul');ul.className='sum';
     [['Dirección',d.direccion],['Tipología',d.tipologia],['Superficie',d.superficie],['Ambientes',d.ambientes],['Dormitorios',d.dormitorios],['Baños',d.banos],['Cocheras',d.cocheras],['Antigüedad',d.antiguedad]]
       .filter(r=>r[1]!==NI).forEach(r=>{const li=document.createElement('li'),s=document.createElement('span');s.textContent=r[0];li.appendChild(s);li.appendChild(document.createTextNode(r[1]));ul.appendChild(li)});
-    $('aWa').href='https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(waMsg(d));
-    reveal();
+    b.appendChild(ul);
+    const a=document.createElement('a');a.className='btn white';a.id='aWa';a.href='https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(waMsg(d));
+    a.innerHTML='<svg><use href="#wa"/></svg><span class="lbl"><span>Hablar con Danila por WhatsApp</span><span>Hablar con Danila por WhatsApp</span></span>';
+    a.lastChild.lastChild.setAttribute('aria-hidden','true');
+    a.addEventListener('click',e=>{e.preventDefault();gtag_report_conversion(a.href)});
+    b.appendChild(a);
+    const again=document.createElement('button');again.type='button';again.className='again';again.textContent='Cargar otra propiedad';again.onclick=reset;b.appendChild(again);
+    m.appendChild(b);log.appendChild(m);scrollLog();
+    busy=false;
+    if(sent)await sent;
   }
-  $('aWa').addEventListener('click',e=>{e.preventDefault();gtag_report_conversion($('aWa').href)});
-  $('aReset').addEventListener('click',()=>{
-    form.reset();tipo='';delete form.dataset.tipo;
-    chips.forEach(x=>{x.classList.remove('on');x.setAttribute('aria-checked','false')});
-    form.querySelectorAll('.err').forEach(x=>x.textContent='');
-    form.querySelectorAll('.bad').forEach(x=>x.classList.remove('bad'));
-    const hp=$('aDirHelp');hp.textContent='Buscá la dirección y seleccioná la opción correcta para identificar la propiedad.';hp.classList.remove('ok');
-    done.hidden=true;form.hidden=false;go(1,true);
-  });
+  function reset(){
+    log.textContent='';Object.keys(A).forEach(k=>delete A[k]);stack.length=0;done=false;busy=false;cur=-1;cAv.src=AV;undoBtn.hidden=true;ask(0)}
 
   /* ---- autocompletado de dirección (Google Places, solo si hay API key) ---- */
-  const dir=$('aDir'),help=$('aDirHelp'),helpTxt=help.textContent;
+  const helpTxt=help.textContent;
   window.initPlaces=()=>{
     try{
-      const ac=new google.maps.places.Autocomplete(dir,{
-        componentRestrictions:{country:'ar'},types:['address'],fields:['formatted_address'],
-        bounds:new google.maps.LatLngBounds({lat:-34.705,lng:-58.531},{lat:-34.526,lng:-58.335})
-      });
-      ac.addListener('place_changed',()=>{
-        const p=ac.getPlace();
-        if(p&&p.formatted_address){dir.value=p.formatted_address;dir.classList.remove('bad');$('eDir').textContent='';help.textContent='✓ Dirección identificada.';help.classList.add('ok')}
-      });
-      dir.addEventListener('input',()=>{help.textContent=helpTxt;help.classList.remove('ok')});
-    }catch(err){console.warn('[Tasación] Google Places no disponible:',err)}
+      const ac=new google.maps.places.Autocomplete(inDir,{componentRestrictions:{country:'ar'},types:['address'],fields:['formatted_address'],
+        bounds:new google.maps.LatLngBounds({lat:-34.705,lng:-58.531},{lat:-34.526,lng:-58.335})});
+      ac.addListener('place_changed',()=>{const p=ac.getPlace();
+        if(p&&p.formatted_address){inDir.value=p.formatted_address;inDir.classList.remove('bad');err.textContent='';help.textContent='✓ Dirección identificada. Tocá enviar para seguir.';help.classList.add('ok')}});
+      inDir.addEventListener('input',()=>{help.textContent=helpTxt;help.classList.remove('ok')});
+    }catch(e){console.warn('[Tasación] Google Places no disponible:',e)}
   };
   if(CONFIG.googleMapsApiKey){
-    dir.addEventListener('focus',()=>{
+    inDir.addEventListener('focus',()=>{
       const s=document.createElement('script');
       s.src='https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(CONFIG.googleMapsApiKey)+'&libraries=places&language=es&region=AR&callback=initPlaces';
       s.async=true;s.onerror=()=>console.warn('[Tasación] No se pudo cargar Google Maps; la dirección se completa a mano.');
       document.head.appendChild(s);
     },{once:true});
   }
+
+  /* ---- arranca cuando el chat aparece en pantalla ---- */
+  const start=()=>{if(started)return;started=true;ask(0)};
+  const io2=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io2.disconnect();start()}},{threshold:.35});
+  io2.observe(card);
 })();
 </script>
 </body>
