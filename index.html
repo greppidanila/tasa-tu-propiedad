@@ -961,7 +961,7 @@ body.lock{overflow:hidden}
 .tk-total span{font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:14px}
 .tk-total strong{font-family:var(--sans);font-size:52px;letter-spacing:-.05em;line-height:1;font-weight:500;color:var(--accent)}
 .ticket.in .tk-total{opacity:1;transition-delay:1.45s}
-.tk-stamp{position:absolute;right:14px;top:16px;border:4px solid var(--accent);color:var(--accent);border-radius:8px;padding:5px 12px;font-weight:700;font-size:19px;letter-spacing:.08em;text-transform:uppercase;transform:rotate(-14deg) scale(2.6);opacity:0;transition:opacity .2s,transform .5s cubic-bezier(.3,1.6,.5,1);transition-delay:2s;mix-blend-mode:multiply;background:rgba(255,255,255,.55)}
+.tk-stamp{text-align:center;line-height:1.15;position:absolute;right:14px;top:16px;border:4px solid var(--accent);color:var(--accent);border-radius:8px;padding:5px 12px;font-weight:700;font-size:19px;letter-spacing:.08em;text-transform:uppercase;transform:rotate(-14deg) scale(2.6);opacity:0;transition:opacity .2s,transform .5s cubic-bezier(.3,1.6,.5,1);transition-delay:2s;mix-blend-mode:multiply;background:rgba(255,255,255,.55)}
 .ticket.in .tk-stamp{opacity:1;transform:rotate(-11deg) scale(1)}
 .svc-grid{grid-template-columns:1fr 1fr;gap:16px}
 .svc{min-height:312px;border-radius:var(--r);padding:28px;position:relative;overflow:hidden}
@@ -1227,14 +1227,14 @@ body.lock{overflow:hidden}
   .push{margin-top:60px;padding:22px 14px 28px}
   .stage{height:170px}
   .mover{left:66px;--k:.72}
-  .pusher{left:-70px;width:60px;height:60px}.say{left:-56px;bottom:66px;font-size:12px}
+  .pusher{left:-98px;width:100%;height:80px}.say{left:-56px;bottom:90px;font-size:12px}
   .zzz{left:112px;bottom:112px;font-size:24px}
   .finish{width:120px;height:120px}.sold{font-size:16px;padding:4px 9px}
   .confetti{right:60px;bottom:96px}
   .push-t{font-size:32px}
   .ribbons{height:150px;margin-top:24px}.rib{padding:11px 0}.rib span{font-size:19px;gap:18px;padding-right:18px}.rib.r2{top:70px}
   .svc-grid{grid-template-columns:1fr;gap:14px}.svc{min-height:0;padding:24px}.svc .ico{margin-bottom:24px}
-  .ticket{transform:rotate(-1deg);padding:24px 18px}.tk-total strong{font-size:44px}.tk-list{font-size:13px}.tk-stamp{font-size:14px;right:6px;top:auto;bottom:-8px}
+  .ticket{transform:rotate(-1deg);padding:24px 18px}.tk-total strong{font-size:44px}.tk-list{font-size:13px}.tk-stamp{font-size:13px;right:10px;top:auto;bottom:10px}.ticket{padding-bottom:62px}
   .zwrap{gap:28px}
   .mk-viz{margin-top:50px}
   .mk .viz{height:auto;min-height:74px}
@@ -1258,6 +1258,56 @@ body.lock{overflow:hidden}
   .rv,.hero-in{opacity:1!important;transform:none!important}
   .words .w{opacity:1!important}
   .hero-card>img{transform:none!important}
+}
+
+/* --- Comparativa: kit interactivo --- */
+.kit{margin-top:8px}
+.kit-ctl{display:flex;gap:6px;background:#fff;border:1px solid var(--ink10);border-radius:999px;padding:6px;width:max-content;max-width:100%;margin:0 auto 26px}
+.kit-ctl button{font:inherit;font-size:16px;font-weight:500;border:0;background:transparent;color:var(--ink70);padding:12px 22px;border-radius:999px;cursor:pointer;transition:background .3s,color .3s}
+.kit-ctl button.on{background:var(--ink);color:#fff}.kit-ctl button.me.on{background:var(--accent)}
+.kit-meter{max-width:620px;margin:0 auto 30px;text-align:center}
+.kit-n{font-size:20px;display:flex;align-items:baseline;justify-content:center;gap:8px;flex-wrap:wrap}
+.kit-n b{font-size:64px;letter-spacing:-.05em;line-height:1;font-weight:500;min-width:1.1ch;color:var(--ink)}
+.kit[data-m="2"] .kit-n b{color:var(--accent)}
+.kit-n em{font-family:var(--serif);color:var(--accent);font-size:26px;opacity:0;transform:scale(.6);transition:.4s var(--ease);width:100%}
+.kit.full .kit-n em{opacity:1;transform:none}
+.kit-bar{height:10px;border-radius:99px;background:var(--ink10);margin-top:12px;overflow:hidden}
+.kit-bar i{display:block;height:100%;width:0;background:var(--ink);border-radius:99px;transition:width .9s var(--ease),background .4s}
+.kit[data-m="2"] .kit-bar i{background:var(--accent)}
+.kit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;perspective:900px}
+.tile{position:relative;min-height:128px;border-radius:20px;padding:16px 16px 14px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;border:2px dashed var(--ink20);background:transparent;color:var(--ink70);transition:transform .6s var(--ease),background .4s,color .4s,border-color .4s;transition-delay:calc(var(--i)*55ms);transform-style:preserve-3d}
+.tile b{font-size:17px;line-height:1.2;font-weight:500;letter-spacing:-.01em}
+.tile small{font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.tile .ti{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--ink10);transition:background .4s,color .4s}
+.tile .ti svg{width:18px;height:18px}
+.tile[data-s="ok"]{background:var(--accent);color:#fff;border:2px solid var(--accent);animation:flip .7s var(--ease) both;animation-delay:calc(var(--i)*55ms)}
+.tile[data-s="ok"] .ti{background:#fff;color:var(--accent)}
+.tile[data-s="mid"]{background:var(--olive);color:var(--ink);border:2px solid var(--olive)}
+.tile[data-s="mid"] .ti{background:#fff}
+.tile[data-s="no"]{opacity:.8}
+@keyframes flip{0%{transform:rotateX(90deg) scale(.9)}70%{transform:rotateX(-8deg)}100%{transform:none}}
+.tile:hover{transform:translateY(-4px)}
+.kit-cost{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:14px;padding:22px 28px;border-radius:24px;background:var(--ink);color:#fff}
+.kit-cost span{font-size:18px}
+.kit-cost strong{font-size:56px;letter-spacing:-.05em;font-weight:500;line-height:1}
+.kit[data-m="2"] .kit-cost strong{color:var(--orange)}
+.kit-cost strong.pop{animation:chkPop .5s var(--ease)}
+.kit-hint{text-align:center;color:var(--ink70);font-size:14px;margin-top:16px}
+@media (max-width:1180px){.kit-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:767px){
+  .kit-ctl{width:100%;gap:2px;padding:4px}.kit-ctl button{flex:1;font-size:12.5px;padding:10px 4px;line-height:1.2}
+  .kit-n b{font-size:52px}.kit-n{font-size:16px}
+  .kit-grid{grid-template-columns:1fr 1fr;gap:10px}.tile{min-height:112px;padding:14px;border-radius:18px}.tile b{font-size:15px}
+  .kit-cost{padding:16px 18px}.kit-cost span{font-size:14px}.kit-cost strong{font-size:38px}
+  /* proceso compacto en mobile */
+  .process .story{display:none}
+  .trio{margin:28px 0 22px;grid-template-columns:repeat(3,1fr);gap:8px}.trio .chev{display:none}
+  .trio .tr{padding:12px 10px}.trio .tr b{font-size:13px}.trio .tr svg{height:38px}
+  .steps{gap:0;border-left:2px solid rgba(255,255,255,.35);margin-left:10px}
+  .stp,.stp:hover{background:transparent;color:#fff;border-radius:0;padding:0 0 22px 22px;position:relative;transform:none;box-shadow:none}
+  .stp::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--orange)}
+  .stp .scene{display:none}
+  .stp em{color:var(--olive)}.stp h3{font-size:22px;margin:0 0 4px}.stp p{color:rgba(255,255,255,.85);font-size:14.5px}
 }
 </style>
 </head>
@@ -1313,7 +1363,7 @@ body.lock{overflow:hidden}
         <h1 class="hero-in" style="animation-delay:.45s">Vendé tu propiedad en CABA
           <span class="rot" id="rot" aria-hidden="true"><span class="on">en menos de 120 días.</span><span>al mejor precio.</span><span>sin gastar en marketing.</span><span>con estrategia real.</span></span>
         </h1>
-        <p class="hero-sub hero-in" style="animation-delay:.65s">Trabajo junto a Marcela Genta con una estrategia de venta acelerada. Invierto en marketing real para que vendas rápido y al mejor precio.</p>
+        <p class="hero-sub hero-in" style="animation-delay:.65s">Trabajo junto a Marcela Genta con una estrategia de venta acelerada. Con inversión de la inmobiliaria en marketing real para que vendas rápido y al mejor precio.</p>
         <div class="hero-cta hero-in" style="animation-delay:.8s">
           <a class="btn red" href="#contacto"><svg class="a"><use href="#arr"/></svg><span class="lbl"><span>Quiero vender mi casa</span><span>Quiero vender mi casa</span></span></a>
           <a class="btn ghost" href="#proceso"><span class="lbl"><span>Cómo vendemos</span><span>Cómo vendemos</span></span></a>
@@ -1358,8 +1408,8 @@ body.lock{overflow:hidden}
       </div>
       <div class="about-txt">
         <span class="tag rv"><svg><use href="#house"/></svg>Martillera, Tasadora y Corredora Inmobiliaria</span>
-        <p class="words">Soy tu socia, no una administrativa. Pongo <em class="hl">capital, tiempo y estrategia</em> y cuido tu patrimonio como si fuera mío. Mi enfoque es 100% proactivo: no espero a que suene el teléfono.</p>
-        <div class="stickers rv"><span class="stk s1">100% proactiva</span><span class="stk s2">Invierto yo, no vos</span><span class="stk s3">Tu patrimonio, como mío</span></div>
+        <p class="words">Soy tu socia, no una administrativa. Sumo <em class="hl">inversión de la inmobiliaria, tiempo y estrategia</em> y cuido tu patrimonio como si fuera mío. Mi enfoque es 100% proactivo: no espero a que suene el teléfono.</p>
+        <div class="stickers rv"><span class="stk s1">100% proactiva</span><span class="stk s2">Inversión de la inmobiliaria</span><span class="stk s3">Tu patrimonio, como mío</span></div>
         <a class="btn red rv" href="#contacto"><svg class="a"><use href="#arr"/></svg><span class="lbl"><span>Quiero mi tasación</span><span>Quiero mi tasación</span></span></a>
       </div>
     </div>
@@ -1426,7 +1476,7 @@ body.lock{overflow:hidden}
         <button data-t="0" class="on" role="tab">Amoblamiento 3D</button><button data-t="1" role="tab">Plano técnico</button><button data-t="2" role="tab">Video</button>
       </div>
       <div class="pane on"><img src="render.jpg" alt="Antes y después de amoblamiento virtual 3D" loading="lazy"></div>
-      <div class="pane contain"><img src="plano.webp" alt="Plano técnico profesional de una propiedad en Saavedra" loading="lazy"></div>
+      <div class="pane contain"><img src="plano.webp" alt="Plano técnico profesional de una propiedad" loading="lazy"></div>
       <div class="pane video"><iframe data-src="https://www.youtube.com/embed/0PR4b53QRaw" title="Video de propiedad" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
       <div class="tabs-cap" id="tabcap">Amoblamiento virtual 3D: intervención visual para sets de revista.</div>
       <a class="btn white" href="#contacto"><svg class="a"><use href="#arr"/></svg><span class="lbl"><span>Quiero esto para mi casa</span><span>Quiero esto para mi casa</span></span></a>
@@ -1454,7 +1504,7 @@ body.lock{overflow:hidden}
           <li style="--i:6"><span>Pauta paga</span><i></i><b>$0</b></li>
         </ul>
         <div class="tk-total"><span>Vos ponés</span><strong>$0</strong></div>
-        <div class="tk-stamp">Lo pongo yo</div>
+        <div class="tk-stamp">Inversión de<br>la inmobiliaria</div>
       </div>
       <div class="svc-grid">
         <div class="svc c-mag rv"><div class="ico"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><g fill="#fff"><rect class="bar" x="6" y="36" width="10" height="22" rx="2"/><rect class="bar" x="21" y="26" width="10" height="32" rx="2"/><rect class="bar" x="36" y="16" width="10" height="42" rx="2"/><rect class="bar" x="51" y="6" width="10" height="52" rx="2"/></g><path class="trend" d="M8 30 24 20 40 12 58 3" stroke="#FF8017" stroke-width="3.5" stroke-linecap="round" pathLength="90"/></svg></div><div><h3>Tasación real</h3><p>Con datos de operaciones cerradas en los últimos 90 días, no con precios de portal.</p><ul><li>Precio de cierre</li><li>Demanda por zona</li></ul></div></div>
@@ -1586,13 +1636,26 @@ body.lock{overflow:hidden}
 </section>
 
 <!-- COMPARATIVA -->
-<section class="section pricing" style="padding-top:30px">
+<section class="section pricing kitsec" style="padding-top:30px">
   <div class="container">
     <div class="head">
       <span class="tag rv"><svg><use href="#house"/></svg>Sin costo de marketing</span>
       <h2 class="rv">Qué incluye vender conmigo <br><span class="serif muted">y qué no te da nadie más.</span></h2>
     </div>
-    <div class="table rv" id="tbl"></div>
+    <div class="kit rv" id="kit">
+      <div class="kit-ctl" role="tablist" aria-label="Elegí cómo vender">
+        <button type="button" role="tab" data-m="0">Dueño directo</button>
+        <button type="button" role="tab" data-m="1">Inmobiliaria tradicional</button>
+        <button type="button" role="tab" data-m="2" class="me">Con Danila</button>
+      </div>
+      <div class="kit-meter" aria-live="polite">
+        <div class="kit-n"><b id="kitN">0</b><span> de 11 herramientas incluidas</span><em id="kitOk">¡Kit completo!</em></div>
+        <div class="kit-bar"><i id="kitB"></i></div>
+      </div>
+      <div class="kit-grid" id="kitG"></div>
+      <div class="kit-cost"><span>Costo de marketing para vos</span><strong id="kitC">—</strong></div>
+      <p class="kit-hint">Probá los tres modos y mirá cómo se prende (o se apaga) cada herramienta.</p>
+    </div>
   </div>
 </section>
 
@@ -1783,7 +1846,7 @@ document.querySelectorAll('.rv').forEach(e=>io.observe(e));
 (()=>{const box=document.getElementById('tabs'),bs=box.querySelectorAll('.tabs-menu button'),ps=box.querySelectorAll('.pane'),cap=document.getElementById('tabcap');
 const caps=['Amoblamiento virtual 3D: intervención visual para sets de revista.','Plano técnico pro: claridad técnica para el comprador inteligente.','Video profesional para YouTube: recorrido para que la vean sin moverse.'];
 let cur=0,t;const go=(i,user)=>{cur=i;bs.forEach((b,k)=>{b.classList.toggle('on',k==i);b.setAttribute('aria-selected',String(k==i))});ps.forEach((p,k)=>p.classList.toggle('on',k==i));cap.textContent=caps[i];cap.style.opacity=i==2?0:1;
-if(i==2){const f=ps[2].querySelector('iframe');if(!f.src)f.src=f.dataset.src;clearInterval(t)}if(user)clearInterval(t)};
+  if(i==2){const f=ps[2].querySelector('iframe');if(!f.src)f.src=f.dataset.src;clearInterval(t)}if(user)clearInterval(t)};
 bs.forEach(b=>b.onclick=()=>go(+b.dataset.t,true));
 const auto=()=>{if(!reduce)t=setInterval(()=>go((cur+1)%3,false),5000)};auto()})();
 // zonas: imagen que sigue al mouse
@@ -1793,14 +1856,29 @@ document.querySelectorAll('.proj').forEach(p=>{p.addEventListener('mouseenter',e
 addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY},{passive:true})})();
 // FAQ: una abierta a la vez
 document.querySelectorAll('.qa').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)document.querySelectorAll('.qa').forEach(o=>{if(o!==d)o.open=false})}));
-// tabla comparativa
-(()=>{const ok='<span class="chk"><svg><use href="#check"/></svg></span>',no='<span class="x"><svg><use href="#xx"/></svg></span>';
-const rows=[['Tasación con operaciones cerradas',ok,no,no],['Fotos y video profesional',ok,'A veces',no],['Reels y TikToks (+191K)',ok,no,no],['Tomas con drone',ok,no,no],['Tour virtual 360°',ok,no,no],['Plano técnico a medida',ok,no,no],['Amoblamiento virtual 3D',ok,no,no],['Destaque máximo en portales',ok,'Básico','Pago propio'],['Dominio e inhibición',ok,ok,no],['Red de colegas (colegueo)',ok,'A veces',no],['Reporte quincenal con métricas',ok,no,no],['Costo de marketing','$0','Variable','A tu cargo']];
-const head=['Qué incluye','<small>Recomendado</small>Danila Greppi','Inmobiliaria tradicional','Dueño directo'],cls=['feat','c2','c3','c4'];
-document.getElementById('tbl').innerHTML=cls.map((c,k)=>'<div class="col '+c+'"><div class="hcell">'+head[k]+(k==1?'<span class="pick">¡Esta!</span>':'')+'</div>'+rows.map((r,ri)=>'<div class="cell'+(ri===rows.length-1?' cost':'')+'" data-r="'+ri+'" style="--r:'+ri+'">'+r[k]+'</div>').join('')+(k==1?'<div class="end"></div>':'')+'</div>').join('');
-const tb=document.getElementById('tbl'),clr=()=>tb.querySelectorAll('.cell.hl').forEach(x=>x.classList.remove('hl'));
-tb.addEventListener('mouseover',e=>{const c=e.target.closest('.cell[data-r]');clr();if(c)tb.querySelectorAll('.cell[data-r="'+c.dataset.r+'"]').forEach(x=>x.classList.add('hl'))});
-tb.addEventListener('mouseleave',clr)})();
+// comparativa interactiva
+(()=>{const box=document.getElementById('kit');if(!box)return;
+const rows=[['Tasación con operaciones cerradas',1,0,0],['Fotos y video profesional',1,'A veces',0],['Reels y TikToks (+191K)',1,0,0],['Tomas con drone',1,0,0],['Tour virtual 360°',1,0,0],['Plano técnico a medida',1,0,0],['Amoblamiento virtual 3D',1,0,0],['Destaque máximo en portales',1,'Básico','Lo pagás vos'],['Dominio e inhibición',1,1,0],['Red de colegas (colegueo)',1,'A veces',0],['Reporte quincenal con métricas',1,0,0]];
+const cost=['A tu cargo','Variable','$0'],col=[3,2,1];
+const ico='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+const ICK=ico+'<path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',ILK=ico+'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',IMD=ico+'<path d="M5 12h14"/></svg>';
+const g=document.getElementById('kitG');
+g.innerHTML=rows.map((r,i)=>'<div class="tile" style="--i:'+i+'"><span class="ti"></span><b>'+r[0]+'</b><small></small></div>').join('');
+const tiles=[...g.children],btns=[...box.querySelectorAll('.kit-ctl button')],N=document.getElementById('kitN'),B=document.getElementById('kitB'),C=document.getElementById('kitC');
+let m=-1,timers=[],touched=false;
+function set(k){if(k===m)return;m=k;let n=0;
+ btns.forEach((b,i)=>{b.classList.toggle('on',i===k);b.setAttribute('aria-selected',String(i===k))});
+ tiles.forEach((t,i)=>{const v=rows[i][col[k]];const st=v===1?'ok':(v?'mid':'no');t.dataset.s=st;if(st==='ok')n++;
+  t.querySelector('.ti').innerHTML=st==='ok'?ICK:st==='mid'?IMD:ILK;
+  t.querySelector('small').textContent=st==='ok'?'Incluido':st==='mid'?v:'No incluido'});
+ N.textContent=n;B.style.width=(n/11*100)+'%';box.classList.toggle('full',n===11);box.dataset.m=k;
+ C.textContent=cost[k];C.classList.remove('pop');void C.offsetWidth;C.classList.add('pop')}
+btns.forEach((b,i)=>b.addEventListener('click',()=>{touched=true;timers.forEach(clearTimeout);set(i)}));
+set(0);
+let started=false;
+new IntersectionObserver((es,o)=>{es.forEach(e=>{if(!e.isIntersecting||started)return;started=true;o.disconnect();
+ if(reduce){set(2);return}
+ timers=[setTimeout(()=>{if(!touched)set(1)},1300),setTimeout(()=>{if(!touched)set(2)},2900)]})},{threshold:.35}).observe(box)})();
 
 /* ===== Escena "yo la muevo" (ligada al scroll) ===== */
 (()=>{const st=document.getElementById('stage');if(!st)return;
